@@ -66,12 +66,7 @@ class FortifyServiceProvider extends ServiceProvider
             if ($admin && Hash::check($request->password, $admin->password)) {
                 return $admin;
             }
-
-            $shopRepresentative = ShopRepresentative::where('email', $request->email)->first();
-            if ($shopRepresentative && Hash::check($request->password, $shopRepresentative->password)) {
-                return $shopRepresentative;
-            }
-
+            
             return null;
         });
 
