@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Admin;
+use App\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -29,6 +32,10 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
+
+        Fortify::verifyEmailView(function(){
+            return view('Auth.verify_email');
+        });
         // Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         // Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         // Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
@@ -42,13 +49,31 @@ class FortifyServiceProvider extends ServiceProvider
         // RateLimiter::for('two-factor', function (Request $request) {
         //     return Limit::perMinute(5)->by($request->session()->get('login.id'));
         // });
-      Fortify::registerView(function () {
-          return view('auth.register');
-      });
+        Fortify::registerView(function () {
+            return view('Auth.register');
+        });
 
-      Fortify::loginView(function () {
-          return view('auth.login');
-      });
+        Fortify::loginView(function () {
+            return view('Auth.login');
+        });
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+
+            $admin = Admin::where('email', $request->email)->first();
+            if ($admin && Hash::check($request->password, $admin->password)) {
+                return $admin;
+            }
+
+            $shopRepresentative = ShopRepresentative::where('email', $request->email)->first();
+            if ($shopRepresentative && Hash::check($request->password, $shopRepresentative->password)) {
+                return $shopRepresentative;
+            }
+
+            return null;
+        });
 
       RateLimiter::for('login', function (Request $request) {
           $email = (string) $request->email;
