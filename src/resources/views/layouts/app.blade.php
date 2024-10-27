@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +14,20 @@
 
 <body>
     <header class="header_main">
+=======
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FURIMA</title>
+        <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/Layouts/common.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        @yield('css')
+    </head>
+    <body>
+        <header class="header_main">
+>>>>>>> index
             <div class="header__inner">
                 <div class="header-utilities">
                     <div class="hamburger">
@@ -23,7 +38,11 @@
                         </div>
                     </div>
                     <div class="header__logo">
+<<<<<<< HEAD
                         Rese
+=======
+                        FURIMA
+>>>>>>> index
                     </div>
                 </div>
                 <nav class="nav" id="nav">
@@ -83,6 +102,10 @@
             });
         </script>
         @yield('scripts')
+<<<<<<< HEAD
 </body>
 
+=======
+    </body>
+>>>>>>> index
 </html>

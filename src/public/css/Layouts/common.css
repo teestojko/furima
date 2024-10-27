@@ -126,9 +126,9 @@
 }
 
 main.dimmed {
-    display: none;
-    pointer-events: none;
-}
+            display: none;
+            pointer-events: none;
+        }
 
 .nav_button{
     border: none;

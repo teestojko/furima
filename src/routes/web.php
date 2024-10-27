@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,10 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('verified')->group(function () {
         Route::get('/', [AuthController::class, 'userMyPage'])->name('user-my-page');
+
+        
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products-create');
+        Route::post('/products', [ProductController::class, 'store'])->name('products-store');
 });
 });
 
