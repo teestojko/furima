@@ -34,7 +34,6 @@ class AuthController extends Controller
         $products = Product::all();
         $reviews = Review::all();
         $tags = Tag::all();
-        dd($categories);
         return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags'));
     }
 }
