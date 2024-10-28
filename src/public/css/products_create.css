@@ -69,6 +69,11 @@
     background-color: #fbfbfb;
 }
 
+/* .images_label:hover {
+    background-color: #e0e0e0;
+    color: #5c5c5c;
+} */
+
 #file_name{
     width: 20%;
     align-content: center;
