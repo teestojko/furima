@@ -56,6 +56,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#name:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 .images_label{
@@ -67,12 +73,13 @@
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
     background-color: #fbfbfb;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* .images_label:hover {
+.images_label:hover {
     background-color: #e0e0e0;
     color: #5c5c5c;
-} */
+}
 
 #file_name{
     width: 20%;
@@ -96,6 +103,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#price:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 #stock{
@@ -105,6 +118,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#stock:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 #category{
@@ -114,6 +133,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#category:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 .detail_content{
@@ -128,6 +153,12 @@
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#detail:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 .product_create_button{

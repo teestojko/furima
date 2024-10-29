@@ -23,8 +23,13 @@ class Product extends Model
         return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
     }
 
-    public function products()
+    public function condition()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Condition::class);
+    }
+
+    public function deliveryMethod()
+    {
+        return $this->belongsTo(DeliveryMethod::class);
     }
 }

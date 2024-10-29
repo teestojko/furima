@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('condition_id')->constrained('conditions')->cascadeOnDelete();
+            $table->foreignId('delivery_method_id')->constrained('delivery_methods')->cascadeOnDelete();
             $table->string('name'); // 商品名
             $table->text('detail'); // 商品の詳細
             $table->decimal('price', 10, 2); // 価格 (10桁、2小数点)
