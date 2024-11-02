@@ -1,0 +1,124 @@
+.product_show{
+    width: 100vw;
+    min-height: 89vh;
+}
+
+.product_show_inner{
+    width: 70%;
+    margin: auto;
+}
+
+.product_show_name{
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    color: slategrey;
+}
+
+.product_show_images {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f2ff;
+}
+
+.product_image {
+    max-height: 200px;
+    border: 2px solid #e0c3fc;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.product_image:hover {
+    transform: scale(1.05);
+}
+
+.product_detail,
+.product_price,
+.product_stock,
+.product_category,
+.product_condition,
+.product_delivery_method,
+.product_user_name {
+    text-align: center;
+    margin: 10px 0;
+    background-color: #ffe3e3;
+    padding: 8px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product_show_link{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    background-color: #d4a5a5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e08181;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 1000px;
+    max-height: 80vh; /* 高さ制限とスクロール */
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    padding: 20px;
+}
+
+.modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* モーダル表示中の背景をぼかすクラス */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒色 */
+    backdrop-filter: blur(5px); /* ぼかし効果 */
+    z-index: 999; /* モーダルの後ろになるように設定 */
+}
+

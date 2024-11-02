@@ -1,25 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
-use App\Http\Requests\ProductCreateRequest;
+use App\Models\Condition;
+use App\Http\Requests\ProductRequest;
+use App\Http\Controllers\Controller;
 
 
 
 class ProductController extends Controller
 {
+
     public function create()
     {
         $categories = Category::all();
-        return view('products_create', compact('categories'));
+        $conditions = Condition::all();
+        return view('Products.create', compact('categories','conditions'));
     }
 
-    public function store(ProductCreateRequest $request)
+    public function store(ProductRequest $request)
     {
         $validatedData = $request->validated();
 
@@ -29,9 +33,10 @@ class ProductController extends Controller
             'price' => $validatedData['price'],
             'stock' => $validatedData['stock'],
             'category_id' => $validatedData['category_id'],
+            'condition_id' => $validatedData['condition_id'],
             'user_id' => auth()->id(),
+            'condition_id' => $request->condition_id,
         ]);
-
         $imagesUploaded = $request->hasFile('images');
             if ($imagesUploaded) {
                 foreach ($request->file('images') as $imageFile) {

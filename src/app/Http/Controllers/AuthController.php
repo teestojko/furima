@@ -31,7 +31,7 @@ class AuthController extends Controller
         $categories = Category::all();
         $orders = Order::all();
         $order_status = OrderStatus::all();
-        $products = Product::all();
+        $products = Product::with('user', 'images')->get();
         $reviews = Review::all();
         $tags = Tag::all();
         return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags'));

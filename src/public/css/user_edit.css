@@ -1,36 +1,36 @@
-.product_create{
+.user_edit{
     width: 100vw;
     height: 89vh;
     background-color: #f2f2f2;
 }
 
-.product_create_inner{
-    height: 60%;
+.user_edit_inner{
+    height: 50%;
     padding: 0 20% 5%;
 }
 
-.inner_title{
-    font-size: 2rem;
+.user_edit_title{
+    font-size: 1.5rem;
     font-family: system-ui;
     font-weight: bold;
     width: 100%;
     height: 8%;
     text-align: center;
-    color: rgb(108, 108, 108);
+    color: #8a8a8a;
 }
 
-.product_create_content{
+.user_edit_form{
+    width: 100%;
+    margin-top: 3%;
+    text-align: center;
+    height: 50%;
+}
+
+.user_edit_content{
     display: flex;
     width: 100%;
     height: 20%;
     margin-top: 3%;
-}
-
-.product_create_content2{
-    display: flex;
-    width: 100%;
-    height: 50%;
-    margin-top: 2%;
 }
 
 .content_title{
@@ -38,33 +38,22 @@
     align-content: center;
 }
 
-.content_title2{
-    width: 30%;
-    align-content: center;
-}
-
-.product_create_form{
-    width: 100%;
-    margin-top: 3%;
-    text-align: center;
-    height: 50%;
-}
-
-#name{
-    border: none;
+#input_id{
     width: 50%;
+    border: none;
+    padding-left: 1%;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     color: rgb(138, 138, 138);
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#name:hover{
+#input_id:hover{
     background-color: #e0e0e0;
     color: #5c5c5c;
 }
 
-.images_label{
+.profile_image_label{
     width: 50%;
     text-align: center;
     align-content: center;
@@ -76,7 +65,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.images_label:hover {
+.profile_image_label:hover {
     background-color: #e0e0e0;
     color: #5c5c5c;
 }
@@ -91,99 +80,40 @@
     background-color: #fbfbfb;
 }
 
-#images{
+#profile_image{
     display: none;
     cursor: pointer;
 }
 
-#price{
-    width: 20%;
-    border: none;
-    padding-left: 1%;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(138, 138, 138);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#price:hover{
-    background-color: #e0e0e0;
-    color: #5c5c5c;
-}
-
-#stock{
-    width: 20%;
-    border: none;
-    padding-left: 1%;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(138, 138, 138);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#stock:hover{
-    background-color: #e0e0e0;
-    color: #5c5c5c;
-}
-
-#category{
-    width: 50%;
-    border: none;
-    padding-left: 1%;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(138, 138, 138);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#category:hover{
-    background-color: #e0e0e0;
-    color: #5c5c5c;
-}
-
-.detail_content{
-    margin-top: 2%;
-}
-
-#detail{
-    width: 70%;
-    height: 100%;
-    padding: 2% 2%;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(138, 138, 138);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#detail:hover{
-    background-color: #e0e0e0;
-    color: #5c5c5c;
-}
-
-.product_create_button{
-    width: 100%;
+.user_edit_button{
+    text-align: center;
     margin-top: 5%;
 }
 
-.product_create_button_button{
+.user_edit_button_button{
+    text-align: center;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(74, 120, 255);
+    color: #5c5c5c;
     border: none;
     padding: 1% 3%;
-    font-size: large;
     background-color: rgb(255, 255, 255);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.product_create_back_button{
+.user_edit_button_button:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
+}
+
+.user_edit_back_button{
     text-align: center;
     width: 100%;
     height: 10%;
     align-content: center;
 }
 
-.product_create_back_button_link{
+.user_edit_back_button_link{
     position: absolute;
     right: 10%;
     top: 3%;
@@ -191,7 +121,13 @@
     padding: 0.5rem 1rem;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(74, 120, 255);
+    color: #5c5c5c;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.user_edit_back_button_link:hover{
+    background-color: #e0e0e0;
+    color: #5c5c5c;
 }
 
 .success_message, .error_message {
@@ -208,4 +144,3 @@
         transform: translateY(0); /* 元の位置に戻す */
     }
 }
-

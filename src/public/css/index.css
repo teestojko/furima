@@ -1,69 +1,230 @@
-.attendance__alert--success {
-    padding: 10px 30px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
-    color: #0f5132;
+.index{
+    width: 100vw;
+    min-height: 100vh;
+    background: rgb(248, 248, 248);
 }
 
-.attendance__alert--danger {
-    padding: 10px 0;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    color: #842029;
+.index_inner{
+    width: 100%;
+    height: 89vh;
 }
 
-.attendance__alert--danger ul {
+.index_form{
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+
+/* 検索フォーム全体のスタイル */
+.search_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションの滑らかさを指定 */
+}
+
+.search_form:hover {
+    transform: translateY(-5px); /* 上に少し移動 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を追加して浮き上がる効果 */
+}
+
+/* カテゴリの選択ボックススタイル */
+.index_search_category {
+    position: relative;
+    flex: 1;
+}
+
+.index_search_select_category {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    appearance: none;
+    background-color: #fff;
+    color: #495057;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.index_search_category i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+#category_id{
+    color: #888;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 商品名の検索スタイル */
+.index_search_product_name {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.search_input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.submit_product_name {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit_product_name:hover {
+    background-color: #0056b3;
+}
+
+.search_icon {
+    font-size: 16px;
+}
+
+/* プレースホルダーのスタイル */
+.placeholder {
+    color: #6c757d;
+}
+
+.index_search_select_category.active {
+    background-color: #e0f7fa; /* 選択時の背景色 */
+    border-color: #007bff; /* 選択時の枠線色 */
+    color: #007bff;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.index_products_create,
+.index_user_edit{
+    margin: 12%;
+    width: 20vw;
+}
+
+.products_create_link,
+.user_edit_link {
+    text-align: center;
+    margin: 10px 0;
+    background-color: #ffe3e3;
+    padding: 8px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products_create_link:hover,
+.user_edit_link:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product_title{
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.product_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.product_item {
+    background: linear-gradient(135deg, #ffe5e5, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.product_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product_item h2 {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
     margin: 0;
 }
 
-.attendance__panel {
-    margin: 0 auto;
-    width: 70%;
+.product_images {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
 }
 
-.attendance__button {
+.product_image {
     width: 100%;
-    text-align: center;
-}
-
-.attendance__button-submit {
-    padding: 5px;
-    width: 30%;
-    height: 50px;
-    border: none;
-    border-radius: 3px;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-}
-
-.attendance__content {
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
     margin: 0 auto;
-    padding: 30px 15px;
-    max-width: 1230px;
 }
 
-.attendance-table {
-    margin: 30px auto;
-    width: 70%;
-    text-align: center;
+.product_detail, .product_price, .product_stock, .product_category, .product_condition, .product_delivery_method, .product_user_name {
+    font-size: 0.9em;
+    color: #666;
+    padding: 8px 15px;
+    border-top: 1px solid #f0f0f0;
+    margin: 0;
 }
 
-.attendance-table__inner {
-    width: 100%;
+.product_detail {
+    color: #555;
+    font-weight: 400;
 }
 
-.attendance-table__row {
-    border-bottom: 1px solid #ddd;
-}
-
-.attendance-table__header {
-    padding: 12px;
-    width: 20%;
+.product_price {
+    font-size: 1.2em;
     font-weight: bold;
+    color: #d9534f;
 }
 
-.attendance-table__item {
-    padding: 12px;
-    width: 20%;
+.product_stock, .product_category, .product_condition, .product_delivery_method, .product_user_name {
+    color: #888;
 }
+
+@media (max-width: 768px) {
+    .product_list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product_item {
+        width: 90%;
+    }
+}
+
+

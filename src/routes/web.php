@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\SearchController;
+use App\Http\Controllers\Products\ShowController;
+use App\Http\Controllers\Products\UpdateController;
+use App\Http\Controllers\UserEditController;
+use App\Http\Controllers\Products\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +29,9 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 // Route::get('/', [AuthController::class, 'index']);
+
+Route::get('/home', [AuthController::class, 'index'])->name('home');
+Route::get('/filter', [SearchController::class, 'filter'])->name('products-filter');
 
 Route::prefix('admin')->name('admin-')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -52,10 +60,22 @@ Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function () {
         Route::get('/', [AuthController::class, 'userMyPage'])->name('user-my-page');
 
-        
+        Route::get('/products/{product}/show', [ShowController::class, 'show'])->name('products-show');
+
+        Route::get('/products/{product}/edit', [UpdateController::class, 'edit'])->name('products-edit');
+        Route::put('/products/{product}/update', [UpdateController::class, 'update'])->name('products-update');
+
         Route::get('/products/create', [ProductController::class, 'create'])->name('products-create');
         Route::post('/products', [ProductController::class, 'store'])->name('products-store');
-});
+
+        Route::get('/review/{product}', [ReviewController::class, 'review'])->name('reviews-review');
+        Route::get('/products/{product}/reviews', [ReviewController::class, 'index'])->name('reviews-index');
+        Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])->name('reviews-store');
+        Route::delete('/reviews/index/{review}', [ReviewController::class, 'destroy'])->name('reviews-destroy');
+
+        Route::get('/user/edit', [UserEditController::class, 'edit'])->name('user-edit');
+        Route::post('/user/update', [UserEditController::class, 'update'])->name('user-update');
+    });
 });
 
 

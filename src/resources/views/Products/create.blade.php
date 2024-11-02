@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 
-<link rel="stylesheet" href="{{ asset('css/products_create.css') }}">
+<link rel="stylesheet" href="{{ asset('css/Products/create.css') }}">
 @endsection
 
 @section('content')
@@ -79,6 +79,23 @@
                     </select>
                 </div>
                 @error('category_id')
+                    <div class="error_message">
+                        {{ $message }}
+                    </div>
+                @enderror
+                <div class="product_create_content">
+                    <div class="content_title">
+                        商品の状態
+                    </div>
+                    <label class="condition_label" for="condition"></label>
+                    <select name="condition_id" id="condition">
+                        <option value="">選択してください</option>
+                        @foreach($conditions as $condition)
+                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('condition_id')
                     <div class="error_message">
                         {{ $message }}
                     </div>
