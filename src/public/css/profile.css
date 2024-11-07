@@ -1,0 +1,113 @@
+/* sanitize.cssのスタイルの後に追加してください */
+
+/* プロフィールヘッダー */
+.profile-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* 明るい背景色 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+    margin-bottom: 30px; /* 下のマージン */
+}
+
+.profile-image {
+    width: 120px; /* プロフィール画像の幅 */
+    height: 120px; /* プロフィール画像の高さ */
+    border-radius: 50%; /* 丸くする */
+    object-fit: cover; /* 画像をカバーする */
+    border: 3px solid #ff6b81; /* 可愛いピンクの境界線 */
+}
+
+/* プロフィール名のスタイル */
+.profile-header h2 {
+    margin: 10px 0 5px;
+    font-size: 24px; /* 大きなフォントサイズ */
+    color: #333; /* ダークな文字色 */
+}
+
+.profile_back_button{
+    display: flex;
+    justify-content: end;
+}
+
+.btn {
+    display: block;
+    width: 110px;
+    background-color: #d4a5a5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e08181;
+}
+
+.profile_user_edit_link {
+    text-align: center;
+    margin: 10px 0;
+    background-color: #ffe3e3;
+    padding: 8px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 商品リスト */
+.product-list {
+    text-align: center;
+    margin-top: 30px; /* 上のマージン */
+}
+
+.product-list h3 {
+    font-size: 22px; /* 大きなフォントサイズ */
+    margin-bottom: 20px; /* 下のマージン */
+    color: #ff6b81; /* タイトルの色 */
+}
+
+/* 商品カード */
+.card {
+    border: none; /* カードの枠線をなくす */
+    border-radius: 10px; /* 角を丸くする */
+    transition: transform 0.2s; /* マウスオーバー時のアニメーション */
+}
+
+.card:hover {
+    transform: scale(1.05); /* ホバー時に少し拡大 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
+}
+
+.card-img-top {
+    width: 50vw;
+    height: 50vh;
+    border-top-left-radius: 10px; /* 上部の角を丸くする */
+    border-top-right-radius: 10px; /* 上部の角を丸くする */
+}
+
+/* 商品タイトル */
+.card-title {
+    font-size: 18px; /* フォントサイズ */
+    color: #333; /* ダークな文字色 */
+}
+
+/* 商品価格 */
+.card-text {
+    font-size: 16px; /* フォントサイズ */
+    color: #ff6b81; /* 可愛いピンクの文字色 */
+    font-weight: bold; /* 文字を太くする */
+}
+
+/* ボタン */
+.btn-primary {
+    background-color: #ff6b81; /* 可愛いピンクの背景色 */
+    border: none; /* 枠線をなくす */
+}
+
+.btn-primary:hover {
+    background-color: #ff4d6a; /* ホバー時の色 */
+}

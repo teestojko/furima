@@ -13,6 +13,7 @@ use App\Http\Controllers\Products\ShowController;
 use App\Http\Controllers\Products\UpdateController;
 use App\Http\Controllers\UserEditController;
 use App\Http\Controllers\Products\ReviewController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/user/edit', [UserEditController::class, 'edit'])->name('user-edit');
         Route::post('/user/update', [UserEditController::class, 'update'])->name('user-update');
+
+        Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile-show');
     });
 });
 

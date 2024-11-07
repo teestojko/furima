@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserEditController extends Controller
 {

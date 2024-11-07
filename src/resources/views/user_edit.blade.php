@@ -106,7 +106,7 @@
                 </div>
             </form>
             <div class="user_edit_back_button">
-                <a class="user_edit_back_button_link" href="{{ route('user-my-page')}}">
+                <a class="user_edit_back_button_link" href="{{ route('profile-show', Auth::user()->id)}}">
                     戻る
                 </a>
             </div>

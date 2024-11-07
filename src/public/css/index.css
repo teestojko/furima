@@ -6,20 +6,42 @@
 
 .index_inner{
     width: 100%;
-    height: 89vh;
+    height: 100%;
 }
 
 .index_form{
     display: flex;
-    width: 80%;
+    width: 100%;
+    height: 8vh;
     align-items: center;
+    justify-content: end;
+}
+
+.index_search{
+    margin-right: 10%;
+}
+
+#toggle-search-btn{
+    margin: 10px 0;
+    background-color: #ffe3e3;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#toggle-search-btn:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* 検索フォーム全体のスタイル */
-.search_form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#search-form {
+    position: absolute;
+    right: 15%;
+    top: 20%;
     margin: 20px auto;
     width: 80%;
     max-width: 600px;
@@ -28,38 +50,23 @@
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションの滑らかさを指定 */
+    z-index: 10;
 }
 
-.search_form:hover {
+#search-form:hover {
     transform: translateY(-5px); /* 上に少し移動 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を追加して浮き上がる効果 */
 }
 
-/* カテゴリの選択ボックススタイル */
-.index_search_category {
-    position: relative;
-    flex: 1;
-}
-
-.index_search_select_category {
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    appearance: none;
-    background-color: #fff;
-    color: #495057;
-    font-size: 14px;
-    cursor: pointer;
-
-}
-
-.index_search_category i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6c757d;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明の黒色 */
+    backdrop-filter: blur(5px); /* ぼかし効果 */
+    z-index: 1; /* モーダルの後ろになるように設定 */
 }
 
 #category_id{
@@ -68,74 +75,32 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* 商品名の検索スタイル */
-.index_search_product_name {
-    display: flex;
-    flex: 2;
-    align-items: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-.search_input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
-
-.submit_product_name {
-    border: none;
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit_product_name:hover {
-    background-color: #0056b3;
-}
-
-.search_icon {
-    font-size: 16px;
-}
-
 /* プレースホルダーのスタイル */
 .placeholder {
     color: #6c757d;
 }
 
-.index_search_select_category.active {
-    background-color: #e0f7fa; /* 選択時の背景色 */
-    border-color: #007bff; /* 選択時の枠線色 */
-    color: #007bff;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-.index_products_create,
-.index_user_edit{
-    margin: 12%;
-    width: 20vw;
+.index_nav{
+    display: flex;
+    justify-content: space-around;
 }
 
 .products_create_link,
-.user_edit_link {
+.profile_link {
     text-align: center;
     margin: 10px 0;
     background-color: #ffe3e3;
     padding: 8px;
     border-radius: 10px;
+    text-decoration: none;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .products_create_link:hover,
-.user_edit_link:hover {
+.user_edit_link:hover,
+.profile_link:hover{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -159,6 +124,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
+    height: 370px;
+    text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -193,17 +160,12 @@
     margin: 0 auto;
 }
 
-.product_detail, .product_price, .product_stock, .product_category, .product_condition, .product_delivery_method, .product_user_name {
+.product_price{
     font-size: 0.9em;
     color: #666;
     padding: 8px 15px;
     border-top: 1px solid #f0f0f0;
     margin: 0;
-}
-
-.product_detail {
-    color: #555;
-    font-weight: 400;
 }
 
 .product_price {
@@ -212,8 +174,80 @@
     color: #d9534f;
 }
 
-.product_stock, .product_category, .product_condition, .product_delivery_method, .product_user_name {
-    color: #888;
+.search_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #f9f9ff; /* 背景色を柔らかく */
+    border-radius: 10px; /* 角丸 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+.index_search_label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; /* ダークなグレー */
+    margin-bottom: 5px;
+}
+
+.index_search_category,
+.index_search_product_name,
+.index_search_price_range,
+.index_search_price_order,
+.index_search_popularity {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px; /* それぞれの要素の最大幅 */
+}
+
+.index_search_select_category,
+.search_input,
+#min_price,
+#max_price,
+#price_order,
+#popularity {
+    padding: 10px;
+    border: 1px solid #ddd; /* 軽い境界線 */
+    border-radius: 5px; /* 角丸 */
+    background-color: #ffffff; /* 背景色 */
+    font-size: 14px;
+    transition: border-color 0.3s; /* ホバー時のスムーズな変化 */
+}
+
+.index_search_select_category.active {
+    border-color: #007bff; /* 選択時の枠線色 */
+    color: #007bff;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.index_search_select_category:hover,
+.search_input:hover,
+#min_price:hover,
+#max_price:hover,
+#price_order:hover,
+#popularity:hover {
+    border-color: #a2a2ff; /* ホバー時に色を変更 */
+}
+
+.search_button,
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #ffffff; /* ラベンダー */
+    color: #4e1010;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.search_button:hover,
+.btn-primary:hover {
+    background-color: #ffebfc; /* 少し濃いラベンダー */
 }
 
 @media (max-width: 768px) {
