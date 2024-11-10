@@ -84,6 +84,10 @@
                             カートを見る
                         </a>
                     </div>
+                    <a href="{{ route('coupons-index') }}" class="btn btn-primary">
+                        クーポン一覧へ
+                    </a>
+
                 </div>
 
             <div class="product_title">

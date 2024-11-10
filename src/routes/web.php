@@ -16,6 +16,10 @@ use App\Http\Controllers\Profile\UserEditController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\Message\MessageController;
+use App\Http\Controllers\Mail\MessageReceivedController;
+use App\Http\Controllers\Coupon\CouponController;
+
 
 
 /*
@@ -89,6 +93,16 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
         Route::post('/payment/success', [PaymentController::class, 'payment'])->name('payment-process');
+
+        Route::get('/messages/{receiver}', [MessageController::class, 'index'])->name('messages-index');
+        Route::post('/messages/{receiver}', [MessageController::class, 'store'])->name('messages-store');
+
+        Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
+
+        Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
+        Route::post('/apply-coupon', [CouponController::class, 'apply'])->name('coupon-apply');
+
+
     });
 });
 
