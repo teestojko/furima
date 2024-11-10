@@ -47,6 +47,9 @@ Route::prefix('admin')->name('admin-')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+        Route::get('/admin/coupons/create', [CouponController::class, 'create'])->name('coupons-create');
+        Route::post('/admin/coupons/store', [CouponController::class, 'store'])->name('coupons-store');
     });
 });
 
