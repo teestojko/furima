@@ -49,6 +49,9 @@
             <a href="{{ route('reviews-review', ['product' => $product->id]) }}" class="btn review_button">
                 レビューを投稿する
             </a>
+            <a href="{{ route('messages-index', ['receiver' => $product->user_id]) }}" class="message-create-btn">
+                メッセージを送る
+            </a>
         </div>
     </div>
 </div>
