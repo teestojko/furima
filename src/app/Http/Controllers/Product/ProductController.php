@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $conditions = Condition::all();
-        return view('Products.create', compact('categories','conditions'));
+        return view('Product.create', compact('categories','conditions'));
     }
 
     public function store(ProductRequest $request)

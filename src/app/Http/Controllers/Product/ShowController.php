@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -10,6 +10,6 @@ class ShowController extends Controller
 {
     public function show(Product $product)
     {
-        return view('Products.show', compact('product'));
+        return view('Product.show', compact('product'));
     }
 }

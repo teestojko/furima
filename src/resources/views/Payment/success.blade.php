@@ -1,4 +1,4 @@
-@extends('Layouts.app')
+@extends('Layout.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/Payment/success.css') }}">

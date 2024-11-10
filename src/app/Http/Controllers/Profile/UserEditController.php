@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Profile;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\UserEditRequest;
@@ -13,7 +14,7 @@ class UserEditController extends Controller
     public function edit()
 {
     $user = auth()->user();
-    return view('user_edit', compact('user'));
+    return view('profile.user_edit', compact('user'));
 }
 
 public function update(UserEditRequest $request)

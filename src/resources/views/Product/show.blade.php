@@ -1,8 +1,8 @@
-@extends('Layouts.app')
+@extends('Layout.app')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/Products/show.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Product/show.css') }}">
 @endsection
 
 @section('content')

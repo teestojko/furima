@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -14,32 +14,13 @@ use App\Http\Controllers\Controller;
 
 class UpdateController extends Controller
 {
-//     public function edit(Product $product)
-// {
-//     // 認証済みユーザーが出品者かどうかをチェック
-//     if (auth()->id() !== $product->user_id) {
-//         abort(403, 'Unauthorized action.');
-//     }
-//     return view('Products.edit', compact('product'));
-// }
-//     public function update(ProductRequest $request, Product $product)
-//     {
-//         // 認証済みユーザーが出品者かどうかをチェック
-//         if (auth()->id() !== $product->user_id) {
-//             abort(403, 'Unauthorized action.');
-//         }
-//         $validatedData = $request->validated();
-//         // 商品情報を更新
-//         $product->update($request->only('name', 'detail', 'price', 'stock'));
-//         return redirect()->route('products-show', $product)->with('success', '商品情報を更新しました。');
-//     }
 
     public function edit(Product $product)
     {
         $this->authorize('update', $product);
         $categories = Category::all();
         $conditions = Condition::all();
-        return view('Products.edit', compact('product', 'categories', 'conditions'));
+        return view('Product.edit', compact('product', 'categories', 'conditions'));
     }
 
     public function update(ProductRequest $request, Product $product)

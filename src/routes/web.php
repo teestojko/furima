@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Products\ProductController;
-use App\Http\Controllers\Products\SearchController;
-use App\Http\Controllers\Products\ShowController;
-use App\Http\Controllers\Products\UpdateController;
-use App\Http\Controllers\UserEditController;
-use App\Http\Controllers\Products\ReviewController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Product\SearchController;
+use App\Http\Controllers\Product\ShowController;
+use App\Http\Controllers\Product\UpdateController;
+use App\Http\Controllers\Product\ReviewController;
+use App\Http\Controllers\Profile\UserEditController;
+use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Payment\PaymentController;
 
 
