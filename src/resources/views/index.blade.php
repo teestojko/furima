@@ -79,6 +79,11 @@
                             プロフィール
                         </a>
                     </div>
+                    <div class="index_cart">
+                        <a class="cart_link" href="{{ route('cart-view') }}" class="btn btn-primary">
+                            カートを見る
+                        </a>
+                    </div>
                 </div>
 
             <div class="product_title">
@@ -96,9 +101,21 @@
                         <div class="product_price">
                             価格: ¥{{ intval($product->price) }}
                         </div>
-                        <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
-                            詳細を表示
-                        </a>
+                        <div class="product_detail">
+                            <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
+                                詳細を表示
+                            </a>
+                        </div>
+                        <div class="product_cart_link">
+                            <form action="{{ route('cart-add') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="number" name="quantity" min="1" value="1" required>
+                                <button type="submit">
+                                    カートに追加
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -1,0 +1,30 @@
+.payment_main{
+    width: 40%;
+    height: 30vh;
+    margin: 5% 30%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid;
+    border-color: rgb(214, 214, 214);
+}
+
+.content_main{
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    align-content: space-between;
+}
+
+.title{
+    font-size: 2rem;
+    font-family: system-ui;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.payment_form{
+    margin-top: 5%;
+    text-align: center;
+}

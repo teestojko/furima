@@ -1,0 +1,25 @@
+.reserve_content{
+    width: 40%;
+    height: 30vh;
+    margin: 5% 30%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid;
+    border-color: rgb(214, 214, 214);
+    text-align: center;
+    align-content: center;
+}
+
+.reserve_thanks_massage{
+    margin-bottom: 10%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.reserve_nav{
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}

@@ -14,6 +14,9 @@ use App\Http\Controllers\Products\UpdateController;
 use App\Http\Controllers\UserEditController;
 use App\Http\Controllers\Products\ReviewController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\Payment\PaymentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +81,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/user/update', [UserEditController::class, 'update'])->name('user-update');
 
         Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile-show');
+
+        Route::post('/cart/add', [CartController::class, 'add'])->name('cart-add');
+        Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart-remove');
+        Route::get('/cart', [CartController::class, 'view'])->name('cart-view');
+        Route::post('/cart/purchase', [CartController::class, 'preparePayment'])->name('cart-purchase');
+
+        Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
+        Route::post('/payment/success', [PaymentController::class, 'payment'])->name('payment-process');
     });
 });
 
