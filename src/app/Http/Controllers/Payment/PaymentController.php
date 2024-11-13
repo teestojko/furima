@@ -9,6 +9,7 @@ use Stripe\Customer;
 use Stripe\Charge;
 use Exception;
 use Stripe\Stripe;
+use App\Models\Cart;
 
 class PaymentController extends Controller
 {
@@ -29,7 +30,15 @@ class PaymentController extends Controller
 
         try {
             $selectedItems = session('selected_items');
-            $totalAmount = session('total_amount');
+            $totalAmount = session('discounted_amount', session('total_amount'));
+
+            // $totalAmount = session('discounted_amount');
+            // if (!$totalAmount) {
+            //     // もし割引後の金額がセッションにない場合、元の金額を取得
+            //     $totalAmount = session('total_amount');
+            // }
+            // dd($totalAmount); // 確認のため、ここで金額が正しいか確認
+
 
             // Stripe決済処理
             $customer = Customer::create([
@@ -43,10 +52,13 @@ class PaymentController extends Controller
                 'currency' => 'jpy',
             ]);
 
-            // 決済成功後、カートのアイテムを削除
-            foreach ($selectedItems as $cart) {
+            foreach ($selectedItems as $cartId) {
+            $cart = Cart::find($cartId);
+            if ($cart) {
                 $cart->delete();
             }
+}
+
 
             return view('Payment.success');
         } catch (Exception $e) {
