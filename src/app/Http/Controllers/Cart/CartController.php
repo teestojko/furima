@@ -49,10 +49,30 @@ class CartController extends Controller
             return $cart->product->price * $cart->quantity;
         });
 
-        // セッションに選択された商品と合計金額を保存
-        session(['selected_items' => $selectedItems, 'total_amount' => $totalAmount]);
+        // クーポンがリクエストまたはセッションに存在するかを確認
+        $coupon = session('applied_coupon'); // クーポン情報がセッションにある場合を想定
+        if ($coupon) {
+            if ($coupon->discount_type === 'fixed') {
+                $discountedAmount = max(0, $totalAmount - $coupon->discount);
+            } elseif ($coupon->discount_type === 'percentage') {
+                $discountedAmount = $totalAmount * (1 - ($coupon->discount / 100));
+            }
+            session(['discounted_amount' => $discountedAmount]);
+        } else {
+            // クーポンがない場合、割引なしの合計金額を保存
+            session(['discounted_amount' => $totalAmount]);
+        }
+
+        // // セッションに選択された商品と合計金額を保存
+        // session(['selected_items' => $selectedItems, 'total_amount' => $totalAmount]);
+
+        // 配列形式で保存
+        session(['selected_items' => $selectedItems->pluck('id')->toArray(), 'total_amount' => $totalAmount]);
+        // dd($selectedItems);
+
 
         // 決済ページに遷移
         return redirect()->route('payment-show');
     }
+
 }

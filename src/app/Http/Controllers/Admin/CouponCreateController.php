@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CouponCreateRequest;
 use App\Models\Coupon;
 
 class CouponCreateController extends Controller
@@ -13,15 +14,9 @@ class CouponCreateController extends Controller
         return view('Admin.coupon_create'); // クーポン作成画面へのビュー
     }
 
-    public function store(Request $request)
+    public function store(CouponCreateRequest $request)
 {
-    $request->validate([
-        'code' => 'required|unique:coupons,code|max:255',
-        'discount' => 'required|numeric|min:1',
-        'discount_type' => 'required|in:fixed,percentage', // 新しいバリデーション
-        'valid_from' => 'required|date|before:valid_until',
-        'valid_until' => 'required|date|after:today', // フィールド名を一致させる
-    ]);
+    $validatedData = $request->validated();
 
     Coupon::create([
         'code' => $request->code,
