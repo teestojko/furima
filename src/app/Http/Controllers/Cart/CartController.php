@@ -39,6 +39,11 @@ class CartController extends Controller
 
     public function preparePayment(Request $request)
     {
+        // selected_items が存在しない、または空の場合の処理を追加
+        if (empty($request->selected_items)) {
+            return back()->with('error', '商品が選択されていません');
+        }
+
         // カートから選択された商品を取得
         $selectedItems = Cart::whereIn('id', $request->selected_items)
             ->where('user_id', Auth::id())
@@ -63,15 +68,9 @@ class CartController extends Controller
             session(['discounted_amount' => $totalAmount]);
         }
 
-        // // セッションに選択された商品と合計金額を保存
-        // session(['selected_items' => $selectedItems, 'total_amount' => $totalAmount]);
-
         // 配列形式で保存
         session(['selected_items' => $selectedItems->pluck('id')->toArray(), 'total_amount' => $totalAmount]);
-        // dd($selectedItems);
 
-
-        // 決済ページに遷移
         return redirect()->route('payment-show');
     }
 
