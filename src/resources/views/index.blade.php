@@ -59,13 +59,19 @@
                         <label class="index_search_label" for="popularity">人気順</label>
                         <select name="popularity" id="popularity">
                             <option value="">Select</option>
-                            <option value="desc" {{ request('popularity') == 'desc' ? 'selected' : '' }}>人気順</option>
+                            <option value="desc" {{ request('popularity') == 'desc' ? 'selected' : '' }}>
+                                人気順
+                            </option>
                         </select>
                     </div>
                 </div>
 
                 <!-- 検索ボタン -->
-                <button class="search_button" type="submit">検索</button>
+                <div class="search_button">
+                    <button class="search_button_link" type="submit">
+                        検索
+                    </button>
+                </div>
             </form>
             </div>
                 <div class="index_nav">
@@ -84,10 +90,11 @@
                             カートを見る
                         </a>
                     </div>
-                    <a href="{{ route('coupons-index') }}" class="btn btn-primary">
-                        クーポン一覧へ
-                    </a>
-
+                    <div class="index_coupon">
+                        <a class="coupon_link" href="{{ route('coupons-index') }}" class="btn btn-primary">
+                            クーポン一覧へ
+                        </a>
+                    </div>
                 </div>
 
             <div class="product_title">
