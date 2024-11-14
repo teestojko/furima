@@ -45,6 +45,7 @@
     top: 20%;
     margin: 20px auto;
     width: 80%;
+    height: 50%;
     max-width: 600px;
     background-color: #f8f9fa;
     padding: 10px 15px;
@@ -89,7 +90,8 @@
 
 .products_create_link,
 .profile_link,
-.cart_link {
+.cart_link,
+.coupon_link {
     text-align: center;
     margin: 10px 0;
     background-color: #ffe3e3;
@@ -104,7 +106,8 @@
 .products_create_link:hover,
 .user_edit_link:hover,
 .profile_link:hover,
-.cart_link:hover {
+.cart_link:hover,
+.coupon_link:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -244,10 +247,16 @@
     border-color: #a2a2ff; /* ホバー時に色を変更 */
 }
 
-.search_button,
+.search_button{
+    text-align: center;
+    height: 20%;
+    align-content: center;
+}
+
+.search_button_link,
 .btn-primary {
     padding: 10px 20px;
-    background-color: #ffffff; /* ラベンダー */
+    background-color: #ffffff;
     color: #4e1010;
     border: none;
     border-radius: 5px;
@@ -258,7 +267,7 @@
     transition: background-color 0.3s;
 }
 
-.search_button:hover,
+.search_button_link:hover,
 .btn-primary:hover {
     background-color: #ffebfc; /* 少し濃いラベンダー */
 }
