@@ -53,7 +53,7 @@ class CartController extends Controller
         $totalAmount = $selectedItems->sum(function ($cart) {
             return $cart->product->price * $cart->quantity;
         });
-
+        // dd($totalAmount);
         // クーポンがリクエストまたはセッションに存在するかを確認
         $coupon = session('applied_coupon'); // クーポン情報がセッションにある場合を想定
         if ($coupon) {
