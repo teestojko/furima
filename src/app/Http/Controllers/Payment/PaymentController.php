@@ -25,17 +25,14 @@ class PaymentController extends Controller
         return view('Payment.payment');
     }
 
-	public function payment(Request $request)
+    public function payment(Request $request)
     {
-
         Stripe::setApiKey(env('STRIPE_SECRET'));
-
         try {
             $selectedItems = session('selected_items');
-            $totalAmount = session('discounted_amount', session('total_amount'));
+            $totalAmount = session('total_amount');
             $discountedAmount = session('discounted_amount', $totalAmount);
 
-            // Stripe決済処理
             $customer = Customer::create([
                 'email' => $request->stripeEmail,
                 'source' => $request->stripeToken,
@@ -43,35 +40,38 @@ class PaymentController extends Controller
 
             $charge = Charge::create([
                 'customer' => $customer->id,
-                'amount' => $totalAmount,
+                'amount' => $totalAmount, // 出品者が設定した金額を購入者が支払う
                 'currency' => 'jpy',
             ]);
 
             foreach ($selectedItems as $cartId) {
                 $cart = Cart::find($cartId);
                 if ($cart) {
-
-                    // 商品ごとに金額を計算
-                $productPrice = $cart->product->price;
-                $discountedProductPrice = $discountedAmount * ($productPrice * $cart->quantity) / $totalAmount; // 割引後の商品価格を計算
+                    $productPrice = $cart->product->price;
+                    $discountedProductPrice = $discountedAmount * ($productPrice * $cart->quantity) / $totalAmount;
+                    $commissionRate = config('fees.commission_rate');
+                    $fee = $discountedProductPrice * $commissionRate;
+                    $sellerRevenue = $discountedProductPrice - $fee; // 出品者の収益
 
                     $order = new Order([
                         'user_id' => Auth::id(),
                         'product_id' => $cart->product_id,
                         'status_id' => 2, // 保留中などの初期状態
                         'quantity' => $cart->quantity,
-                        'total_price' => $discountedProductPrice, // 各商品に対して割引後の金額を適切に分割
+                        'total_price' => $discountedProductPrice,
+                        'commission_fee' => $fee, // 手数料を記録
+                        'seller_revenue' => $sellerRevenue, // 出品者の収益を記録
                         'order_date' => now(),
                     ]);
                     $order->save();
-
                     $cart->delete();
                 }
             }
             return view('Payment.success');
-            
+
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
+
 }
