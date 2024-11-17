@@ -48,11 +48,6 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
     public function favoritedByUsers()
     {
         return $this->belongsToMany(User::class, 'favorites', 'product_id', 'user_id')->withTimestamps();
@@ -61,5 +56,10 @@ class Product extends Model
     public function isFavorited()
     {
         return $this->favoritedByUsers()->where('user_id', auth()->id())->exists();
+    }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
