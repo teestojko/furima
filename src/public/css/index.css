@@ -85,13 +85,16 @@
 .index_nav {
     display: flex;
     justify-content: space-around;
-    height: 10%;
+    height: 15%;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .products_create_link,
 .profile_link,
 .cart_link,
-.coupon_link {
+.coupon_link,
+.my_page_link {
     text-align: center;
     margin: 10px 0;
     background-color: #ffe3e3;
@@ -107,8 +110,16 @@
 .user_edit_link:hover,
 .profile_link:hover,
 .cart_link:hover,
-.coupon_link:hover {
+.coupon_link:hover,
+.my_page_link:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.detail_and_favorite{
+    display: flex;
+    justify-content: space-around;
+    height: 12%;
+    align-items: baseline;
 }
 
 .product_title {
@@ -302,16 +313,31 @@
     background-color: #ff66a3; /* 濃いピンク */
 }
 
-
-@media (max-width: 768px) {
-    .product_list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .product_item {
-        width: 90%;
-    }
+.product_favorite_button{
+    display: flex;
 }
 
+.fas.fa-heart{
+    color: red;
+    background: none;
+    border: none;
+    font-size: 24px;
+}
 
+.far.fa-heart{
+    color: #c7c7c7;
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+
+.submit_favorite{
+    color: red;
+    background: none;
+    border: none;
+}
+
+.submit_not_favorite{
+    background: none;
+    border: none;
+}

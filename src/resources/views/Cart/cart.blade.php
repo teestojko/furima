@@ -16,7 +16,7 @@
             <button id="multiple-select-btn" class="btn">複数選択</button>
 
             <div class="cart_button">
-                <a href="{{ route('user-my-page') }}" class="btn back_button">一覧に戻る</a>
+                <a href="{{ route('user-index') }}" class="btn back_button">一覧に戻る</a>
             </div>
         </div>
 

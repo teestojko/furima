@@ -20,7 +20,7 @@ use App\Http\Controllers\Message\MessageController;
 use App\Http\Controllers\Mail\MessageReceivedController;
 use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Admin\CouponCreateController;
-
+use App\Http\Controllers\Favorite\FavoriteController;
 
 
 /*
@@ -34,10 +34,6 @@ use App\Http\Controllers\Admin\CouponCreateController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/', [AuthController::class, 'index']);
 
 Route::get('/home', [AuthController::class, 'index'])->name('home');
 Route::get('/filter', [SearchController::class, 'filter'])->name('products-filter');
@@ -70,7 +66,7 @@ Route::middleware('auth')->group(function () {
     })->middleware('throttle:6,1')->name('verification.send');
 
     Route::middleware('verified')->group(function () {
-        Route::get('/', [AuthController::class, 'userMyPage'])->name('user-my-page');
+        Route::get('/', [AuthController::class, 'userIndex'])->name('user-index');
 
         Route::get('/products/{product}/show', [ShowController::class, 'show'])->name('products-show');
 
@@ -104,9 +100,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
-        Route::post('/apply-coupon', [CouponController::class, 'apply'])->name('coupon-apply');
+        Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
 
+        Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
 
+        Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
+        Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
     });
 });
 

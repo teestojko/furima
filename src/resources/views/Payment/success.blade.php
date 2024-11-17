@@ -11,7 +11,7 @@
             <div class="reserve_thanks_massage">
                 お支払いが完了しました
             </div>
-            <a class="reserve_nav" href="{{ route('user-my-page') }}">
+            <a class="reserve_nav" href="{{ route('user-index') }}">
                 ホーム画面へ戻る
             </a>
         </div>

@@ -20,7 +20,7 @@
             詳細: {{ $product->detail }}
         </div>
         <div class="product_price">
-            価格: ¥{{ intval($product->price) }}
+            価格: ¥{{ number_format($product->price, 0) }}
         </div>
         <div class="product_stock">
             在庫: {{ $product->stock }}
@@ -38,7 +38,7 @@
             出品者: {{ $product->user->name ?? '匿名' }}
         </div>
         <div class="product_show_link">
-            <a href="{{ route('user-my-page') }}" class="btn back_button">
+            <a href="{{ route('user-index') }}" class="btn back_button">
                 一覧に戻る
             </a>
             @can('update', $product)
@@ -49,7 +49,7 @@
             <a href="{{ route('reviews-review', ['product' => $product->id]) }}" class="btn review_button">
                 レビューを投稿する
             </a>
-            <a href="{{ route('messages-index', ['receiver' => $product->user_id]) }}" class="message-create-btn">
+            <a href="{{ route('messages-index', ['receiver' => $product->user_id]) }}" class="btn message-create-btn">
                 メッセージを送る
             </a>
         </div>
