@@ -1,113 +1,154 @@
-/* sanitize.cssのスタイルの後に追加してください */
 
-/* プロフィールヘッダー */
 .profile-header {
     text-align: center;
     padding: 20px;
-    background-color: #f9f9f9; /* 明るい背景色 */
-    border-radius: 10px; /* 角を丸くする */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
-    margin-bottom: 30px; /* 下のマージン */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 .profile-image {
-    width: 120px; /* プロフィール画像の幅 */
-    height: 120px; /* プロフィール画像の高さ */
-    border-radius: 50%; /* 丸くする */
-    object-fit: cover; /* 画像をカバーする */
-    border: 3px solid #ff6b81; /* 可愛いピンクの境界線 */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff6b81;
 }
 
-/* プロフィール名のスタイル */
 .profile-header h2 {
     margin: 10px 0 5px;
-    font-size: 24px; /* 大きなフォントサイズ */
-    color: #333; /* ダークな文字色 */
+    font-size: 24px;
+    color: #333;
 }
 
 .profile_back_button{
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
 }
 
 .btn {
-    display: block;
-    width: 110px;
-    background-color: #d4a5a5;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
+    text-align: center;
+    margin: 10px 0;
+    background-color: #ff9797;
     color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 8px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {
     background-color: #e08181;
 }
 
+.star {
+    font-size: 20px;
+    color: gray;
+}
+
+.star.filled {
+    color: gold;
+}
+
 .profile_user_edit_link {
     text-align: center;
     margin: 10px 0;
-    background-color: #ffe3e3;
+    background-color: #ff9797;
+    color: #fff;
     padding: 8px;
     border-radius: 10px;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 商品リスト */
-.product-list {
+.profile_sale {
+    background-color: #f9f9f9;
+    padding: 40px 0;
     text-align: center;
-    margin-top: 30px; /* 上のマージン */
 }
 
-.product-list h3 {
-    font-size: 22px; /* 大きなフォントサイズ */
-    margin-bottom: 20px; /* 下のマージン */
-    color: #ff6b81; /* タイトルの色 */
+.profile_sale_heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* 商品カード */
-.card {
-    border: none; /* カードの枠線をなくす */
-    border-radius: 10px; /* 角を丸くする */
-    transition: transform 0.2s; /* マウスオーバー時のアニメーション */
+.profile_sale_inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.card:hover {
-    transform: scale(1.05); /* ホバー時に少し拡大 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
+.sale_content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 30%;
+    text-align: left;
 }
 
-.card-img-top {
-    width: 50vw;
-    height: 50vh;
-    border-top-left-radius: 10px; /* 上部の角を丸くする */
-    border-top-right-radius: 10px; /* 上部の角を丸くする */
+.sale_content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* 商品タイトル */
-.card-title {
-    font-size: 18px; /* フォントサイズ */
-    color: #333; /* ダークな文字色 */
+.sale_section {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-/* 商品価格 */
-.card-text {
-    font-size: 16px; /* フォントサイズ */
-    color: #ff6b81; /* 可愛いピンクの文字色 */
-    font-weight: bold; /* 文字を太くする */
+.profile_sale_image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
-/* ボタン */
-.btn-primary {
-    background-color: #ff6b81; /* 可愛いピンクの背景色 */
-    border: none; /* 枠線をなくす */
+.sale_item {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 }
 
-.btn-primary:hover {
-    background-color: #ff4d6a; /* ホバー時の色 */
+.sale_title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: capitalize;
 }
+
+.sale_price {
+    font-size: 16px;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .sale_content {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sale_content {
+        width: 100%;
+    }
+}
+

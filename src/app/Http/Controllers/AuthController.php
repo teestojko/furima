@@ -20,7 +20,7 @@ class AuthController extends Controller
         return view('index');
     }
 
-    public function userMyPage()
+    public function userIndex()
     {
         $user_name = null;
         if (auth()->check()) {

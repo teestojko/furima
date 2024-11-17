@@ -87,12 +87,17 @@
                     </div>
                     <div class="index_cart">
                         <a class="cart_link" href="{{ route('cart-view') }}" class="btn btn-primary">
-                            カートを見る
+                            カート
                         </a>
                     </div>
                     <div class="index_coupon">
                         <a class="coupon_link" href="{{ route('coupons-index') }}" class="btn btn-primary">
-                            クーポン一覧へ
+                            クーポン一覧
+                        </a>
+                    </div>
+                    <div class="index_my_page">
+                        <a class="my_page_link" href="{{ route('user-my-page') }}" class="btn btn-primary">
+                            マイページ
                         </a>
                     </div>
                 </div>
@@ -110,12 +115,27 @@
                             @endforeach
                         </div>
                         <div class="product_price">
-                            価格: ¥{{ intval($product->price) }}
+                            ¥{{ number_format($product->price, 0) }}
                         </div>
-                        <div class="product_detail">
-                            <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
-                                詳細を表示
-                            </a>
+                        <div class="detail_and_favorite">
+                            <div class="product_detail">
+                                <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
+                                    詳細を表示
+                                </a>
+                            </div>
+                            <form class="product_favorite_button" action="{{ $product->isFavorited() ? route('favorites-toggle-remove', ['product' => $product->id]) : route('favorites-toggle-add', ['product' => $product->id]) }}" method="POST">
+                            @csrf
+                                @if ($product->isFavorited())
+                                @method('DELETE')
+                                    <button type="submit" class="submit_favorite">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                @else
+                                    <button type="submit" class="submit_not_favorite">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                @endif
+                            </form>
                         </div>
                         <div class="product_cart_link">
                             <form action="{{ route('cart-add') }}" method="POST">
