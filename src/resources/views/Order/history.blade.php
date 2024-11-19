@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="index_profile">
+<div class="order_profile">
     <a class="profile_link" href="{{ route('profile-show', Auth::user()->id) }}">
         プロフィールへ戻る
     </a>

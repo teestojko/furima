@@ -1,0 +1,95 @@
+.sale_profile {
+    display: flex;
+    justify-content: end;
+    height: 15%;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 5%;
+}
+
+.profile_link {
+    text-align: center;
+    margin: 10px 0;
+    background-color: #ffe3e3;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile_link:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sales_title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.sale {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+}
+
+.sale:hover {
+    transform: translateY(-5px);
+}
+
+.sale_id {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.sale_date, .sale_total {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.sale_products {
+    font-size: 1.25rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+.sale_table th, .table_item {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sale_table th {
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table_item {
+    font-size: 0.95rem;
+    color: #333;
+}
+
