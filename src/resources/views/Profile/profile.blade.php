@@ -15,6 +15,9 @@
             <a class="profile_user_edit_link" href="/user/edit">
                 プロフィール変更
             </a>
+            <a href="{{ route('order-history') }}" class="btn profile_button">
+                購入履歴
+            </a>
         </div>
         <img class="profile-image" src="{{ Storage::url($user->profile_image) }}" alt="{{ $user->name }}">
         <h2>
