@@ -22,6 +22,7 @@ use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Admin\CouponCreateController;
 use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Sale\SaleController;
 
 
 /*
@@ -109,6 +110,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
 
         Route::get('/order-history', [OrderController::class, 'orderIndex'])->name('order-history');
+
+        Route::get('/sales-history', [SaleController::class, 'showSalesHistory'])->name('sale-history');
 
     });
 });

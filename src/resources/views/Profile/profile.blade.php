@@ -18,6 +18,10 @@
             <a href="{{ route('order-history') }}" class="btn profile_button">
                 購入履歴
             </a>
+            <a href="{{ route('sale-history') }}" class="btn sale_button">
+                販売履歴
+            </a>
+
         </div>
         <img class="profile-image" src="{{ Storage::url($user->profile_image) }}" alt="{{ $user->name }}">
         <h2>
