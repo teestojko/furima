@@ -53,6 +53,7 @@ class PaymentController extends Controller
                 'user_id' => Auth::id(),
                 'status_id' => 2, // 保留中などの初期状態
                 'total_price' => $discountedAmount, // 合計金額
+                'order_date' => now(),
             ]);
             $order->save(); // 注文を保存してIDを取得
 

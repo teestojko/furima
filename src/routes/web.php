@@ -21,6 +21,7 @@ use App\Http\Controllers\Mail\MessageReceivedController;
 use App\Http\Controllers\Coupon\CouponController;
 use App\Http\Controllers\Admin\CouponCreateController;
 use App\Http\Controllers\Favorite\FavoriteController;
+use App\Http\Controllers\Order\OrderController;
 
 
 /*
@@ -106,6 +107,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
         Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
+
+        Route::get('/order-history', [OrderController::class, 'orderIndex'])->name('order-history');
+
     });
 });
 
