@@ -39,7 +39,6 @@ class CartController extends Controller
 
     public function preparePayment(Request $request)
     {
-        // selected_items が存在しない、または空の場合の処理を追加
         if (empty($request->selected_items)) {
             return back()->with('error', '商品が選択されていません');
         }
@@ -53,9 +52,7 @@ class CartController extends Controller
         $totalAmount = $selectedItems->sum(function ($cart) {
             return $cart->product->price * $cart->quantity;
         });
-        // dd($totalAmount);
-        // クーポンがリクエストまたはセッションに存在するかを確認
-        $coupon = session('applied_coupon'); // クーポン情報がセッションにある場合を想定
+        $coupon = session('applied_coupon');
         if ($coupon) {
             if ($coupon->discount_type === 'fixed') {
                 $discountedAmount = max(0, $totalAmount - $coupon->discount);
@@ -64,7 +61,6 @@ class CartController extends Controller
             }
             session(['discounted_amount' => $discountedAmount]);
         } else {
-            // クーポンがない場合、割引なしの合計金額を保存
             session(['discounted_amount' => $totalAmount]);
         }
 

@@ -55,7 +55,7 @@ class PaymentController extends Controller
                 'total_price' => $discountedAmount, // 合計金額
                 'order_date' => now(),
             ]);
-            $order->save(); // 注文を保存してIDを取得
+            $order->save();
 
             // 注文アイテムを作成
             foreach ($selectedItems as $cartId) {
@@ -69,19 +69,19 @@ class PaymentController extends Controller
 
                     // OrderItemの作成
                     $orderItem = new OrderItem([
-                        'order_id' => $order->id, // 作成した注文IDを設定
+                        'order_id' => $order->id,
                         'product_id' => $cart->product_id,
                         'quantity' => $cart->quantity,
                         'price' => $discountedProductPrice,
                         'commission_fee' => $fee, // 手数料
                         'seller_revenue' => $sellerRevenue, // 出品者の収益
                     ]);
-                    $orderItem->save(); // 注文アイテムを保存
-                    $cart->delete(); // カートから商品を削除
+                    $orderItem->save();
+                    $cart->delete();
                 }
             }
 
-            return view('Payment.success'); // 支払い成功画面に遷移
+            return view('Payment.success');
 
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage()); // エラーハンドリング
