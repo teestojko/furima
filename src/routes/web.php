@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\CouponCreateController;
 use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Sale\SaleController;
-
+use App\Http\Controllers\Notification\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,14 +98,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/messages/{receiver}', [MessageController::class, 'index'])->name('messages-index');
         Route::post('/messages/{receiver}', [MessageController::class, 'store'])->name('messages-store');
-
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
         Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
-
         Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
         Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
 
@@ -113,6 +111,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/sales-history', [SaleController::class, 'showSalesHistory'])->name('sale-history');
 
+        Route::get('/notification/show', [NotificationController::class, 'showNotification'])->name('notifications-show');
     });
 });
 
