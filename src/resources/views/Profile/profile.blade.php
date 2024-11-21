@@ -21,7 +21,9 @@
             <a href="{{ route('sale-history') }}" class="btn sale_button">
                 販売履歴
             </a>
-
+            <a href="{{ route('notifications-show') }}" class="btn message_button">
+                メール一覧
+            </a>
         </div>
         <img class="profile-image" src="{{ Storage::url($user->profile_image) }}" alt="{{ $user->name }}">
         <h2>
