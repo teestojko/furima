@@ -8,23 +8,37 @@ use App\Mail\MessageReceived;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Jobs\SaveNotification;
 
 class MessageReceivedController extends Controller
 {
     public function store(Request $request, $receiverId)
     {
+        // 入力バリデーション
         $request->validate(['message' => 'required|string']);
-        // メッセージの保存処理
+
+        // メッセージ作成
         $message = Message::create([
-            'sender_id' => auth()->id(),
+            'sender_id' => Auth::id(),
             'receiver_id' => $receiverId,
             'message' => $request->message,
         ]);
+        // dd($message);
 
-        // メール送信
-        $receiver = User::findOrFail($receiverId);
-        Mail::to($receiver->email)->send(new MessageReceived($message));
-
-        return back()->with('success', 'メッセージが送信されました。');
+        // 通知データを非同期で保存
+        $notificationData = [
+            'message' => $message->message,
+            'sender_id' => Auth::id(),
+            'receiver_id' => $receiverId,
+        ];
+        // dd($notificationData);
+        SaveNotification::dispatch(
+            $receiverId,         // 通知を受け取るユーザーID
+            'message',           // 通知の種類
+            $notificationData    // 通知の内容
+        );
+        // dd($notificationData);
+        return redirect()->back()->with('success', 'メッセージが送信されました。');
     }
 }

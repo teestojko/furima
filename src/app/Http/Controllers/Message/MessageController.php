@@ -32,20 +32,9 @@ class MessageController extends Controller
         return view('Message.message', [
             'messages' => $messages,
             'receiverId' => $userId,  // 受信者IDをビューに渡す
-            'receiverUser' => $receiverUser  // 受信者のユーザー情報も渡す
+            'receiverUser' => $receiverUser, // 受信者のユーザー情報も渡す
+            'notifications' => $notifications, // 通知データも渡す
         ]);
     }
 
-    public function store(Request $request, $receiverId)
-    {
-        $request->validate(['message' => 'required|string']);
-
-        Message::create([
-            'sender_id' => Auth::id(),
-            'receiver_id' => $receiverId,
-            'message' => $request->message,
-        ]);
-
-        return redirect()->back()->with('success', 'メッセージが送信されました。');
-    }
 }
