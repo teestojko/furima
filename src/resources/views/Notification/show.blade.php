@@ -20,30 +20,24 @@
         @else
             <ul>
                 @foreach ($notifications as $notification)
+                    {{-- @php
+                        // JSON文字列を配列にデコード
+                        $notificationData = json_decode($notification->data, true);
+                    @endphp --}}
+
                     <li>
                         @if ($notification->type === 'message')
-                            <a href="{{ route('messages.show', ['userId' => $notification->data['sender_id']]) }}">
-                                {{ $notification->data['message'] }}
+                            <a href="{{ route('messages-show', ['userId' => $notificationData['sender_id']]) }}">
+                                {{ $notificationData['message'] }}
                             </a>
                         @elseif ($notification->type === 'transaction')
-                            <a href="{{ route('orders.show', ['orderId' => $notification->data['order_id']]) }}">
-                                {{ $notification->data['message'] }}
+                            <a href="{{ route('orders-show', ['orderId' => $notificationData['order_id']]) }}">
+                                {{ $notificationData['message'] }}
                             </a>
                         @endif
                     </li>
                 @endforeach
             </ul>
         @endif
-    </div>
-
-    <div class="messages">
-        <h2>メッセージ履歴</h2>
-        @foreach ($messages as $message)
-            <div class="message">
-                <p><strong>{{ $message->sender->name }}</strong> → <strong>{{ $message->receiver->name }}</strong></p>
-                <p>{{ $message->message }}</p>
-                <small>{{ $message->created_at->diffForHumans() }}</small>
-            </div>
-        @endforeach
     </div>
 @endsection
