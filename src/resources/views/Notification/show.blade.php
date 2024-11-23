@@ -6,36 +6,37 @@
 @endsection
 
 @section('content')
-    <h1>メッセージ一覧</h1>
+    <h1>通知一覧</h1>
 
     <div class="notifications">
-        <div class="notification_show_back_button">
-            <a class="notification_show_back_button_link" href="{{ route('profile-show', Auth::user()->id)}}">
-                戻る
-            </a>
-        </div>
-        <h2>通知</h2>
-        @if ($notifications->isEmpty())
+        <h2>未読通知</h2>
+        @if ($unreadNotifications->isEmpty())
             <p>新しい通知はありません。</p>
         @else
             <ul>
-                @foreach ($notifications as $notification)
-                    {{-- @php
-                        // JSON文字列を配列にデコード
+                @foreach ($unreadNotifications as $notification)
+                    @php
                         $notificationData = json_decode($notification->data, true);
-                    @endphp --}}
-
+                    @endphp
                     <li>
-                        @if ($notification->type === 'message')
-                            <a href="{{ route('messages-show', ['userId' => $notificationData['sender_id']]) }}">
-                                {{ $notificationData['message'] }}
-                            </a>
-                        @elseif ($notification->type === 'transaction')
-                            <a href="{{ route('orders-show', ['orderId' => $notificationData['order_id']]) }}">
-                                {{ $notificationData['message'] }}
-                            </a>
-                        @endif
+                        <a href="{{ route('notifications-mark-read', ['notificationId' => $notification->id]) }}">
+                            {{ $notificationData['message'] }}
+                        </a>
                     </li>
+                @endforeach
+            </ul>
+        @endif
+
+        <h2>既読通知</h2>
+        @if ($readNotifications->isEmpty())
+            <p>既読の通知はありません。</p>
+        @else
+            <ul>
+                @foreach ($readNotifications as $notification)
+                    @php
+                        $notificationData = json_decode($notification->data, true);
+                    @endphp
+                    <li>{{ $notificationData['message'] }}</li>
                 @endforeach
             </ul>
         @endif
