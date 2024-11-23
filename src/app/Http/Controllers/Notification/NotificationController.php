@@ -20,30 +20,52 @@ class NotificationController extends Controller
             ->latest()
             ->get();
 
-        // 未読通知の取得
-        $notifications = Notification::where('user_id', $userId)
-            ->where('is_read', false)
-            ->latest()
-            ->get();
+        $notifications = Notification::where('user_id', Auth::id())
+        ->orderBy('created_at', 'desc')
+        ->get();
 
+        $unreadNotifications = $notifications->where('is_read', false);
+        $readNotifications = $notifications->where('is_read', true);
 
+        return view('Notification.show', [
+            'unreadNotifications' => $unreadNotifications,
+            'readNotifications' => $readNotifications,
+        ]);
         return view('Notification.show', compact('messages', 'notifications'));
     }
 
-    // public function index()
-    // {
-    //     $notifications = Notification::where('user_id', Auth::id())
-    //         ->orderBy('created_at', 'desc')
-    //         ->get();
+    public function markAsRead($notificationId)
+    {
+        $notification = Notification::findOrFail($notificationId);
 
-    //     return view('notifications.index', compact('notifications'));
-    // }
+        // 自分の通知のみ更新
+        if ($notification->user_id === Auth::id()) {
+            $notification->update(['is_read' => true]);
+        }
 
-    // public function markAsRead($id)
-    // {
-    //     $notification = Notification::findOrFail($id);
-    //     $notification->update(['read_at' => now()]);
+        return redirect()->back()->with('success', '通知が既読になりました');
+    }
 
-    //     return redirect()->back();
-    // }
+    public function messageDetail($notificationId)
+    {
+        // 通知を取得
+        $notification = Notification::findOrFail($notificationId);
+
+        // 自分の通知か確認
+        if ($notification->user_id !== Auth::id()) {
+            abort(403, '不正なアクセスです');
+        }
+
+        // 通知を既読に更新
+        $notification->update(['is_read' => true]);
+
+        // 通知に関連するメッセージを取得
+        $messageId = $notification->data['message_id'];  // 例：通知データにメッセージIDが含まれていると仮定
+        $message = Message::findOrFail($messageId);
+
+        return view('Notification.message_detail', [
+            'message' => $message,
+            'notification' => $notification,
+        ]);
+    }
 }

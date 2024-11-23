@@ -111,6 +111,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/sales-history', [SaleController::class, 'showSalesHistory'])->name('sale-history');
 
         Route::get('/notification/show', [NotificationController::class, 'showNotification'])->name('notifications-show');
+        Route::get('/notifications/mark-read/{notificationId}', [NotificationController::class, 'markAsRead'])->name('notifications-mark-read');
+        Route::get('/notifications/message/{notificationId}', [NotificationController::class, 'messageDetail'])->name('notifications-message');
+
+
     });
 });
 
