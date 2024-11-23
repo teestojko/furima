@@ -24,7 +24,6 @@ class MessageReceivedController extends Controller
             'receiver_id' => $receiverId,
             'message' => $request->message,
         ]);
-        // dd($message);
 
         // 通知データを非同期で保存
         $notificationData = [
@@ -32,13 +31,11 @@ class MessageReceivedController extends Controller
             'sender_id' => Auth::id(),
             'receiver_id' => $receiverId,
         ];
-        // dd($notificationData);
         SaveNotification::dispatch(
             $receiverId,         // 通知を受け取るユーザーID
             'message',           // 通知の種類
             $notificationData    // 通知の内容
         );
-        // dd($notificationData);
         return redirect()->back()->with('success', 'メッセージが送信されました。');
     }
 }
