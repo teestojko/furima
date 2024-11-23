@@ -29,6 +29,10 @@ class MessageController extends Controller
         ->orderBy('created_at', 'asc')
         ->get();
 
+        $notifications = Notification::where('user_id', auth()->id())
+            ->where('is_read', false)  // 未読通知の例
+            ->get();
+
         return view('Message.message', [
             'messages' => $messages,
             'receiverId' => $userId,  // 受信者IDをビューに渡す
