@@ -74,33 +74,11 @@
                 </div>
             </form>
             </div>
-                <div class="index_nav">
-                    <div class="index_products_create">
-                        <a class="products_create_link" href="/products/create">
-                            出品
-                        </a>
-                    </div>
-                    <div class="index_profile">
-                        <a class="profile_link" href="{{ route('profile-show', Auth::user()->id) }}">
-                            プロフィール
-                        </a>
-                    </div>
-                    <div class="index_cart">
-                        <a class="cart_link" href="{{ route('cart-view') }}" class="btn btn-primary">
-                            カート
-                        </a>
-                    </div>
-                    <div class="index_coupon">
-                        <a class="coupon_link" href="{{ route('coupons-index') }}" class="btn btn-primary">
-                            クーポン一覧
-                        </a>
-                    </div>
-                    <div class="index_my_page">
-                        <a class="my_page_link" href="{{ route('user-my-page') }}" class="btn btn-primary">
-                            マイページ
-                        </a>
-                    </div>
-                </div>
+
+            <div id="app">
+                <button_hover></button_hover>
+            </div>
+            <script src="{{ mix('js/app.js') }}"></script>
 
             <div class="product_title">
                 商品一覧
@@ -152,12 +130,12 @@
             </div>
         </div>
     </div>
+
     @section('scripts')
         <script>
             document.getElementById('toggle-search-btn').addEventListener('click', function () {
                 var searchForm = document.getElementById('search-form');
                 var overlay = document.getElementById('overlay');
-
                 // フォームとオーバーレイの表示状態を切り替え
                 if (searchForm.style.display === 'none' || searchForm.style.display === '') {
                     searchForm.style.display = 'block';
@@ -167,7 +145,6 @@
                     overlay.style.display = 'none';
                 }
             });
-
             // オーバーレイをクリックしてもフォームを非表示にする
             document.getElementById('overlay').addEventListener('click', function () {
                 document.getElementById('search-form').style.display = 'none';
