@@ -1,6 +1,9 @@
 @extends('Layout.app')
 
 @section('content')
+<a href="{{ route('notifications-show') }}" class="btn message_button">
+    戻る
+</a>
 <h1>メッセージ詳細</h1>
 
 <p><strong>送信者:</strong> {{ $message->sender->name }}</p>
