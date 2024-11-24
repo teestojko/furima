@@ -38,10 +38,10 @@
 }
 
 /* 検索フォーム全体のスタイル */
-#search-form {
+.search_form {
     position: absolute;
-    right: 15%;
-    top: 20%;
+    right: 5%;
+    top: 5%;
     margin: 20px auto;
     width: 80%;
     height: 50%;
@@ -54,7 +54,7 @@
     z-index: 10;
 }
 
-#search-form:hover {
+#search_form:hover {
     transform: translateY(-5px); /* 上に少し移動 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を追加して浮き上がる効果 */
 }

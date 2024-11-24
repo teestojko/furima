@@ -11,17 +11,17 @@
             </a>
         </div>
         <div class="index_cart">
-            <a class="cart_link" href="{{ route('cart-view') }}" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
+            <a class="cart_link" href="/cart" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
                 カート
             </a>
         </div>
         <div class="index_coupon">
-            <a class="coupon_link" href="{{ route('coupons-index') }}" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
+            <a class="coupon_link" href="/coupons" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
                 クーポン一覧
             </a>
         </div>
         <div class="index_my_page">
-            <a class="my_page_link" href="{{ route('user-my-page') }}" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
+            <a class="my_page_link" href="/my_page" @mouseover="hover = true" @mouseleave="hover = false" :class="{'hovered': hover}">
                 マイページ
             </a>
         </div>
