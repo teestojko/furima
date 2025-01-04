@@ -62,4 +62,9 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class, 'reported_product_id');
+    }
 }
