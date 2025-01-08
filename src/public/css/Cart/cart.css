@@ -9,6 +9,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.cart_buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .cart_button{
     position: absolute;
     top: 27px;
@@ -35,8 +41,8 @@
 
 .cart_section {
     background: linear-gradient(135deg, #ffe5e5, #ffffff);
-    width: 500px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     text-align: center;
     padding: 15px;
     margin: 15px;
@@ -122,4 +128,10 @@ form button[type="submit"]:hover {
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     background-color: white;
+}
+
+.product-list{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
 }
