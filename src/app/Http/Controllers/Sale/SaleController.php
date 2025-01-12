@@ -14,7 +14,7 @@ class SaleController extends Controller
         $sales = Order::whereHas('items.product', function ($query) {
             $query->where('user_id', Auth::id()); // 出品者のIDでフィルタリング
         })->with(['items.product'])->get();
-        return view('Sale.history', compact('sales'));
+        return view('sale.history', compact('sales'));
     }
 
 }
