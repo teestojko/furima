@@ -1,4 +1,4 @@
-@extends('Layout.app')
+@extends('layout.app')
 
 @section('content')
 <a href="{{ route('notifications-show') }}" class="btn message_button">
