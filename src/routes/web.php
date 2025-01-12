@@ -54,7 +54,7 @@ Route::prefix('admin')->name('admin-')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/email/verify', function (Request $request) {
-        return view('Auth.verify_email');
+        return view('auth.verify_email');
     })->name('verification.notice');
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
