@@ -29,7 +29,7 @@ class MessageReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('Mail.message_received')  // メールのビューを指定
+        return $this->view('mail.message_received')  // メールのビューを指定
                     ->with([
                         'messageContent' => $this->message->message,
                         'senderName' => $this->message->sender->name,
