@@ -34,7 +34,7 @@ class CartController extends Controller
     public function view()
     {
         $carts = Cart::where('user_id', Auth::id())->with('product')->get();
-        return view('Cart.cart', compact('carts'));
+        return view('cart.cart', compact('carts'));
     }
 
     public function preparePayment(Request $request)
