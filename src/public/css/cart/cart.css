@@ -130,7 +130,7 @@ form button[type="submit"]:hover {
     background-color: white;
 }
 
-.product-list{
+#product-list{
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
