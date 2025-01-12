@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/Coupon/coupon.css') }}">
+<link rel="stylesheet" href="{{ asset('css/coupon/coupon.css') }}">
 @endsection
 
 @section('content')
