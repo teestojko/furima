@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $conditions = Condition::all();
-        return view('Product.create', compact('categories','conditions'));
+        return view('product.create', compact('categories','conditions'));
     }
 
     public function store(ProductRequest $request)

@@ -20,7 +20,7 @@ class UpdateController extends Controller
         $this->authorize('update', $product);
         $categories = Category::all();
         $conditions = Condition::all();
-        return view('Product.edit', compact('product', 'categories', 'conditions'));
+        return view('product.edit', compact('product', 'categories', 'conditions'));
     }
 
     public function update(ProductRequest $request, Product $product)
