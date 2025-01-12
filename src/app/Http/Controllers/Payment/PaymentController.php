@@ -23,7 +23,7 @@ class PaymentController extends Controller
 
     public function showPaymentPage()
     {
-        return view('Payment.payment');
+        return view('payment.payment');
     }
 
     public function payment(Request $request)
@@ -81,7 +81,7 @@ class PaymentController extends Controller
                 }
             }
 
-            return view('Payment.success');
+            return view('payment.success');
 
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage()); // エラーハンドリング
