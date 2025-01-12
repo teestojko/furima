@@ -13,7 +13,7 @@ class ReviewController extends Controller
 {
         public function review(Product $product)
     {
-        return view('Review.review', compact('product'));
+        return view('review.review', compact('product'));
     }
 
     public function store(ReviewRequest $request, Product $product)
@@ -43,7 +43,7 @@ class ReviewController extends Controller
         $reviews = Review::where('product_id', $product->id)
             ->where('user_id', Auth::id())
             ->get();
-        return view('Review.index', compact('reviews', 'product'));
+        return view('review.index', compact('reviews', 'product'));
     }
 
     public function destroy(Review $review)
