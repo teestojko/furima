@@ -24,11 +24,11 @@ class NotificationController extends Controller
         ->get();
         $unreadNotifications = $notifications->where('is_read', false);
         $readNotifications = $notifications->where('is_read', true);
-        return view('Notification.show', [
+        return view('notification.show', [
             'unreadNotifications' => $unreadNotifications,
             'readNotifications' => $readNotifications,
         ]);
-        return view('Notification.show', compact('messages', 'notifications'));
+        return view('notification.show', compact('messages', 'notifications'));
     }
 
     public function markAsReadAndMessageDetail($notificationId)
@@ -51,7 +51,7 @@ class NotificationController extends Controller
         $messageId = $messageData['message_id'];
         $message = Message::findOrFail($messageId);
         // メッセージ詳細を表示
-        return view('Notification.message_detail', [
+        return view('notification.message_detail', [
             'message' => $message,
             'notification' => $notification,
         ]);
@@ -70,7 +70,7 @@ class NotificationController extends Controller
         // 通知に関連するメッセージを取得
         $messageId = $notification->data['message_id'];  // 例：通知データにメッセージIDが含まれていると仮定
         $message = Message::findOrFail($messageId);
-        return view('Notification.message_detail', [
+        return view('notification.message_detail', [
             'message' => $message,
             'notification' => $notification,
         ]);
