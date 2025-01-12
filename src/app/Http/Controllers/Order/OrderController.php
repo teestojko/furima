@@ -14,6 +14,6 @@ class OrderController extends Controller
         $orders = Order::where('user_id', Auth::id())
             ->with('items.product', 'status')  // OrderItemと関連するProduct、およびOrderのstatusを取得
             ->get();
-        return view('Order.history', compact('orders'));
+        return view('order.history', compact('orders'));
     }
 }
