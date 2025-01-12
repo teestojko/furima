@@ -11,7 +11,7 @@ class CouponCreateController extends Controller
 {
     public function create()
     {
-        return view('Admin.coupon_create'); // クーポン作成画面へのビュー
+        return view('admin.coupon_create'); // クーポン作成画面へのビュー
     }
 
     public function store(CouponCreateRequest $request)
