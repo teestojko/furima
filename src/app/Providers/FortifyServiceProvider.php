@@ -34,7 +34,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::createUsersUsing(CreateNewUser::class);
 
         Fortify::verifyEmailView(function(){
-            return view('Auth.verify_email');
+            return view('auth.verify_email');
         });
         // Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         // Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -50,11 +50,11 @@ class FortifyServiceProvider extends ServiceProvider
         //     return Limit::perMinute(5)->by($request->session()->get('login.id'));
         // });
         Fortify::registerView(function () {
-            return view('Auth.register');
+            return view('auth.register');
         });
 
         Fortify::loginView(function () {
-            return view('Auth.login');
+            return view('auth.login');
         });
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
@@ -66,14 +66,14 @@ class FortifyServiceProvider extends ServiceProvider
             if ($admin && Hash::check($request->password, $admin->password)) {
                 return $admin;
             }
-            
+
             return null;
         });
 
-      RateLimiter::for('login', function (Request $request) {
-          $email = (string) $request->email;
+        RateLimiter::for('login', function (Request $request) {
+            $email = (string) $request->email;
 
-          return Limit::perMinute(10)->by($email . $request->ip());
-      });
+            return Limit::perMinute(10)->by($email . $request->ip());
+        });
     }
 }
