@@ -33,7 +33,7 @@ class MessageController extends Controller
             ->where('is_read', false)  // 未読通知の例
             ->get();
 
-        return view('Message.message', [
+        return view('message.message', [
             'messages' => $messages,
             'receiverId' => $userId,  // 受信者IDをビューに渡す
             'receiverUser' => $receiverUser, // 受信者のユーザー情報も渡す
