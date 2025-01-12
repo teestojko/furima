@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/Payment/success.css') }}">
+<link rel="stylesheet" href="{{ asset('css/payment/success.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endsection
 

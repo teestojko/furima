@@ -2,7 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-<link rel="stylesheet" href="{{ asset('css/Notification/show.css') }}">
+<link rel="stylesheet" href="{{ asset('css/notification/show.css') }}">
 @endsection
 
 @section('content')
