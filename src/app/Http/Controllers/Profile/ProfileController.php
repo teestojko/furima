@@ -22,7 +22,7 @@ class ProfileController extends Controller
         ->flatten()
         ->avg('stars'); // 'stars' はレビューの評価を保持するカラムの名前
 
-        return view('Profile.profile', [
+        return view('profile.profile', [
             'user' => $user,
             'products' => $products,
             'averageStars' => $averageStars,
