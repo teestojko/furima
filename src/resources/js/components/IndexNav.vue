@@ -69,7 +69,7 @@
 };
 </script>
 
-<style>
+<style scoped>
 /* トリガー部分のスタイル */
 .left_trigger {
     position: fixed;

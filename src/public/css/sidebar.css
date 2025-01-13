@@ -1,0 +1,44 @@
+.sidebar-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+}
+
+.arrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.sidebar {
+  position: absolute;
+  left: -200px; /* サイドバーを非表示にする */
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  transition: left 0.3s ease;
+}
+
+.sidebar.visible {
+  left: 0; /* サイドバーを表示 */
+}
+
+.sidebar.hidden {
+  left: -200px; /* サイドバーを隠す */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 15px;
+  cursor: pointer;
+}
+

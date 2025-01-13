@@ -1,15 +1,25 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes React and other helpers. It's a great starting point while
+ * building robust, powerful web applications using React + Laravel.
+ */
+
 require('./bootstrap');
 
-import { createApp } from 'vue';  // Vue 3 のインポート
-import IndexNav from './components/IndexNav.vue';  // 作成したコンポーネントのインポート
-import IndexForm from './components/IndexForm.vue';    // 検索フォームコンポーネント
+/**
+ * Next, we will create a fresh React component instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-// Vue アプリケーションを作成
-const app = createApp({});
+require('./components/Example');
 
-// コンポーネントをグローバルに登録
-app.component('index_nav', IndexNav);
-app.component('index_form', IndexForm);
 
-// Vue アプリケーションをマウント
-app.mount('#app');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Sidebar from './components/sidebar';
+
+if (document.getElementById('sidebar')) {
+    ReactDOM.render(<Sidebar />, document.getElementById('sidebar'));
+}
+
