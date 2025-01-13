@@ -92,13 +92,13 @@
     flex-wrap: wrap;
 } */
 
-#app{
+/* #app{
     display: flex;
     flex-wrap: wrap;
     font-size: 0.7rem;
     width: 120px;
     height: 100vh;
-}
+} */
 
 .product_content{
     width: 70%;
