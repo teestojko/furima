@@ -82,7 +82,7 @@
     color: #6c757d;
 }
 
-.index_nav {
+/* .index_nav {
     display: flex;
     justify-content: space-around;
     padding-left: 17px;
@@ -90,7 +90,7 @@
     width: 100%;
     align-items: center;
     flex-wrap: wrap;
-}
+} */
 
 #app{
     display: flex;
