@@ -89,6 +89,16 @@
     flex-wrap: wrap;
 }
 
+#app{
+    width: 30%;
+    height: 100vh;
+}
+
+.product_content{
+    width: 70%;
+    height: 100vh;
+}
+
 .index_products_create,
 .index_profile,
 .index_cart,
