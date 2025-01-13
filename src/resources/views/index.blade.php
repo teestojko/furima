@@ -15,7 +15,6 @@
                 </index_form>
                 <index_nav></index_nav>
             </div>
-            <script src="{{ mix('js/app.js') }}"></script>
             <div class="product_content">
                 <div class="product_title">
                     商品一覧
@@ -68,4 +67,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection
