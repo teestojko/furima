@@ -19,14 +19,14 @@
 
 
 
-            {{-- <div id="app">
+            <div id="app">
                 <index_form
                     :categories='@json($categories)'
                     :filter-url="'{{ route('products-filter') }}'">
                 </index_form>
                 <index_nav></index_nav>
             </div>
-            <script src="{{ mix('js/app.js') }}"></script> --}}
+            <script src="{{ mix('js/app.js') }}"></script>
 
 
 
