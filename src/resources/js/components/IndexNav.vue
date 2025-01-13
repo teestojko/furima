@@ -11,7 +11,7 @@
         <!-- ナビゲーションメニュー -->
         <div
             class="index_nav"
-            v-if="showNav"
+            v-show="showNav"
             @mouseleave="showNav = false">
             <div class="index_products_create">
                 <a class="products_create_link" href="/products/create"
@@ -69,7 +69,7 @@
 };
 </script>
 
-<style scoped>
+<style>
 /* トリガー部分のスタイル */
 .left_trigger {
     position: fixed;
