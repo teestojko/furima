@@ -82,7 +82,7 @@
     color: #6c757d;
 }
 
-/* .index_nav {
+.index_nav {
     display: flex;
     justify-content: space-around;
     padding-left: 17px;
@@ -90,15 +90,15 @@
     width: 100%;
     align-items: center;
     flex-wrap: wrap;
-} */
+}
 
-/* #app{
+#app{
     display: flex;
     flex-wrap: wrap;
     font-size: 0.7rem;
     width: 120px;
     height: 100vh;
-} */
+}
 
 .product_content{
     width: 70%;
