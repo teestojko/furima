@@ -11,7 +11,7 @@
         <!-- ナビゲーションメニュー -->
         <div
             class="index_nav"
-            v-show="showNav"
+            v-if="showNav"
             @mouseleave="showNav = false">
             <div class="index_products_create">
                 <a class="products_create_link" href="/products/create"
