@@ -8,13 +8,30 @@
 @section('content')
     <div class="index">
         <div class="index_inner">
-            <div id="app">
+
+
+
+
+            <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
+            <div id="sidebar"></div>
+            <script src="{{ mix('js/app.js') }}"></script>
+
+
+
+
+            {{-- <div id="app">
                 <index_form
                     :categories='@json($categories)'
                     :filter-url="'{{ route('products-filter') }}'">
                 </index_form>
                 <index_nav></index_nav>
             </div>
+            <script src="{{ mix('js/app.js') }}"></script> --}}
+
+
+
+
+
             <div class="product_content">
                 <div class="product_title">
                     商品一覧
@@ -69,6 +86,3 @@
     </div>
 @endsection
 
-@section('js')
-    <script src="{{ mix('js/app.js') }}"></script>
-@endsection
