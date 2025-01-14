@@ -15,22 +15,35 @@ require('./bootstrap');
 require('./components/Example');
 
 
-import React from 'react';
+// 他の必要なインポート
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
 
 const App = () => {
-    const categories = JSON.parse(document.getElementById('categories').dataset.categories);
-    const filterUrl = document.getElementById('filter-url').dataset.url;
+    const [categories, setCategories] = useState([]);
+    const [filterUrl, setFilterUrl] = useState('');
+
+    useEffect(() => {
+        const categoriesElement = document.getElementById('categories');
+        const filterUrlElement = document.getElementById('filter-url');
+
+        if (categoriesElement && filterUrlElement) {
+            setCategories(JSON.parse(categoriesElement.dataset.categories));
+            setFilterUrl(filterUrlElement.dataset.url);
+        }
+    }, []); // 空の依存配列で一度だけ実行
+
     return (
         <div>
             <SearchForm categories={categories} filterUrl={filterUrl} />
         </div>
     );
 };
-ReactDOM.render(<App />, document.getElementById('app'));
 
+// ここでReactコンポーネントをレンダリング
+ReactDOM.render(<App />, document.getElementById('app'));
 
 if (document.getElementById('sidebar')) {
     ReactDOM.render(<Sidebar />, document.getElementById('sidebar'));

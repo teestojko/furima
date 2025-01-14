@@ -1,27 +1,55 @@
 .sidebar-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100vh;
 }
 
 .arrow {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #007bff; /* 青色の背景 */
+    border-radius: 50%; /* 丸いボタン */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 少し影をつける */
+    transition: all 0.3s ease;
 }
 
+.arrow::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-left: 3px solid #ffffff;
+    border-top: 3px solid #ffffff;
+    transform: rotate(45deg);
+}
+
+.arrow:hover {
+    background-color: #0056b3; /* ホバー時に色が変わる */
+    transform: scale(1.1); /* ホバー時に少し拡大 */
+}
+
+.arrow:active {
+    transform: scale(0.9); /* クリック時に縮小 */
+}
+
+
 .sidebar {
-  position: absolute;
-  left: -200px; /* サイドバーを非表示にする */
-  top: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #ffffff;
-  color: #000000;
-  transition: left 0.3s ease;
+    position: absolute;
+    left: -200px; /* サイドバーを非表示にする */
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    transition: left 0.3s ease;
 }
 
 .sidebar.visible {
@@ -33,12 +61,12 @@
 }
 
 .sidebar ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .sidebar li {
-  padding: 15px;
-  cursor: pointer;
+    padding: 15px;
+    cursor: pointer;
 }
 

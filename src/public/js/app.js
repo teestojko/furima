@@ -5077,6 +5077,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_searchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/searchForm */ "./resources/js/components/searchForm.jsx");
 /* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/sidebar */ "./resources/js/components/sidebar.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -5093,13 +5099,30 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+// 他の必要なインポート
+
 
 
 
 
 var App = function App() {
-  var categories = JSON.parse(document.getElementById('categories').dataset.categories);
-  var filterUrl = document.getElementById('filter-url').dataset.url;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    categories = _useState2[0],
+    setCategories = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    filterUrl = _useState4[0],
+    setFilterUrl = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var categoriesElement = document.getElementById('categories');
+    var filterUrlElement = document.getElementById('filter-url');
+    if (categoriesElement && filterUrlElement) {
+      setCategories(JSON.parse(categoriesElement.dataset.categories));
+      setFilterUrl(filterUrlElement.dataset.url);
+    }
+  }, []); // 空の依存配列で一度だけ実行
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
       categories: categories,
@@ -5107,6 +5130,8 @@ var App = function App() {
     })
   });
 };
+
+// ここでReactコンポーネントをレンダリング
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(App, {}), document.getElementById('app'));
 if (document.getElementById('sidebar')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), document.getElementById('sidebar'));
@@ -9957,7 +9982,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".search_container {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 15px;\n    background-color: #f9f9ff; /* 背景色を柔らかく */\n    border-radius: 10px; /* 角丸 */\n    padding: 20px;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */\n}\n\n.index_search_label {\n    font-size: 14px;\n    font-weight: bold;\n    color: #333; /* ダークなグレー */\n    margin-bottom: 5px;\n}\n\n.index_search_category,\n.index_search_product_name,\n.index_search_price_range,\n.index_search_price_order,\n.index_search_popularity {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    max-width: 250px; /* それぞれの要素の最大幅 */\n}\n\n.index_search_select_category,\n.search_input,\n#min_price,\n#max_price,\n#price_order,\n#popularity {\n    padding: 10px;\n    border: 1px solid #ddd; /* 軽い境界線 */\n    border-radius: 5px; /* 角丸 */\n    background-color: #ffffff; /* 背景色 */\n    font-size: 14px;\n    transition: border-color 0.3s; /* ホバー時のスムーズな変化 */\n}\n\n.index_search_select_category.active {\n    border-color: #007bff; /* 選択時の枠線色 */\n    color: #007bff;\n    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;\n}\n\n.index_search_select_category:hover,\n.search_input:hover,\n#min_price:hover,\n#max_price:hover,\n#price_order:hover,\n#popularity:hover {\n    border-color: #a2a2ff; /* ホバー時に色を変更 */\n}\n\n.search_button{\n    text-align: center;\n    height: 20%;\n    align-content: center;\n}\n\n.search_button_link,\n.btn-primary {\n    padding: 10px 20px;\n    background-color: #ffffff;\n    color: #4e1010;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    font-size: 14px;\n    text-decoration: none;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n    transition: background-color 0.3s;\n}\n\n.search_button_link:hover,\n.btn-primary:hover {\n    background-color: #ffebfc; /* 少し濃いラベンダー */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n.search_container {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 15px;\n    background-color: #f9f9ff; /* 背景色を柔らかく */\n    border-radius: 10px; /* 角丸 */\n    padding: 20px;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */\n}\n\n.index_search_label {\n    font-size: 14px;\n    font-weight: bold;\n    color: #333; /* ダークなグレー */\n    margin-bottom: 5px;\n}\n\n.index_search_category,\n.index_search_product_name,\n.index_search_price_range,\n.index_search_price_order,\n.index_search_popularity {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    max-width: 250px; /* それぞれの要素の最大幅 */\n}\n\n.index_search_select_category,\n.search_input,\n#min_price,\n#max_price,\n#price_order,\n#popularity {\n    padding: 10px;\n    border: 1px solid #ddd; /* 軽い境界線 */\n    border-radius: 5px; /* 角丸 */\n    background-color: #ffffff; /* 背景色 */\n    font-size: 14px;\n    transition: border-color 0.3s; /* ホバー時のスムーズな変化 */\n}\n\n.index_search_select_category.active {\n    border-color: #007bff; /* 選択時の枠線色 */\n    color: #007bff;\n    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;\n}\n\n.index_search_select_category:hover,\n.search_input:hover,\n#min_price:hover,\n#max_price:hover,\n#price_order:hover,\n#popularity:hover {\n    border-color: #a2a2ff; /* ホバー時に色を変更 */\n}\n\n.search_button{\n    text-align: center;\n    height: 20%;\n    align-content: center;\n}\n\n.search_button_link,\n.btn-primary {\n    padding: 10px 20px;\n    background-color: #ffffff;\n    color: #4e1010;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    font-size: 14px;\n    text-decoration: none;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n    transition: background-color 0.3s;\n}\n\n.search_button_link:hover,\n.btn-primary:hover {\n    background-color: #ffebfc; /* 少し濃いラベンダー */\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
