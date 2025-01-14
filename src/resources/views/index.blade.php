@@ -8,11 +8,10 @@
 @section('content')
 
     {{-- Vue.js用のデータ属性とJavaScriptの設定 --}}
-    <div id="app">
         {{-- カテゴリー情報とフィルタURLを渡す --}}
         <div id="categories" data-categories='@json($categories)'></div>
         <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
-    </div>
+        <div id="app"></div>
 
     <div class="index">
         <div class="index_inner">
