@@ -93,11 +93,8 @@
 }
 
 #app{
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 0.7rem;
-    width: 120px;
-    height: 100vh;
+    width: 100%;
+    height: 10vh;
 }
 
 .product_content{
@@ -224,88 +221,6 @@
 .product_cart_link {
     display: flex;
     justify-content: space-around;
-}
-
-.search_container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    background-color: #f9f9ff; /* 背景色を柔らかく */
-    border-radius: 10px; /* 角丸 */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
-}
-
-.index_search_label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333; /* ダークなグレー */
-    margin-bottom: 5px;
-}
-
-.index_search_category,
-.index_search_product_name,
-.index_search_price_range,
-.index_search_price_order,
-.index_search_popularity {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 250px; /* それぞれの要素の最大幅 */
-}
-
-.index_search_select_category,
-.search_input,
-#min_price,
-#max_price,
-#price_order,
-#popularity {
-    padding: 10px;
-    border: 1px solid #ddd; /* 軽い境界線 */
-    border-radius: 5px; /* 角丸 */
-    background-color: #ffffff; /* 背景色 */
-    font-size: 14px;
-    transition: border-color 0.3s; /* ホバー時のスムーズな変化 */
-}
-
-.index_search_select_category.active {
-    border-color: #007bff; /* 選択時の枠線色 */
-    color: #007bff;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-.index_search_select_category:hover,
-.search_input:hover,
-#min_price:hover,
-#max_price:hover,
-#price_order:hover,
-#popularity:hover {
-    border-color: #a2a2ff; /* ホバー時に色を変更 */
-}
-
-.search_button{
-    text-align: center;
-    height: 20%;
-    align-content: center;
-}
-
-.search_button_link,
-.btn-primary {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #4e1010;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-}
-
-.search_button_link:hover,
-.btn-primary:hover {
-    background-color: #ffebfc; /* 少し濃いラベンダー */
 }
 
 .product_cart_link form {
