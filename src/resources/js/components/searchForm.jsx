@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './searchForm.css';
+import './styles/searchForm.css';
 
 const SearchForm = ({ categories, filterUrl }) => {
     const [isFormVisible, setIsFormVisible] = useState(false);

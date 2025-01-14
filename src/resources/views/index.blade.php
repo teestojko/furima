@@ -6,18 +6,21 @@
 @endsection
 
 @section('content')
-
-    {{-- Vue.js用のデータ属性とJavaScriptの設定 --}}
-        {{-- カテゴリー情報とフィルタURLを渡す --}}
-        <div id="categories" data-categories='@json($categories)'></div>
-        <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
-        <div id="app"></div>
-
     <div class="index">
         <div class="index_inner">
 
+            <div id="app">
+                {{-- Vue.js/React用のデータを渡す --}}
+                <div id="categories" data-categories='@json($categories)'></div>
+                <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
+            </div>
+
+
             <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
-                <div id="sidebar"></div>
+            <div id="sidebar"></div>
+
+
+
 
             <div class="product_content">
                 <div class="product_title">
