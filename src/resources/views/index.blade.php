@@ -6,19 +6,20 @@
 @endsection
 
 @section('content')
+
+    {{-- Vue.js用のデータ属性とJavaScriptの設定 --}}
+    <div id="app">
+        {{-- カテゴリー情報とフィルタURLを渡す --}}
+        <div id="categories" data-categories='@json($categories)'></div>
+        <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
+    </div>
+
     <div class="index">
         <div class="index_inner">
 
-
-
-
             <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
-            <div id="sidebar"></div>
-            <script src="{{ mix('js/app.js') }}"></script>
+                <div id="sidebar"></div>
 
-
-
-            
             <div class="product_content">
                 <div class="product_title">
                     商品一覧
@@ -71,5 +72,8 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+
 @endsection
 

@@ -17,7 +17,20 @@ require('./components/Example');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
+
+const App = () => {
+    const categories = JSON.parse(document.getElementById('categories').dataset.categories);
+    const filterUrl = document.getElementById('filter-url').dataset.url;
+    return (
+        <div>
+            <SearchForm categories={categories} filterUrl={filterUrl} />
+        </div>
+    );
+};
+ReactDOM.render(<App />, document.getElementById('app'));
+
 
 if (document.getElementById('sidebar')) {
     ReactDOM.render(<Sidebar />, document.getElementById('sidebar'));
