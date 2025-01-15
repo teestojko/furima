@@ -9,7 +9,7 @@
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -19,15 +19,6 @@
     justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 少し影をつける */
     transition: all 0.3s ease;
-}
-
-.arrow::before {
-    content: "";
-    width: 15px;
-    height: 15px;
-    border-left: 3px solid #ffffff;
-    border-top: 3px solid #ffffff;
-    transform: rotate(45deg);
 }
 
 .arrow:hover {
