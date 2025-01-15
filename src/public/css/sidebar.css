@@ -13,7 +13,6 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
-    background-color: #007bff; /* 青色の背景 */
     border-radius: 50%; /* 丸いボタン */
     display: flex;
     align-items: center;
@@ -22,17 +21,8 @@
     transition: all 0.3s ease;
 }
 
-.arrow::before {
-    content: "";
-    width: 15px;
-    height: 15px;
-    border-left: 3px solid #ffffff;
-    border-top: 3px solid #ffffff;
-    transform: rotate(45deg);
-}
-
 .arrow:hover {
-    background-color: #0056b3; /* ホバー時に色が変わる */
+    background-color: #58a9ff; /* ホバー時に色が変わる */
     transform: scale(1.1); /* ホバー時に少し拡大 */
 }
 
