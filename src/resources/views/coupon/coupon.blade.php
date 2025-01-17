@@ -1,11 +1,16 @@
 @extends('layout.app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/coupon/coupon.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="coupon_list_container">
+
+    <div id="sidebar"></div>
+
     <h1>クーポン一覧</h1>
     <table class="coupon_table">
         <thead>
@@ -30,4 +35,7 @@
         </tbody>
     </table>
 </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+
 @endsection
