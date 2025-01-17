@@ -1,11 +1,17 @@
 @extends('layout.app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/my_page.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="mypage">
+
+    <div id="sidebar"></div>
+
+
     <h1>マイページ</h1>
     <h2>お気に入り商品一覧</h2>
     <div class="index_back_button">
@@ -13,7 +19,6 @@
             一覧に戻る
         </a>
     </div>
-
     @if ($favoriteProducts->isEmpty())
         <p>お気に入り商品はありません。</p>
     @else
@@ -64,4 +69,9 @@
         </div>
     @endif
 </div>
+
+<script src="{{ mix('js/app.js') }}"></script>
+{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
+
+
 @endsection

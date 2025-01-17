@@ -3,6 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
@@ -17,7 +18,6 @@
         <div class="index_inner">
 
 
-            <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
             <div id="sidebar"></div>
 
 
