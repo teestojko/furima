@@ -8,11 +8,9 @@
 
 @section('content')
 
-<div id="app">
     {{-- Vue.js/React用のデータを渡す --}}
     <div id="categories" data-categories='@json($categories)'></div>
     <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
-</div>
 
     <div class="index">
         <div class="index_inner">
@@ -75,6 +73,9 @@
             </div>
         </div>
     </div>
+
+    <!-- React のエントリポイント -->
+    <div id="app"></div>
 
     <script src="{{ mix('js/app.js') }}"></script>
 

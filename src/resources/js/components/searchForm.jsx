@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/searchForm.css';
 
-const SearchForm = ({ categories, filterUrl }) => {
+const SearchForm = () => {
+    // カテゴリデータとフィルターURLのstate
+    const [categories, setCategories] = useState([]);
+    const [filterUrl, setFilterUrl] = useState('');
+
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [category, setCategory] = useState('');
     const [productName, setProductName] = useState('');
@@ -9,6 +13,20 @@ const SearchForm = ({ categories, filterUrl }) => {
     const [maxPrice, setMaxPrice] = useState('');
     const [priceOrder, setPriceOrder] = useState('');
     const [popularity, setPopularity] = useState('');
+
+    // コンポーネントが初めて描画されたときに実行される副作用処理
+    useEffect(() => {
+        // DOM内のカテゴリ情報が埋め込まれた要素を取得
+        const categoriesElement = document.getElementById('categories');
+        // フィルターURLが埋め込まれた要素を取得
+        const filterUrlElement = document.getElementById('filter-url');
+
+        // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
+        if (categoriesElement && filterUrlElement) {
+            setCategories(JSON.parse(categoriesElement.dataset.categories)); // JSON文字列を配列に変換して設定
+            setFilterUrl(filterUrlElement.dataset.url); // URLを文字列として設定
+        }
+    }, []);
 
     const toggleSearchForm = () => {
         setIsFormVisible(!isFormVisible);
