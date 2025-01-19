@@ -3,13 +3,15 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/product/create.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
     <div class="product_create">
         <div class="product_create_inner">
 
-            
+            <!-- React Sidebar のマウントポイント -->
+            <div id="sidebar"></div>
 
             <div class="inner_title">
                 出品
@@ -20,13 +22,10 @@
                     <div class="content_title">
                         画像
                     </div>
-                    <label class="images_label" for="images" >
-                        画像を選択
-                    </label>
-                    <input type="file" name="images[]" id="images" multiple>
-                    <div id="file_name">
-                        選択ファイル名
-                    </div>
+
+                    <!-- React FileUpload のマウントポイント -->
+                    <div id="file-upload"></div>
+
                 </div>
                 <div class="product_create_content">
                     <div class="content_title">
@@ -133,8 +132,12 @@
         @endif
     </div>
 
+    <!-- React のエントリポイント -->
+    <div id="app"></div>
+
     <script src="{{ mix('js/app.js') }}"></script>
 
 @endsection
+
 
 

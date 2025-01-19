@@ -5076,14 +5076,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_searchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/searchForm */ "./resources/js/components/searchForm.jsx");
 /* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/sidebar */ "./resources/js/components/sidebar.jsx");
-/* harmony import */ var _components_lightEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/lightEffect */ "./resources/js/components/lightEffect.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/* harmony import */ var _components_fileUpload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/fileUpload */ "./resources/js/components/fileUpload.jsx");
+/* harmony import */ var _components_lightEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/lightEffect */ "./resources/js/components/lightEffect.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -5106,62 +5101,35 @@ __webpack_require__(/*! ./components/Example */ "./resources/js/components/Examp
 
 // ReactDOMをインポートしてDOM操作を可能にする
 
-// カスタムコンポーネント（SearchFormとSidebar）をインポート
 
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  var sidebarElement = document.getElementById('sidebar');
-  if (sidebarElement) {
-    react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), sidebarElement);
-  } else {
-    console.error('Sidebar element not found!');
-  }
-});
 
 // アプリケーションのメインコンポーネントを定義
+
 var App = function App() {
-  // カテゴリデータを管理するためのstate
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState2 = _slicedToArray(_useState, 2),
-    categories = _useState2[0],
-    setCategories = _useState2[1];
-  // フィルター用URLを管理するためのstate
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterUrl = _useState4[0],
-    setFilterUrl = _useState4[1];
+  document.addEventListener('DOMContentLoaded', function () {
+    var fileUploadElement = document.getElementById('file-upload');
+    if (fileUploadElement) {
+      react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_fileUpload__WEBPACK_IMPORTED_MODULE_4__["default"], {}), fileUploadElement);
+    } else {
+      console.error('FileUpload element not found!');
+    }
+  });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // 光のエフェクトを初期化
-    (0,_components_lightEffect__WEBPACK_IMPORTED_MODULE_4__.randomizeLights)();
+    (0,_components_lightEffect__WEBPACK_IMPORTED_MODULE_5__.randomizeLights)();
   }, []);
 
-  // コンポーネントが初めて描画されたときに実行される副作用処理
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // DOM内のカテゴリ情報が埋め込まれた要素を取得
-    var categoriesElement = document.getElementById('categories');
-    // フィルターURLが埋め込まれた要素を取得
-    var filterUrlElement = document.getElementById('filter-url');
-
-    // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
-    if (categoriesElement && filterUrlElement) {
-      setCategories(JSON.parse(categoriesElement.dataset.categories)); // JSON文字列を配列に変換して設定
-      setFilterUrl(filterUrlElement.dataset.url); // URLを文字列として設定
-    }
-  }, []); // 空の依存配列を指定することで、初回の1回だけ実行される
-
   // コンポーネントのレンダリング内容を返す
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      categories: categories,
-      filterUrl: filterUrl
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
   });
 };
 
 // Appコンポーネントを#app要素内にレンダリング
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, {}), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(App, {}), document.getElementById('app'));
 
 /***/ }),
 
@@ -5249,6 +5217,67 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/fileUpload.jsx":
+/*!************************************************!*\
+  !*** ./resources/js/components/fileUpload.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var FileUpload = function FileUpload() {
+  // ファイル名を管理するstate
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('選択ファイル名'),
+    _useState2 = _slicedToArray(_useState, 2),
+    fileName = _useState2[0],
+    setFileName = _useState2[1];
+
+  // ファイル選択時のイベントハンドラ
+  var handleFileChange = function handleFileChange(event) {
+    if (event.target.files.length > 0) {
+      setFileName(event.target.files[0].name); // 最初に選択したファイル名をstateに保存
+    } else {
+      setFileName('選択ファイル名'); // ファイルが未選択の場合のデフォルト表示
+    }
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "file-upload",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "content_title",
+      children: "\u753B\u50CF"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+      className: "images_label",
+      htmlFor: "images",
+      children: "\u753B\u50CF\u3092\u9078\u629E"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      type: "file",
+      name: "images",
+      id: "images",
+      multiple: true,
+      onChange: handleFileChange // イベントハンドラを設定
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      id: "file_name",
+      children: fileName
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FileUpload);
+
+/***/ }),
+
 /***/ "./resources/js/components/lightEffect.jsx":
 /*!*************************************************!*\
   !*** ./resources/js/components/lightEffect.jsx ***!
@@ -5315,37 +5344,58 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var SearchForm = function SearchForm(_ref) {
-  var categories = _ref.categories,
-    filterUrl = _ref.filterUrl;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+var SearchForm = function SearchForm() {
+  // カテゴリデータとフィルターURLのstate
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
-    isFormVisible = _useState2[0],
-    setIsFormVisible = _useState2[1];
+    categories = _useState2[0],
+    setCategories = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState4 = _slicedToArray(_useState3, 2),
-    category = _useState4[0],
-    setCategory = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    filterUrl = _useState4[0],
+    setFilterUrl = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    productName = _useState6[0],
-    setProductName = _useState6[1];
+    isFormVisible = _useState6[0],
+    setIsFormVisible = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState8 = _slicedToArray(_useState7, 2),
-    minPrice = _useState8[0],
-    setMinPrice = _useState8[1];
+    category = _useState8[0],
+    setCategory = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState10 = _slicedToArray(_useState9, 2),
-    maxPrice = _useState10[0],
-    setMaxPrice = _useState10[1];
+    productName = _useState10[0],
+    setProductName = _useState10[1];
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState12 = _slicedToArray(_useState11, 2),
-    priceOrder = _useState12[0],
-    setPriceOrder = _useState12[1];
+    minPrice = _useState12[0],
+    setMinPrice = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState14 = _slicedToArray(_useState13, 2),
-    popularity = _useState14[0],
-    setPopularity = _useState14[1];
+    maxPrice = _useState14[0],
+    setMaxPrice = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState16 = _slicedToArray(_useState15, 2),
+    priceOrder = _useState16[0],
+    setPriceOrder = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState18 = _slicedToArray(_useState17, 2),
+    popularity = _useState18[0],
+    setPopularity = _useState18[1];
+
+  // コンポーネントが初めて描画されたときに実行される副作用処理
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // DOM内のカテゴリ情報が埋め込まれた要素を取得
+    var categoriesElement = document.getElementById('categories');
+    // フィルターURLが埋め込まれた要素を取得
+    var filterUrlElement = document.getElementById('filter-url');
+
+    // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
+    if (categoriesElement && filterUrlElement) {
+      setCategories(JSON.parse(categoriesElement.dataset.categories)); // JSON文字列を配列に変換して設定
+      setFilterUrl(filterUrlElement.dataset.url); // URLを文字列として設定
+    }
+  }, []);
   var toggleSearchForm = function toggleSearchForm() {
     setIsFormVisible(!isFormVisible);
   };

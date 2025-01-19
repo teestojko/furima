@@ -17,55 +17,37 @@ require('./bootstrap');
 require('./components/Example');
 
 // ReactおよびReactのフック（useState, useEffect）をインポート
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // ReactDOMをインポートしてDOM操作を可能にする
 import ReactDOM from 'react-dom';
-// カスタムコンポーネント（SearchFormとSidebar）をインポート
 import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
+import FileUpload from './components/fileUpload';
 import { randomizeLights } from './components/lightEffect';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const sidebarElement = document.getElementById('sidebar');
-    if (sidebarElement) {
-        ReactDOM.render(<Sidebar />, sidebarElement);
-    } else {
-        console.error('Sidebar element not found!');
-    }
-});
 
 // アプリケーションのメインコンポーネントを定義
 const App = () => {
-    // カテゴリデータを管理するためのstate
-    const [categories, setCategories] = useState([]);
-    // フィルター用URLを管理するためのstate
-    const [filterUrl, setFilterUrl] = useState('');
 
-    useEffect(() => {
-        // 光のエフェクトを初期化
-        randomizeLights();
-    }, []);
-
-    // コンポーネントが初めて描画されたときに実行される副作用処理
-    useEffect(() => {
-        // DOM内のカテゴリ情報が埋め込まれた要素を取得
-        const categoriesElement = document.getElementById('categories');
-        // フィルターURLが埋め込まれた要素を取得
-        const filterUrlElement = document.getElementById('filter-url');
-
-        // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
-        if (categoriesElement && filterUrlElement) {
-            setCategories(JSON.parse(categoriesElement.dataset.categories)); // JSON文字列を配列に変換して設定
-            setFilterUrl(filterUrlElement.dataset.url); // URLを文字列として設定
+    document.addEventListener('DOMContentLoaded', () => {
+        const fileUploadElement = document.getElementById('file-upload');
+        if (fileUploadElement) {
+            ReactDOM.render(<FileUpload />, fileUploadElement);
+        } else {
+            console.error('FileUpload element not found!');
         }
-    }, []); // 空の依存配列を指定することで、初回の1回だけ実行される
+    });
+
+    useEffect(() => {
+    // 光のエフェクトを初期化
+    randomizeLights();
+    }, []);
 
     // コンポーネントのレンダリング内容を返す
     return (
         <div>
             <Sidebar />
-            {/* SearchFormコンポーネントをレンダリングし、propsとしてcategoriesとfilterUrlを渡す */}
-            <SearchForm categories={categories} filterUrl={filterUrl} />
+            <SearchForm />
         </div>
     );
 };
