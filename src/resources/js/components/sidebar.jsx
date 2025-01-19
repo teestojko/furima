@@ -14,7 +14,7 @@ const Sidebar = () => {
         >
             <div className={`sidebar ${isHovered ? "visible" : "hidden"}`}>
                 <div className="index_nav">
-                    
+
                     <a
                         className={`products_create_link ${isHovered ? "hovered" : ""}`}
                         href="/products/create"

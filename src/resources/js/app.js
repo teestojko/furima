@@ -23,6 +23,7 @@ import ReactDOM from 'react-dom';
 // カスタムコンポーネント（SearchFormとSidebar）をインポート
 import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
+import { randomizeLights } from './components/lightEffect';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sidebarElement = document.getElementById('sidebar');
@@ -39,6 +40,11 @@ const App = () => {
     const [categories, setCategories] = useState([]);
     // フィルター用URLを管理するためのstate
     const [filterUrl, setFilterUrl] = useState('');
+
+    useEffect(() => {
+        // 光のエフェクトを初期化
+        randomizeLights();
+    }, []);
 
     // コンポーネントが初めて描画されたときに実行される副作用処理
     useEffect(() => {

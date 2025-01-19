@@ -2,13 +2,15 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-
 <link rel="stylesheet" href="{{ asset('css/product/create.css') }}">
 @endsection
 
 @section('content')
     <div class="product_create">
         <div class="product_create_inner">
+
+            
+
             <div class="inner_title">
                 出品
             </div>
@@ -130,10 +132,9 @@
             </p>
         @endif
     </div>
-    <script>
-        document.getElementById('images').addEventListener('change', function(){
-            const fileName = this.files[0].name;
-            document.getElementById('file_name').textContent = fileName;
-        });
-    </script>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+
 @endsection
+
+
