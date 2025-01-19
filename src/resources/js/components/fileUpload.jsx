@@ -15,7 +15,6 @@ const FileUpload = () => {
 
     return (
         <div className="file-upload">
-            <div className="content_title">画像</div>
             {/* ファイル選択ラベル */}
             <label className="images_label" htmlFor="images">
                 画像を選択
