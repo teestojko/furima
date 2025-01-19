@@ -17,11 +17,11 @@
     <div class="index">
         <div class="index_inner">
 
+            @for ($i = 0; $i < 10; $i++)
+                <div class="light-effect"></div>
+            @endfor
 
             <div id="sidebar"></div>
-
-
-
 
             <div class="product_content">
                 <div class="product_title">

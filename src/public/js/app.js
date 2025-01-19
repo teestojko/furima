@@ -5076,7 +5076,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_searchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/searchForm */ "./resources/js/components/searchForm.jsx");
 /* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/sidebar */ "./resources/js/components/sidebar.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_lightEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/lightEffect */ "./resources/js/components/lightEffect.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -5109,10 +5110,11 @@ __webpack_require__(/*! ./components/Example */ "./resources/js/components/Examp
 
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
   var sidebarElement = document.getElementById('sidebar');
   if (sidebarElement) {
-    react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), sidebarElement);
+    react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), sidebarElement);
   } else {
     console.error('Sidebar element not found!');
   }
@@ -5130,6 +5132,10 @@ var App = function App() {
     _useState4 = _slicedToArray(_useState3, 2),
     filterUrl = _useState4[0],
     setFilterUrl = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // 光のエフェクトを初期化
+    (0,_components_lightEffect__WEBPACK_IMPORTED_MODULE_4__.randomizeLights)();
+  }, []);
 
   // コンポーネントが初めて描画されたときに実行される副作用処理
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -5146,8 +5152,8 @@ var App = function App() {
   }, []); // 空の依存配列を指定することで、初回の1回だけ実行される
 
   // コンポーネントのレンダリング内容を返す
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
       categories: categories,
       filterUrl: filterUrl
     })]
@@ -5155,7 +5161,7 @@ var App = function App() {
 };
 
 // Appコンポーネントを#app要素内にレンダリング
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(App, {}), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, {}), document.getElementById('app'));
 
 /***/ }),
 
@@ -5239,6 +5245,49 @@ function Example() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
 if (document.getElementById('example')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('example'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/lightEffect.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/components/lightEffect.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   randomizeLights: () => (/* binding */ randomizeLights)
+/* harmony export */ });
+function randomizeLights() {
+  var lightEffects = document.querySelectorAll('.light-effect');
+
+  // `min-height` が適用されている要素を取得（例: body 要素や特定のコンテナ）
+  var container = document.querySelector('.index_inner');
+  function updateLights() {
+    // コンテナの高さを取得
+    var containerHeight = container.offsetHeight;
+    lightEffects.forEach(function (light) {
+      var randomX = Math.random() * 100;
+      var randomY = Math.random() * containerHeight;
+      var randomScale = Math.random() * 1 + 1;
+      var randomOpacity = Math.random() * 0.4 + 0.3;
+      var randomHue = Math.floor(Math.random() * 360);
+      var randomSaturation = Math.random() * 50 + 50;
+      var randomLightness = Math.random() * 30 + 50;
+      var randomColor = "hsl(".concat(randomHue, ", ").concat(randomSaturation, "%, ").concat(randomLightness, "%)");
+      light.style.top = "".concat(randomY, "px");
+      light.style.left = "".concat(randomX, "%");
+      light.style.transform = "scale(".concat(randomScale, ")");
+      light.style.opacity = randomOpacity;
+      light.style.background = "radial-gradient(circle, ".concat(randomColor, ", transparent)");
+      var randomDuration = Math.random() * 3 + 2;
+      light.style.transition = "all ".concat(randomDuration, "s ease-in-out");
+    });
+    setTimeout(updateLights, 4000);
+  }
+  updateLights();
 }
 
 /***/ }),
