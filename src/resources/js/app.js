@@ -24,6 +24,7 @@ import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
 import FileUpload from './components/fileUpload';
 import { randomizeLights } from './components/lightEffect';
+import FileDisplay from './components/fileDisplay';
 
 
 // アプリケーションのメインコンポーネントを定義
@@ -42,6 +43,13 @@ const App = () => {
     // 光のエフェクトを初期化
     randomizeLights();
     }, []);
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const fileUploadElement = document.getElementById('file-display');
+    if (fileUploadElement) {
+        ReactDOM.render(<FileDisplay />, fileUploadElement);
+    }
+});
 
     // コンポーネントのレンダリング内容を返す
     return (

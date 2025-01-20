@@ -52,10 +52,14 @@
         </select>
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="images" class="form-label">画像:</label>
         <input type="file" name="images[]" id="images" multiple class="form-file-input">
-    </div>
+    </div> --}}
+
+    <div id="file-display"></div>
+
+
 
     <button type="submit" class="form-button">更新</button>
 
@@ -64,8 +68,11 @@
     @endif
 </form>
 
+<!-- React のエントリポイント -->
+    <div id="app"></div>
+
 @section('scripts')
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function () {
         const imageInput = document.getElementById('images');
         const previewContainer = document.createElement('div');
@@ -85,6 +92,7 @@
             });
         });
     });
-    </script>
+    </script> --}}
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection
 @endsection
