@@ -52,13 +52,8 @@
         </select>
     </div>
 
-    {{-- <div class="form-group">
-        <label for="images" class="form-label">画像:</label>
-        <input type="file" name="images[]" id="images" multiple class="form-file-input">
-    </div> --}}
 
     <div id="file-display"></div>
-
 
 
     <button type="submit" class="form-button">更新</button>
@@ -72,27 +67,6 @@
     <div id="app"></div>
 
 @section('scripts')
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        const imageInput = document.getElementById('images');
-        const previewContainer = document.createElement('div');
-        imageInput.parentNode.appendChild(previewContainer);
-
-        imageInput.addEventListener('change', function () {
-            previewContainer.innerHTML = ''; // プレビューをリセット
-            Array.from(imageInput.files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = file.name;
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            });
-        });
-    });
-    </script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
 @endsection
 @endsection
