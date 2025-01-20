@@ -22,7 +22,6 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
-import FileUpload from './components/fileUpload';
 import { randomizeLights } from './components/lightEffect';
 import FileDisplay from './components/fileDisplay';
 
@@ -30,14 +29,14 @@ import FileDisplay from './components/fileDisplay';
 // アプリケーションのメインコンポーネントを定義
 const App = () => {
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const fileUploadElement = document.getElementById('file-upload');
-        if (fileUploadElement) {
-            ReactDOM.render(<FileUpload />, fileUploadElement);
-        } else {
-            console.error('FileUpload element not found!');
-        }
-    });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const fileUploadElement = document.getElementById('file-upload');
+    //     if (fileUploadElement) {
+    //         ReactDOM.render(<FileUpload />, fileUploadElement);
+    //     } else {
+    //         console.error('FileUpload element not found!');
+    //     }
+    // });
 
     useEffect(() => {
     // 光のエフェクトを初期化
@@ -45,11 +44,12 @@ const App = () => {
     }, []);
 
     document.addEventListener('DOMContentLoaded', () => {
-    const fileUploadElement = document.getElementById('file-display');
-    if (fileUploadElement) {
-        ReactDOM.render(<FileDisplay />, fileUploadElement);
-    }
-});
+        // id="file-display" を探して、存在する場合のみ FileDisplay をレンダリング
+        const fileDisplayElement = document.getElementById('file-display');
+        if (fileDisplayElement) {
+            ReactDOM.render(<FileDisplay />, fileDisplayElement);
+        }
+    });
 
     // コンポーネントのレンダリング内容を返す
     return (

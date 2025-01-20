@@ -5076,10 +5076,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_searchForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/searchForm */ "./resources/js/components/searchForm.jsx");
 /* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/sidebar */ "./resources/js/components/sidebar.jsx");
-/* harmony import */ var _components_fileUpload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/fileUpload */ "./resources/js/components/fileUpload.jsx");
-/* harmony import */ var _components_lightEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/lightEffect */ "./resources/js/components/lightEffect.jsx");
-/* harmony import */ var _components_fileDisplay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/fileDisplay */ "./resources/js/components/fileDisplay.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_lightEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/lightEffect */ "./resources/js/components/lightEffect.jsx");
+/* harmony import */ var _components_fileDisplay__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/fileDisplay */ "./resources/js/components/fileDisplay.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -5107,37 +5106,38 @@ __webpack_require__(/*! ./components/Example */ "./resources/js/components/Examp
 
 
 
-
 // アプリケーションのメインコンポーネントを定義
 
 var App = function App() {
-  document.addEventListener('DOMContentLoaded', function () {
-    var fileUploadElement = document.getElementById('file-upload');
-    if (fileUploadElement) {
-      react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_fileUpload__WEBPACK_IMPORTED_MODULE_4__["default"], {}), fileUploadElement);
-    } else {
-      console.error('FileUpload element not found!');
-    }
-  });
+  // document.addEventListener('DOMContentLoaded', () => {
+  //     const fileUploadElement = document.getElementById('file-upload');
+  //     if (fileUploadElement) {
+  //         ReactDOM.render(<FileUpload />, fileUploadElement);
+  //     } else {
+  //         console.error('FileUpload element not found!');
+  //     }
+  // });
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // 光のエフェクトを初期化
-    (0,_components_lightEffect__WEBPACK_IMPORTED_MODULE_5__.randomizeLights)();
+    (0,_components_lightEffect__WEBPACK_IMPORTED_MODULE_4__.randomizeLights)();
   }, []);
   document.addEventListener('DOMContentLoaded', function () {
-    var fileUploadElement = document.getElementById('file-display');
-    if (fileUploadElement) {
-      react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_fileDisplay__WEBPACK_IMPORTED_MODULE_6__["default"], {}), fileUploadElement);
+    // id="file-display" を探して、存在する場合のみ FileDisplay をレンダリング
+    var fileDisplayElement = document.getElementById('file-display');
+    if (fileDisplayElement) {
+      react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_fileDisplay__WEBPACK_IMPORTED_MODULE_5__["default"], {}), fileDisplayElement);
     }
   });
 
   // コンポーネントのレンダリング内容を返す
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_searchForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
   });
 };
 
 // Appコンポーネントを#app要素内にレンダリング
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(App, {}), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(App, {}), document.getElementById('app'));
 
 /***/ }),
 
@@ -5295,64 +5295,6 @@ var FileDisplay = function FileDisplay() {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FileDisplay);
-
-/***/ }),
-
-/***/ "./resources/js/components/fileUpload.jsx":
-/*!************************************************!*\
-  !*** ./resources/js/components/fileUpload.jsx ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-var FileUpload = function FileUpload() {
-  // ファイル名を管理するstate
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('選択ファイル名'),
-    _useState2 = _slicedToArray(_useState, 2),
-    fileName = _useState2[0],
-    setFileName = _useState2[1];
-
-  // ファイル選択時のイベントハンドラ
-  var handleFileChange = function handleFileChange(event) {
-    if (event.target.files.length > 0) {
-      setFileName(event.target.files[0].name); // 最初に選択したファイル名をstateに保存
-    } else {
-      setFileName('選択ファイル名'); // ファイルが未選択の場合のデフォルト表示
-    }
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "file-upload",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-      className: "images_label",
-      htmlFor: "images",
-      children: "\u753B\u50CF\u3092\u9078\u629E"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "file",
-      name: "images",
-      id: "images",
-      multiple: true,
-      onChange: handleFileChange // イベントハンドラを設定
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      id: "file_name",
-      children: fileName
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FileUpload);
 
 /***/ }),
 
