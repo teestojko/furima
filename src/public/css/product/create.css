@@ -98,14 +98,12 @@
     background-color: #fbfbfb;
 }
 
-#images{
-    display: none;
-    cursor: pointer;
+.preview-image {
+    max-width: 100%;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-
-
-
-
 
 #price{
     width: 20%;
@@ -251,4 +249,13 @@
     position: absolute;
     bottom: 3%;
     right: 45%;
+}
+
+.form-file-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
 }

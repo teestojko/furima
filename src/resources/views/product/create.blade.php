@@ -20,15 +20,6 @@
                 @csrf
                 <div class="product_create_content">
                     <div class="content_title">
-                        画像
-                    </div>
-
-                    <!-- React FileUpload のマウントポイント -->
-                    <div id="file-upload"></div>
-
-                </div>
-                <div class="product_create_content">
-                    <div class="content_title">
                         商品名
                     </div>
                     <label class="name_label" for="name"></label>
@@ -113,6 +104,10 @@
                         {{ $message }}
                     </div>
                 @enderror
+
+                <!-- React FileDisplay のマウントポイント -->
+                <div id="file-display"></div>
+
                 <div class="product_create_button">
                     <button class="product_create_button_button" type="submit">
                         出品する
@@ -135,7 +130,9 @@
     <!-- React のエントリポイント -->
     <div id="app"></div>
 
+@section('scripts')
     <script src="{{ mix('js/app.js') }}"></script>
+@endsection
 
 @endsection
 
