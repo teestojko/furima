@@ -52,39 +52,55 @@
             <a href="{{ route('messages-index', ['receiver' => $product->user_id]) }}" class="btn message-create-btn">
                 メッセージを送る
             </a>
+            <button class="btn btn-danger" id="reportButton">
+                通報する
+            </button>
         </div>
+
+        <!-- 通報フォームのモーダル -->
+        <div id="reportModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <h2>通報フォーム</h2>
+                <form action="{{ route('reports.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="reported_product_id" value="{{ $product->id }}">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">通報理由</label>
+                        <textarea name="reason" id="reason" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">送信</button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
     @section('scripts')
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const images = document.querySelectorAll('.product_image');
-                images.forEach(image => {
-                    image.addEventListener('click', () => {
-                        // 背景ぼかし用のオーバーレイを作成
-                        const overlay = document.createElement('div');
-                        overlay.classList.add('modal-overlay');
-                        document.body.appendChild(overlay);
-                        // モーダルを作成
-                        const modal = document.createElement('div');
-                        modal.classList.add('modal');
-                        modal.innerHTML = `
-                            <div class="modal-content">
-                                <span class="close-button">&times;</span>
-                                <img src="${image.src}" class="modal-image">
-                            </div>
-                        `;
-                        document.body.appendChild(modal);
-                        // モーダルを閉じる処理
-                        modal.querySelector('.close-button').onclick = () => {
-                            modal.remove();
-                            overlay.remove(); // オーバーレイを削除
-                        };
-                    });
-                });
+            document.addEventListener('DOMContentLoaded', function () {
+            const reportButton = document.getElementById('reportButton');
+            const reportModal = document.getElementById('reportModal');
+            const closeModal = document.getElementById('closeModal');
+
+            // 通報ボタンをクリックしたらモーダルを表示
+            reportButton.addEventListener('click', () => {
+                reportModal.style.display = 'block';
             });
 
+            // 閉じるボタンをクリックしたらモーダルを非表示
+            closeModal.addEventListener('click', () => {
+                reportModal.style.display = 'none';
+            });
+
+            // モーダル外をクリックした場合も閉じる
+            window.addEventListener('click', (event) => {
+                if (event.target === reportModal) {
+                    reportModal.style.display = 'none';
+                }
+            });
+        });
         </script>
     @endsection
 @endsection
