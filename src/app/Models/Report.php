@@ -9,6 +9,13 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'reported_product_id',
+        'reported_user_id',
+        'reporter_user_id',
+        'reason',
+    ];
+
     public function reportedProduct()
     {
         return $this->belongsTo(Product::class, 'reported_product_id'); // 'reported_product_id'を使用
@@ -24,3 +31,5 @@ class Report extends Model
         return $this->belongsTo(User::class, 'reporter_user_id');
     }
 }
+
+

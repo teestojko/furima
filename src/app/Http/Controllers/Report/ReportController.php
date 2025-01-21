@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Report;
 
 class ReportController extends Controller
 {
+
+    public function create()
+    {
+        return view('report.report'); // 通報フォーム用のBladeテンプレートを返す
+    }
+
     public function store(Request $request)
 {
     $request->validate([
@@ -21,8 +28,8 @@ class ReportController extends Controller
         'reporter_user_id' => auth()->id(),
         'reason' => $request->reason,
     ]);
-
     return back()->with('success', '通報が送信されました。');
 }
-
 }
+
+

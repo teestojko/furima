@@ -24,6 +24,7 @@ use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Sale\SaleController;
 use App\Http\Controllers\Notification\NotificationController;
+use App\Http\Controllers\Report\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +115,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/notifications/mark-read/{notificationId}', [NotificationController::class, 'markAsReadAndMessageDetail'])->name('notifications-mark-read-and-message-detail');
         Route::get('/notifications/message/{notificationId}', [NotificationController::class, 'messageDetail'])->name('notifications-message-detail');
 
-
+        Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
+        Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
     });
 });
 
