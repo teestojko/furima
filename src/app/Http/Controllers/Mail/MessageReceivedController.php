@@ -37,6 +37,14 @@ class MessageReceivedController extends Controller
             $notificationData,
             Auth::user()   // 通知の内容
         );
+
+        // メール送信: 受信者にメッセージを通知するためのメールを送信
+        $receiver = User::find($receiverId);
+        Mail::to($receiver->email)->send(new MessageReceived($message));
+
         return redirect()->back()->with('success', 'メッセージが送信されました。');
     }
 }
+
+
+
