@@ -46,5 +46,3 @@ class MessageReceivedController extends Controller
     }
 }
 
-
-

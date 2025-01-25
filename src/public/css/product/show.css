@@ -73,21 +73,6 @@
     background-color: #e08181;
 }
 
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 95%;
-    max-width: 1000px;
-    max-height: 80vh; /* 高さ制限とスクロール */
-    overflow-y: auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
 .modal-content {
     position: relative;
     padding: 20px;

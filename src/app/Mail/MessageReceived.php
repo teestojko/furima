@@ -36,3 +36,4 @@ class MessageReceived extends Mailable
                     ]);
     }
 }
+

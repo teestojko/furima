@@ -86,7 +86,7 @@
 
             // 通報ボタンをクリックしたらモーダルを表示
             reportButton.addEventListener('click', () => {
-                reportModal.style.display = 'block';
+                reportModal.style.display = 'flex';
             });
 
             // 閉じるボタンをクリックしたらモーダルを非表示
