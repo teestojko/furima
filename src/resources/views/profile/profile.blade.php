@@ -54,7 +54,11 @@
             @foreach ($products as $product)
                 <div class="sale_content">
                     <div class="sale_section">
-                        <img src="{{ asset($product->images->first()->path) }}" class="profile_sale_image" alt="{{ $product->name }}">
+                        @if ($product->images->isNotEmpty())
+                            <img src="{{ asset($product->images->first()->path) }}" class="profile_sale_image" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ asset('default-image-path.jpg') }}" class="profile_sale_image" alt="デフォルト画像">
+                        @endif
                         <div class="sale_item">
                             <h5 class="sale_title">
                                 {{ $product->name }}

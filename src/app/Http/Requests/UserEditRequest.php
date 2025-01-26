@@ -27,8 +27,7 @@ class UserEditRequest extends FormRequest
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
+            'new_password' => 'nullable|min:8|confirmed',
         ];
     }
 

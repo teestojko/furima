@@ -25,7 +25,7 @@ const FileDisplay = () => {
             <input
                 type="file"
                 id="images"
-                name="images"
+                name="images[]"
                 multiple
                 className="form-file-input"
                 onChange={handleFileChange}
