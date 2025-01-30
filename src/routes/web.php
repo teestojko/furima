@@ -114,9 +114,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/notification/show', [NotificationController::class, 'showNotification'])->name('notifications-show');
         Route::get('/notifications/mark-read/{notificationId}', [NotificationController::class, 'markAsReadAndMessageDetail'])->name('notifications-mark-read-and-message-detail');
         Route::get('/notifications/message/{notificationId}', [NotificationController::class, 'messageDetail'])->name('notifications-message-detail');
-
-        Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
-        Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
     });
 });
 
