@@ -52,9 +52,6 @@
             <a href="{{ route('messages-index', ['receiver' => $product->user_id]) }}" class="btn message-create-btn">
                 メッセージを送る
             </a>
-            <button class="btn btn-danger" id="reportButton">
-                通報する
-            </button>
         </div>
 
         <!-- 通報フォームのモーダル -->
