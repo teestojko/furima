@@ -36,7 +36,11 @@
                     @php
                         $notificationData = json_decode($notification->data, true);
                     @endphp
-                    <li>{{ $notificationData['message'] }}</li>
+                    <li>
+                        <a href="{{ route('notifications-mark-read-and-message-detail', ['notificationId' => $notification->id]) }}">
+                            {{ $notificationData['message'] }}
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         @endif

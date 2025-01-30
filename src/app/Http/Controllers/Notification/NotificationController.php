@@ -24,6 +24,7 @@ class NotificationController extends Controller
             // 最新のメッセージを先頭に取得
             ->latest()
             ->get();
+        // dd($messages);
 
         $notifications = Notification::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
