@@ -3,9 +3,14 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/mail/message_received.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
+
+    <div id="sidebar"></div>
+
+
     <form action="{{ route('messages-send-email', $receiverId) }}" method="POST">
         @csrf
         <div class="send_email_section">
@@ -40,4 +45,11 @@
             @endif
         </div>
     </form>
+
+    <div id="app"></div>
+    <script src="{{ mix('js/app.js') }}"></script>
+
 @endsection
+
+
+

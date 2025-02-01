@@ -3,11 +3,15 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/product/show.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="product_show">
     <div class="product_show_inner">
+
+        <div id="sidebar"></div>
+
         <div class="product_show_name">
             {{ $product->name }}
         </div>
@@ -38,9 +42,6 @@
             出品者: {{ $product->user->name ?? '匿名' }}
         </div>
         <div class="product_show_link">
-            <a href="{{ route('user-index') }}" class="btn back_button">
-                一覧に戻る
-            </a>
             @can('update', $product)
                 <a href="{{ route('products-edit', $product->id) }}" class="btn edit_button">
                     編集する
@@ -53,9 +54,19 @@
                 メッセージを送る
             </a>
         </div>
+    </div>
+</div>
+
+    <div id="app"></div>
+    <script src="{{ mix('js/app.js') }}"></script>
+
+@endsection
+
+
+
 
         <!-- 通報フォームのモーダル -->
-        <div id="reportModal" class="modal" style="display: none;">
+        {{-- <div id="reportModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close-button" id="closeModal">&times;</span>
                 <h2>通報フォーム</h2>
@@ -69,12 +80,10 @@
                     <button type="submit" class="btn btn-primary">送信</button>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
-    </div>
-</div>
 
-    @section('scripts')
+    {{-- @section('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
             const reportButton = document.getElementById('reportButton');
@@ -99,5 +108,5 @@
             });
         });
         </script>
-    @endsection
-@endsection
+    @endsection --}}
+

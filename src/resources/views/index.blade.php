@@ -12,6 +12,8 @@
     <div id="categories" data-categories='@json($categories)'></div>
     <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
 
+    <div id="sidebar"></div>
+
     <div class="index">
         <div class="index_inner">
 
@@ -19,7 +21,7 @@
                 <div class="light-effect"></div>
             @endfor
 
-            <div id="sidebar"></div>
+            <div id="search-form"></div>
 
             <div class="product_content">
                 <div class="product_title">

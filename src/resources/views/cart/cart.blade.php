@@ -3,10 +3,14 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/cart/cart.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
     <div class="cart">
+
+        <div id="sidebar"></div>
+
         <h2 class="cart_title">カート</h2>
         <div class="cart_buttons">
             <!-- 全選択ボタン -->
@@ -54,7 +58,10 @@
         @endif
     </div>
 
-    <script>
+    <div id="app"></div>
+
+
+    <script src="{{ mix('js/app.js') }}">
         // 全選択ボタンのイベント
         document.getElementById('select-all-btn').addEventListener('click', function() {
             const checkboxes = document.querySelectorAll('.cart-checkbox');
@@ -66,6 +73,12 @@
             const checkboxes = document.querySelectorAll('.cart-checkbox');
             checkboxes.forEach(checkbox => checkbox.checked = false);
         });
+
     </script>
 
 @endsection
+
+        {{-- <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
+        <div id="sidebar"></div>
+        <div id="app"></div>
+        <script src="{{ mix('js/app.js') }}"></script> --}}

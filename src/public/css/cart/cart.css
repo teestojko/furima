@@ -77,11 +77,6 @@
     margin-bottom: 10px;
 }
 
-.cart_link{
-    display: flex;
-    justify-content: space-around;
-}
-
 .btn {
     display: inline-block;
     background-color: #ff6a9c;

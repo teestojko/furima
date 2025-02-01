@@ -8,6 +8,13 @@
 @section('content')
     <div class="user_edit">
         <div class="user_edit_inner">
+                
+            <div class="sale_profile">
+                <a class="profile_link" href="{{ route('profile-show', Auth::user()->id) }}">
+                    プロフィールへ戻る
+                </a>
+            </div>
+
             <div class="user_edit_title">
                 プロフィール編集
             </div>
@@ -105,11 +112,6 @@
                     </button>
                 </div>
             </form>
-            <div class="user_edit_back_button">
-                <a class="user_edit_back_button_link" href="{{ route('profile-show', Auth::user()->id)}}">
-                    戻る
-                </a>
-            </div>
         </div>
     </div>
     <script>

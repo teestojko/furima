@@ -10,7 +10,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 100vh;
     width: 20px; /* 初期は狭い */
     background-color: #cfcfff;
     overflow: hidden;
@@ -89,6 +89,7 @@ body {
     flex-wrap: wrap;
 }
 
+.index_link,
 .products_create_link,
 .profile_link,
 .cart_link,
@@ -105,6 +106,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.index_link:hover,
 .products_create_link:hover,
 .user_edit_link:hover,
 .profile_link:hover,

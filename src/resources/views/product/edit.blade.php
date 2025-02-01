@@ -3,9 +3,13 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/product/edit.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
+
+    <div id="sidebar"></div>
+
     <form action="{{ route('products-update', $product->id) }}" method="POST" enctype="multipart/form-data" class="product-form">
     @csrf
     @method('PUT')
