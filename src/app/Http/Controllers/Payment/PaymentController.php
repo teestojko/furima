@@ -33,7 +33,7 @@ class PaymentController extends Controller
         try {
             $selectedItems = session('selected_items');
             $totalAmount = session('total_amount');
-            $discountedAmount = session('discounted_amount', $totalAmount);
+            $discountedAmount = session('discounted_amount', $totalAmount); // $totalAmountは、'discounted_amount'が存在しない場合のデフォルト値
 
             // 顧客情報の作成
             $customer = Customer::create([

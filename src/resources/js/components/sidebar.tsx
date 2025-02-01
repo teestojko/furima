@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import "../styles/sidebar.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
-const Sidebar = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const userId = 1;
+const Sidebar: React.FC = () => {
+    // 状態管理の型を指定
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+
+    // userId の型を number に指定
+    const userId: number = 1;
 
     return (
         <div
@@ -14,7 +17,12 @@ const Sidebar = () => {
         >
             <div className={`sidebar ${isHovered ? "visible" : "hidden"}`}>
                 <div className="index_nav">
-
+                    <a
+                        className={`index_link ${isHovered ? "hovered" : ""}`}
+                        href="/"
+                    >
+                        <i className="fas fa-home"></i> ホーム
+                    </a>
                     <a
                         className={`products_create_link ${isHovered ? "hovered" : ""}`}
                         href="/products/create"
@@ -43,7 +51,7 @@ const Sidebar = () => {
                         className={`my_page_link ${isHovered ? "hovered" : ""}`}
                         href="/my_page"
                     >
-                        <i className="fas fa-home"></i> マイページ
+                        <i className="fas fa-user"></i> マイページ
                     </a>
                 </div>
             </div>
@@ -53,5 +61,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
 

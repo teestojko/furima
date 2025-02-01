@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import '../styles/searchForm.css';
 
-const SearchForm = () => {
-    // カテゴリデータとフィルターURLのstate
-    const [categories, setCategories] = useState([]);
-    const [filterUrl, setFilterUrl] = useState('');
+// カテゴリの型定義
+interface Category {
+    id: number;
+    name: string;
+}
 
-    const [isFormVisible, setIsFormVisible] = useState(false);
-    const [category, setCategory] = useState('');
-    const [productName, setProductName] = useState('');
-    const [minPrice, setMinPrice] = useState('');
-    const [maxPrice, setMaxPrice] = useState('');
-    const [priceOrder, setPriceOrder] = useState('');
-    const [popularity, setPopularity] = useState('');
+const SearchForm: React.FC = () => {
+    // Stateの型指定
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [filterUrl, setFilterUrl] = useState<string>('');
+    const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+    const [category, setCategory] = useState<string>('');
+    const [productName, setProductName] = useState<string>('');
+    const [minPrice, setMinPrice] = useState<string>('');
+    const [maxPrice, setMaxPrice] = useState<string>('');
+    const [priceOrder, setPriceOrder] = useState<string>('');
+    const [popularity, setPopularity] = useState<string>('');
 
-    // コンポーネントが初めて描画されたときに実行される副作用処理
     useEffect(() => {
         // DOM内のカテゴリ情報が埋め込まれた要素を取得
         const categoriesElement = document.getElementById('categories');
@@ -23,8 +27,8 @@ const SearchForm = () => {
 
         // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
         if (categoriesElement && filterUrlElement) {
-            setCategories(JSON.parse(categoriesElement.dataset.categories)); // JSON文字列を配列に変換して設定
-            setFilterUrl(filterUrlElement.dataset.url); // URLを文字列として設定
+            setCategories(JSON.parse(categoriesElement.dataset.categories || '[]'));
+            setFilterUrl(filterUrlElement.dataset.url || '');
         }
     }, []);
 
@@ -34,6 +38,30 @@ const SearchForm = () => {
 
     const closeSearchForm = () => {
         setIsFormVisible(false);
+    };
+
+    const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setCategory(e.target.value);
+    };
+
+    const handleProductNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setProductName(e.target.value);
+    };
+
+    const handleMinPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setMinPrice(e.target.value);
+    };
+
+    const handleMaxPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setMaxPrice(e.target.value);
+    };
+
+    const handlePriceOrderChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setPriceOrder(e.target.value);
+    };
+
+    const handlePopularityChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setPopularity(e.target.value);
     };
 
     return (
@@ -61,7 +89,7 @@ const SearchForm = () => {
                                     value={category}
                                     name="category_id"
                                     id="category_id"
-                                    onChange={(e) => setCategory(e.target.value)}
+                                    onChange={handleCategoryChange}
                                 >
                                     <option value="">All category</option>
                                     {categories.map((cat) => (
@@ -84,7 +112,7 @@ const SearchForm = () => {
                                     id="product_name"
                                     className="search_input"
                                     placeholder="Search ..."
-                                    onChange={(e) => setProductName(e.target.value)}
+                                    onChange={handleProductNameChange}
                                 />
                             </div>
 
@@ -99,7 +127,7 @@ const SearchForm = () => {
                                     name="min_price"
                                     id="min_price"
                                     placeholder="Min"
-                                    onChange={(e) => setMinPrice(e.target.value)}
+                                    onChange={handleMinPriceChange}
                                 />
                                 <input
                                     type="number"
@@ -107,7 +135,7 @@ const SearchForm = () => {
                                     name="max_price"
                                     id="max_price"
                                     placeholder="Max"
-                                    onChange={(e) => setMaxPrice(e.target.value)}
+                                    onChange={handleMaxPriceChange}
                                 />
                             </div>
 
@@ -120,7 +148,7 @@ const SearchForm = () => {
                                     value={priceOrder}
                                     name="price_order"
                                     id="price_order"
-                                    onChange={(e) => setPriceOrder(e.target.value)}
+                                    onChange={handlePriceOrderChange}
                                 >
                                     <option value="">Select</option>
                                     <option value="asc">安い順</option>
@@ -137,7 +165,7 @@ const SearchForm = () => {
                                     value={popularity}
                                     name="popularity"
                                     id="popularity"
-                                    onChange={(e) => setPopularity(e.target.value)}
+                                    onChange={handlePopularityChange}
                                 >
                                     <option value="">Select</option>
                                     <option value="desc">人気順</option>

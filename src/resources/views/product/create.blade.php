@@ -114,11 +114,6 @@
                     </button>
                 </div>
             </form>
-            <div class="product_create_back_button">
-                <a class="product_create_back_button_link" href="{{ route('user-index')}}">
-                    戻る
-                </a>
-            </div>
         </div>
         @if (session('success'))
             <p class="success_message">
