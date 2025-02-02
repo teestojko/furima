@@ -33,7 +33,7 @@ class PaymentController extends Controller
         try {
             $selectedItems = session('selected_items');
             $totalAmount = session('total_amount');
-            $discountedAmount = session('discounted_amount', $totalAmount); // $totalAmountは、'discounted_amount'が存在しない場合のデフォルト値
+            $discountedAmount = session('discounted_amount', $totalAmount);
 
             // 顧客情報の作成
             $customer = Customer::create([
@@ -44,37 +44,42 @@ class PaymentController extends Controller
             // 支払い処理
             $charge = Charge::create([
                 'customer' => $customer->id,
-                'amount' => $discountedAmount, // 出品者が設定した金額を購入者が支払う
+                'amount' => $discountedAmount,
                 'currency' => 'jpy',
             ]);
 
-            // 注文を作成
+            // **手数料を計算**
+            $commissionRate = config('fees.commission_rate'); // 例: 5% (0.05)
+            $commissionFee = $discountedAmount * $commissionRate; // **全体の手数料**
+            $totalSellerRevenue = $discountedAmount - $commissionFee; // **全体の出品者収益**
+
+            // **注文を作成**
             $order = new Order([
                 'user_id' => Auth::id(),
-                'status_id' => 2, // 保留中などの初期状態
-                'total_price' => $discountedAmount, // 合計金額
+                'status_id' => 2, // 保留中
+                'total_price' => $discountedAmount,
+                'commission_fee' => $commissionFee, // **手数料**
+                'seller_revenue' => $totalSellerRevenue, // **出品者の収益**
                 'order_date' => now(),
             ]);
             $order->save();
 
-            // 注文アイテムを作成
+            // **注文アイテムを作成**
             foreach ($selectedItems as $cartId) {
                 $cart = Cart::find($cartId);
                 if ($cart) {
                     $productPrice = $cart->product->price;
                     $discountedProductPrice = $discountedAmount * ($productPrice * $cart->quantity) / $totalAmount;
-                    $commissionRate = config('fees.commission_rate');
                     $fee = $discountedProductPrice * $commissionRate;
-                    $sellerRevenue = $discountedProductPrice - $fee; // 出品者の収益
+                    $sellerRevenue = $discountedProductPrice - $fee;
 
-                    // OrderItemの作成
                     $orderItem = new OrderItem([
                         'order_id' => $order->id,
                         'product_id' => $cart->product_id,
                         'quantity' => $cart->quantity,
                         'price' => $discountedProductPrice,
-                        'commission_fee' => $fee, // 手数料
-                        'seller_revenue' => $sellerRevenue, // 出品者の収益
+                        'commission_fee' => $fee,
+                        'seller_revenue' => $sellerRevenue,
                     ]);
                     $orderItem->save();
                     $cart->delete();
@@ -84,7 +89,7 @@ class PaymentController extends Controller
             return view('payment.success');
 
         } catch (Exception $e) {
-            return back()->with('error', $e->getMessage()); // エラーハンドリング
+            return back()->with('error', $e->getMessage());
         }
     }
 }

@@ -61,7 +61,8 @@
     <div id="app"></div>
 
 
-    <script src="{{ mix('js/app.js') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script>
         // 全選択ボタンのイベント
         document.getElementById('select-all-btn').addEventListener('click', function() {
             const checkboxes = document.querySelectorAll('.cart-checkbox');
@@ -73,7 +74,6 @@
             const checkboxes = document.querySelectorAll('.cart-checkbox');
             checkboxes.forEach(checkbox => checkbox.checked = false);
         });
-
     </script>
 
 @endsection
