@@ -25,11 +25,6 @@
                     <label class="name_label" for="name"></label>
                     <input type="text" name="name" id="name" value="{{ old('name') }}">
                 </div>
-                @error('name')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
                 <div class="product_create_content">
                     <div class="content_title">
                         価格
@@ -37,11 +32,6 @@
                     <label class="price_lavel" for="price"></label>
                     <input type="number" name="price" id="price" value="{{ old('price') }}">
                 </div>
-                @error('price')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
                 <div class="product_create_content">
                     <div class="content_title">
                         在庫
@@ -49,11 +39,6 @@
                     <label class="stock_lavel" for="stock"></label>
                     <input type="number" name="stock" id="stock" value="{{ old('stock') }}">
                 </div>
-                @error('stock')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
                 <div class="product_create_content">
                     <div class="content_title">
                         カテゴリー
@@ -61,7 +46,7 @@
                     <label class="category_label" for="category"></label>
                     <select name="category_id" id="category">
                         <option value="">
-                            選択してください
+                            選択
                         </option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
@@ -70,28 +55,18 @@
                         @endforeach
                     </select>
                 </div>
-                @error('category_id')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
                 <div class="product_create_content">
                     <div class="content_title">
-                        商品の状態
+                        状態
                     </div>
                     <label class="condition_label" for="condition"></label>
                     <select name="condition_id" id="condition">
-                        <option value="">選択してください</option>
+                        <option value="">選択</option>
                         @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                @error('condition_id')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
                 <div class="product_create_content2">
                     <div class="content_title2">
                         詳細
@@ -99,11 +74,6 @@
                     <label class="detail_label" for="detail"></label>
                     <textarea name="detail" id="detail">{{ old('detail') }}</textarea>
                 </div>
-                @error('detail')
-                    <div class="error_message">
-                        {{ $message }}
-                    </div>
-                @enderror
 
                 <!-- React FileDisplay のマウントポイント -->
                 <div id="file-display"></div>
@@ -115,11 +85,25 @@
                 </div>
             </form>
         </div>
-        @if (session('success'))
-            <p class="success_message">
-                {{ session('success') }}
-            </p>
-        @endif
+        <div class="alert_messages">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <h3>エラーが発生しました：</h3>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="error_message">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    <p class="success_message">{{ session('success') }}</p>
+                </div>
+            @endif
+        </div>
+
     </div>
 
     <!-- React のエントリポイント -->
