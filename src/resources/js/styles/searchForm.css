@@ -14,8 +14,8 @@
 
 #toggle-search-btn{
     position: absolute;
-    top: 100px;
-    right: 100px;
+    top: 5%;
+    right: 10%;
     padding: 10px 20px;
     background-color: #ffffff;
     border: none;
@@ -143,3 +143,4 @@
 .placeholder {
     color: #6c757d;
 }
+
