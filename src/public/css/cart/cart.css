@@ -2,11 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    min-height: 100vh;
+    min-height: 89vh;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart_inner{
+    width: 100%;
+    height: 100%;
 }
 
 .cart_buttons{
@@ -30,6 +35,20 @@
     margin-bottom: 20px;
     font-family: 'Arial', sans-serif;
 }
+
+.cart_empty_message {
+    width: 80%;
+    margin: 5% auto;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 文字に影をつけて目立たせる */
+    padding: 10px;
+    border: 2px solid #f8ffac;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fff0f0, #ffe6e6); /* 赤系のグラデーション背景 */
+}
+
 
 .cart_content{
     width: 100%;
@@ -125,8 +144,40 @@ form button[type="submit"]:hover {
     background-color: white;
 }
 
-#product-list{
+#product_list{
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
+
+.btn_content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.success_message, .error_message {
+    opacity: 0;
+    transform: translateY(20px); /* メッセージを下に少し移動させる */
+    animation: float 0.5s forwards; /* アニメーションを適用 */
+    transition: opacity 0.5s ease; /* フェードインの効果 */
+    color: #937b5e;
+}
+
+@keyframes float {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* 元の位置に戻す */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cart_section {
+    width: 250px;
+    height: 250px;
+}
+}
+

@@ -87,9 +87,9 @@
         </div>
         <div class="alert_messages">
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert_danger">
                     <h3>エラーが発生しました：</h3>
-                    <ul>
+                    <ul class="error_ul">
                         @foreach ($errors->all() as $error)
                             <li class="error_message">{{ $error }}</li>
                         @endforeach
@@ -98,7 +98,7 @@
             @endif
 
             @if(session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert_success">
                     <p class="success_message">{{ session('success') }}</p>
                 </div>
             @endif

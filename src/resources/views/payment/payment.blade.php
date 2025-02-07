@@ -39,10 +39,11 @@
             </form>
         </div>
         @if ($errors->any())
-            <div class="alert-danger">
-                <ul>
+            <div class="alert alert_danger">
+                <h3>エラーが発生しました：</h3>
+                <ul class="error_ul">
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="error_message">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
