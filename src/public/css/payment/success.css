@@ -1,25 +1,53 @@
-.reserve_content{
-    width: 40%;
-    height: 30vh;
-    margin: 5% 30%;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    border: 1px solid;
-    border-color: rgb(214, 214, 214);
+.reserve_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.reserve_main {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    align-content: center;
+    width: 350px;
 }
 
-.reserve_thanks_massage{
-    margin-bottom: 10%;
-    font-size: 1.1rem;
+.reserve_thanks_massage {
+    font-size: 24px;
     font-weight: bold;
+    color: #333;
+    margin: 10px 0;
 }
 
-.reserve_nav{
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
+.reserve_main::before {
+    content: "\f058"; /* Font Awesome チェックマーク */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 50px;
+    color: #28a745;
+    display: block;
+    margin-bottom: 15px;
 }
+
+.reserve_nav {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.reserve_nav:hover {
+    background: #0056b3;
+}
+
+
+

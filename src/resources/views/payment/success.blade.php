@@ -9,11 +9,16 @@
     <div class="reserve_content">
         <div class="reserve_main">
             <div class="reserve_thanks_massage">
-                お支払いが完了しました
+                お支払いが
+            </div>
+            <div class="reserve_thanks_massage">
+                完了しました
             </div>
             <a class="reserve_nav" href="{{ route('user-index') }}">
-                ホーム画面へ戻る
+                ホームへ
             </a>
         </div>
     </div>
 @endsection
+
+
