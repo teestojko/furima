@@ -2,11 +2,15 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/payment/payment.css') }}">
+<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endsection
 
 @section('content')
     <div class="payment_main">
+
+        <div id="sidebar"></div>
+
         <div class="content_main">
             <div class="title">
                 決済ページ
@@ -49,4 +53,10 @@
             </div>
         @endif
     </div>
+
+    <!-- React のエントリポイント -->
+    <div id="app"></div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+
 @endsection

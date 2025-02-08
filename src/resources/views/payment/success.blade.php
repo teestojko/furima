@@ -18,6 +18,11 @@
                 ホームへ
             </a>
         </div>
+        @if(isset($message))
+            <div class="alert alert_success">
+                <p class="success_message">{{ $message }}</p>
+            </div>
+        @endif
     </div>
 @endsection
 
