@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'points',
     ];
 
     /**
@@ -86,5 +87,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reports()
     {
         return $this->hasMany(Report::class, 'reporter_user_id');
+    }
+
+    public function addPoints($points)
+    {
+        $this->increment('points', $points); // ポイント加算
+    }
+
+    public function deductPoints($points)
+    {
+        $this->decrement('points', $points); // ポイント減算
     }
 }

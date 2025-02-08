@@ -34,6 +34,7 @@ class PaymentController extends Controller
             $selectedItems = session('selected_items');
             $totalAmount = session('total_amount');
             $discountedAmount = session('discounted_amount', $totalAmount);
+            $user = Auth::user();
 
             // 顧客情報の作成
             $customer = Customer::create([
@@ -48,18 +49,18 @@ class PaymentController extends Controller
                 'currency' => 'jpy',
             ]);
 
-            // **手数料を計算**
+            // 手数料を計算
             $commissionRate = config('fees.commission_rate'); // 例: 5% (0.05)
-            $commissionFee = $discountedAmount * $commissionRate; // **全体の手数料**
-            $totalSellerRevenue = $discountedAmount - $commissionFee; // **全体の出品者収益**
+            $commissionFee = $discountedAmount * $commissionRate;
+            $totalSellerRevenue = $discountedAmount - $commissionFee;
 
             // **注文を作成**
             $order = new Order([
-                'user_id' => Auth::id(),
+                'user_id' => $user->id,
                 'status_id' => 2, // 保留中
                 'total_price' => $discountedAmount,
-                'commission_fee' => $commissionFee, // **手数料**
-                'seller_revenue' => $totalSellerRevenue, // **出品者の収益**
+                'commission_fee' => $commissionFee,
+                'seller_revenue' => $totalSellerRevenue,
                 'order_date' => now(),
             ]);
             $order->save();
@@ -86,10 +87,16 @@ class PaymentController extends Controller
                 }
             }
 
-            return view('payment.success');
+            // **ポイントを付与（1%還元）**
+            $pointRate = 0.01; // 1%
+            $earnedPoints = floor($discountedAmount * $pointRate); // 小数点切り捨て
+            $user->addPoints($earnedPoints);
+
+            return view('payment.success')->with('message', "$earnedPoints ポイントを獲得しました！");
 
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
 }
+
