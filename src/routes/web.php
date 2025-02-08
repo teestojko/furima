@@ -89,9 +89,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile-show');
 
+        Route::get('/cart', [CartController::class, 'view'])->name('cart-view');
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart-add');
         Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart-remove');
-        Route::get('/cart', [CartController::class, 'view'])->name('cart-view');
         Route::post('/cart/purchase', [CartController::class, 'preparePayment'])->name('cart-purchase');
 
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
@@ -102,6 +102,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
         Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
+
+        Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
+
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
         Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
