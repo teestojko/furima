@@ -91,11 +91,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function addPoints($points)
     {
-        $this->increment('points', $points); // ポイント加算
+        $this->points += $points;
+        $this->save();
     }
 
-    public function deductPoints($points)
-    {
-        $this->decrement('points', $points); // ポイント減算
-    }
 }

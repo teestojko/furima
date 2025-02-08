@@ -16,6 +16,25 @@
     text-align: center;
 }
 
+.cart_back_btn {
+    position: absolute;
+    top: 12%;
+    right: 10%;
+    text-align: center;
+    margin: 10px 0;
+    background-color: #fff9f9;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart_back_btn:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 .title {
     font-size: 24px;
     font-weight: bold;
