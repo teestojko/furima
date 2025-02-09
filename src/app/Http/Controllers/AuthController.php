@@ -34,6 +34,7 @@ class AuthController extends Controller
         $products = Product::with('user', 'images')->get();
         $reviews = Review::all();
         $tags = Tag::all();
-        return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags'));
+        $points = $user ? $user->points : 0;
+        return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points'));
     }
 }
