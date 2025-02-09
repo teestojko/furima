@@ -27,6 +27,12 @@
                 <div class="product_title">
                     商品一覧
                 </div>
+                <div class="index_points">
+                    <div class="user-points">
+                        <span class="points-label">保有ポイント:</span>
+                        <span class="points-value">{{ number_format($points) }} pt</span>
+                    </div>
+                </div>
                 <div class="product_list">
                     @foreach ($products as $product)
                         <div class="product_item">
