@@ -14,7 +14,7 @@ class CouponController extends Controller
 {
     public function index()
     {
-        $coupons = Coupon::all();
+        $coupons = Coupon::where('user_id', Auth::id())->get();
         return view('coupon.coupon', compact('coupons'));
     }
 
@@ -26,6 +26,7 @@ class CouponController extends Controller
             ->where('is_active', true)
             ->whereDate('valid_from', '<=', now())
             ->whereDate('valid_until', '>=', now())
+            ->where('user_id', auth()->id())
             ->first();
         if (!$coupon) {
             return back()->withErrors(['coupon_code' => 'クーポンが無効ですまたは有効期限が切れています']);
@@ -57,6 +58,23 @@ class CouponController extends Controller
         session(['discounted_amount' => $discountedAmount]);
 
         return back();
+    }
+
+    public function claim($id)
+    {
+        $coupon = Coupon::where('id', $id)
+                        ->whereNull('user_id') // まだ誰も取得していないクーポン
+                        ->where('is_active', true)
+                        ->first();
+
+        if (!$coupon) {
+            return back()->with('error', 'このクーポンは取得できません');
+        }
+
+        // ログインユーザーを紐づける
+        $coupon->update(['user_id' => Auth::id()]);
+
+        return back()->with('success', 'クーポンを獲得しました！');
     }
 
 }

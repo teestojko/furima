@@ -61,14 +61,14 @@ class PaymentController extends Controller
 
             // 手数料を計算
             $commissionRate = config('fees.commission_rate'); // 例: 5% (0.05)
-            $commissionFee = $discountedAmount * $commissionRate;
-            $totalSellerRevenue = $discountedAmount - $commissionFee;
+            $commissionFee = $finalAmount * $commissionRate;
+            $totalSellerRevenue = $finalAmount - $commissionFee;
 
             // **注文を作成**
             $order = new Order([
                 'user_id' => $user->id,
                 'status_id' => 2, // 保留中
-                'total_price' => $discountedAmount,
+                'total_price' => $finalAmount,
                 'commission_fee' => $commissionFee,
                 'seller_revenue' => $totalSellerRevenue,
                 'order_date' => now(),
@@ -80,7 +80,7 @@ class PaymentController extends Controller
                 $cart = Cart::find($cartId);
                 if ($cart) {
                     $productPrice = $cart->product->price;
-                    $discountedProductPrice = $discountedAmount * ($productPrice * $cart->quantity) / $totalAmount;
+                    $discountedProductPrice = $finalAmount * ($productPrice * $cart->quantity) / $totalAmount;
                     $fee = $discountedProductPrice * $commissionRate;
                     $sellerRevenue = $discountedProductPrice - $fee;
 

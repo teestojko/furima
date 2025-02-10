@@ -1,54 +1,55 @@
 @extends('layout.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endsection
 
 @section('content')
-<div class="login">
-    <div class="login__content">
-        <div class="login-form__heading">
-            <h2>ログイン</h2>
+    <div class="login_content">
+        <div class="login_detail">
+            <div class="login_form">
+                <div class="login_form_heading">
+                    <div class="login_title">
+                        Login
+                    </div>
+                </div>
+                <form class="form" action="{{ route('login') }}" method="post">
+                    @csrf
+                        <div class="form_group_content">
+                            <div class="form_input_text">
+                                <i class="fas fa-envelope fa-xl" ></i>
+                                <input class="email_input" type="email" name="email" value="{{ old('email') }}" placeholder="Email"/>
+                            </div>
+                        </div>
+                        <div class="form_group_content2">
+                            <div class="form_input_text">
+                                <i class="fa-solid fa-lock fa-xl"></i>
+                                <input class="password_input" type="password" name="password" placeholder="Password"/>
+                            </div>
+                        </div>
+                    <div class="form_button">
+                        <button class="form_button_submit" type="submit">
+                            ログイン
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-            <form class="form" action="/login" method="post">
-                @csrf
-            <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">メールアドレス</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                <input type="email" name="email" value="{{ old('email') }}" />
-                </div>
-                <div class="form__error">
-                @error('email')
+        <div class="form_error">
+            @error('email')
                 {{ $message }}
-                @enderror
-                </div>
-            </div>
-            </div>
-            <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">パスワード</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                <input type="password" name="password" />
-                </div>
-                <div class="form__error">
-                @error('password')
+            @enderror
+        </div>
+        <div class="form_error">
+            @error('password')
                 {{ $message }}
-                @enderror
-                </div>
-            </div>
-            </div>
-            <div class="form__button">
-            <button class="form__button-submit" type="submit">ログイン</button>
-            </div>
-        </form>
-        <div class="register__link">
-            <a class="register__button-submit" href="/register">会員登録の方はこちら</a>
+            @enderror
+        </div>
+        <div class="login_buttons">
+            <a href="{{ route('admin-login') }}" class="login_button admin_button">
+                管理者ログイン
+            </a>
         </div>
     </div>
-</div>
 @endsection

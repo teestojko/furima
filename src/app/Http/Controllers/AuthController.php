@@ -12,6 +12,7 @@ use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Tag;
+use App\Models\Coupon;
 
 class AuthController extends Controller
 {
@@ -35,6 +36,9 @@ class AuthController extends Controller
         $reviews = Review::all();
         $tags = Tag::all();
         $points = $user ? $user->points : 0;
-        return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points'));
+        $coupons = Coupon::where('is_active', true)->get();
+
+        return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points','coupons'));
     }
 }
+

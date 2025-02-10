@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
         Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
+        Route::post('/coupons/{id}/claim', [CouponController::class, 'claim'])->name('coupons.claim');
 
         Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
 
