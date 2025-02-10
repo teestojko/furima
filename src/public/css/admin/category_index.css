@@ -1,0 +1,154 @@
+/* sanitize.css の上に適用 */
+.category_index {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category_index_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category_index_title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.category_create_link {
+    display: inline-block;
+    text-align: center;
+    background: #007bff;
+    color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.category_create_link:hover {
+    background: #0056b3;
+}
+
+.category_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category_list_inner {
+    background: white;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.category_list_inner:hover {
+    transform: translateY(-3px);
+}
+
+.category_list_content {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+}
+
+.list_title{
+    width: 30%;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.category_edit_link{
+    width: 50%;
+}
+
+.category_edit_link_btn {
+    background: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.category_edit_link_btn:hover {
+    background: #1e7e34;
+}
+
+.delete_btn {
+    background: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.delete_btn:hover {
+    background: #b02a37;
+}
+
+/* ページネーション全体の中央配置 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* ページネーションのリンクを調整 */
+.pagination .page-item {
+    margin: 0 5px; /* 余白を適用 */
+}
+
+.pagination .page-link {
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #333; /* 文字色 */
+    background-color: #fff; /* 背景色 */
+    border: 1px solid #ddd; /* 枠線 */
+}
+
+/* ホバー時 */
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+}
+
+/* アクティブなページ */
+.pagination .active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+
+@media screen and (max-width: 768px) {
+    .category_list_inner {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .list_title{
+        width: 35%;
+}
+}
+

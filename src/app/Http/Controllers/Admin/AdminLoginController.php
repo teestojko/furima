@@ -31,7 +31,7 @@ class AdminLoginController extends Controller
             ]);
             }
             if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin-dashboard');
+            return redirect()->route('admin.dashboard');
             }
     }
 }
