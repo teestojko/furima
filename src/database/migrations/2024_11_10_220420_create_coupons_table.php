@@ -15,6 +15,7 @@ class CreateCouponsTable extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('code')->unique(); // クーポンコード
             $table->decimal('discount', 8, 2); // 割引額またはパーセンテージ
             $table->enum('discount_type', ['fixed', 'percentage']); // 割引のタイプ
