@@ -11,4 +11,8 @@
 <div class="dashboard-buttons">
     <a href="{{ route('admin-coupons-create') }}" class="btn btn-primary">クーポン作成</a>
 </div>
+
+<nav>
+    <a href="{{ route('admin-categories.index') }}">カテゴリー管理</a>
+</nav>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryEditController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\SearchController;
 use App\Http\Controllers\Product\ShowController;
@@ -41,15 +42,17 @@ use App\Http\Controllers\Report\ReportController;
 Route::get('/home', [AuthController::class, 'index'])->name('home');
 Route::get('/filter', [SearchController::class, 'filter'])->name('products-filter');
 
-Route::prefix('admin')->name('admin-')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AdminLoginController::class, 'login']);
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-        Route::get('/admin/coupons/create', [CouponCreateController::class, 'create'])->name('coupons-create');
-        Route::post('/admin/coupons/store', [CouponCreateController::class, 'store'])->name('coupons-store');
+        Route::get('/coupons/create', [CouponCreateController::class, 'create'])->name('coupons-create');
+        Route::post('/coupons/store', [CouponCreateController::class, 'store'])->name('coupons-store');
+
+        Route::resource('/categories', CategoryEditController::class);
     });
 });
 
