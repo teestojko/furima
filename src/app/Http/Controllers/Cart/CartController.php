@@ -34,7 +34,7 @@ class CartController extends Controller
     public function view()
     {
         session()->forget(['used_points', 'final_amount']);
-        
+
         $carts = Cart::where('user_id', Auth::id())->with('product')->get();
         return view('cart.cart', compact('carts'));
     }

@@ -24,15 +24,18 @@ class ApplyCouponRequest extends FormRequest
     public function rules()
     {
         return [
-            'coupon_code' => 'required|string|exists:coupons,code', // `code` カラムを参照
+            'coupon_code' => 'nullable|string|exists:coupons,code|required_without:coupon_id',
+            'coupon_id' => 'nullable|integer|exists:coupons,id|required_without:coupon_code',
         ];
     }
 
     public function messages()
     {
         return [
-            
+            'coupon_code.required_without' => 'クーポンコードまたはクーポン選択のどちらかを指定してください。',
             'coupon_code.exists' => '指定されたクーポンは無効です。',
+            'coupon_id.required_without' => 'クーポンコードまたはクーポン選択のどちらかを指定してください。',
+            'coupon_id.exists' => '指定されたクーポンは存在しません。',
         ];
     }
 }

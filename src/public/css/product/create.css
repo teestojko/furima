@@ -209,17 +209,17 @@
     color: #937b5e;
 }
 
+.alert_messages{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
 @keyframes float {
     to {
         opacity: 1;
         transform: translateY(0); /* 元の位置に戻す */
     }
-}
-
-.success_message{
-    position: absolute;
-    bottom: 3%;
-    right: 45%;
 }
 
 .form-file-input {
@@ -254,15 +254,14 @@
     }
 
     .file-upload-container{
-        width: 125%;
-        align-items: end;
+        width: 100%;
+        align-items: center;
+    }
+
+    .alert_messages{
+        margin-right: 40%;
     }
 }
 
-.alert_messages{
-    position: absolute;
-    bottom: 0%;
-    left: 5%;
-}
 
 

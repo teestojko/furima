@@ -26,7 +26,7 @@ class CouponCreateController extends Controller
         'valid_until' => $request->valid_until,
     ]);
 
-    return redirect()->route('admin-dashboard')->with('success', 'クーポンが作成されました');
+    return redirect()->route('admin.dashboard')->with('success', 'クーポンが作成されました');
 }
 
 }

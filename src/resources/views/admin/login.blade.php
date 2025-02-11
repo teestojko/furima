@@ -14,7 +14,7 @@
                         AdminLogin
                     </div>
                 </div>
-                <form class="form" method="POST" action="{{ route('admin-login') }}">
+                <form class="form" method="POST" action="{{ route('admin.login') }}">
                 @csrf
                     <div class="form_group_content">
                         <div class="form_input_text">

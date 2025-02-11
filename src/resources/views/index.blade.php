@@ -33,35 +33,6 @@
                         <span class="points-value">{{ number_format($points) }} pt</span>
                     </div>
                 </div>
-                
-                <div class="coupon_list_container">
-
-                    <h1>取得済みクーポン一覧</h1>
-
-                    @if($coupons->isEmpty())
-                        <p>現在、利用可能なクーポンはありません。</p>
-                    @else
-                        <div class="coupon-list">
-                            @foreach ($coupons as $coupon)
-                                <div class="coupon-card">
-                                    <p>クーポンコード: {{ $coupon->code }}</p>
-                                    <p>割引: {{ $coupon->discount }} @if($coupon->discount_type == 'percentage') % @else 円 @endif</p>
-
-                                    @if(is_null($coupon->user_id))
-                                        <form action="{{ route('coupons.claim', $coupon->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="coupon-button">クーポンを取得</button>
-                                        </form>
-                                    @else
-                                        <p>✅ 取得済み</p>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-
-<script src="{{ mix('js/app.js') }}"></script>
 
                 <div class="product_list">
                     @foreach ($products as $product)
@@ -109,9 +80,34 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="coupon_list_container">
+                <h1 class="coupon_list_title">クーポン一覧</h1>
+                @if($coupons->isEmpty())
+                    <p>現在、利用可能なクーポンはありません。</p>
+                @else
+                    <div class="coupon-list">
+                        @foreach ($coupons as $coupon)
+                            <div class="coupon-card">
+                                <p>クーポンコード: {{ $coupon->code }}</p>
+                                <p>割引: {{ $coupon->discount }} @if($coupon->discount_type == 'percentage') % @else 円 @endif</p>
+
+                                @if(is_null($coupon->user_id))
+                                    <form action="{{ route('coupons.claim', $coupon->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="coupon-button">クーポンを取得</button>
+                                    </form>
+                                @else
+                                    <p>✅ 取得済み</p>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+
         </div>
     </div>
-
     <!-- React のエントリポイント -->
     <div id="app"></div>
 

@@ -84,6 +84,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Report::class, 'reported_user_id');
     }
 
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class)->whereNotNull('user_id')->where('is_active', true);
+    }
+
     public function reports()
     {
         return $this->hasMany(Report::class, 'reporter_user_id');
