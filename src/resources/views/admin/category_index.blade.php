@@ -8,6 +8,11 @@
 @section('content')
     <div class="category_index">
         <div class="category_index_inner">
+            <div class="dashboard_back_button">
+                <a class="dashboard_back_button_link" href="{{ route('admin.dashboard')}}">
+                    戻る
+                </a>
+            </div>
             <h1 class="category_index_title">
                 カテゴリー一覧
             </h1>

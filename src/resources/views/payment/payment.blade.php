@@ -15,17 +15,37 @@
             <div class="title">
                 決済ページ
             </div>
+            {{-- <form action="{{ route('coupon-apply') }}" method="POST">
+                @csrf
+                <label for="coupon_code">クーポンコード:</label>
+                <input type="text" name="coupon_code" id="coupon_code" required>
+                <button type="submit">クーポンを適用</button>
+            </form> --}}
+
             <form action="{{ route('coupon-apply') }}" method="POST">
-                    @csrf
-                    <label for="coupon_code">クーポンコード:</label>
-                    <input type="text" name="coupon_code" id="coupon_code" required>
-                    <button type="submit">クーポンを適用</button>
+                @csrf
+                <label for="coupon_id">クーポンを選択:</label>
+                <select name="coupon_id" id="coupon_id" required>
+                    <option value="">-- クーポンを選択 --</option>
+                    @foreach (Auth::user()->coupons as $coupon)
+                        <option value="{{ $coupon->id }}">
+                            {{ $coupon->code }}（
+                            @if ($coupon->discount_type === 'percentage')
+                                -{{ intval($coupon->discount) }}%
+                            @else
+                                -¥{{ number_format($coupon->discount) }}
+                            @endif
+                            ）
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit">クーポンを適用</button>
             </form>
 
             <form action="{{ route('point-apply') }}" method="POST">
                 @csrf
                 <label for="use_points">使用するポイント:</label>
-                <input type="number" name="use_points" id="use_points" min="0" max="{{ Auth::user()->points }}" required>
+                <input type="number" name="use_points" id="use_points" min="0" max="{{ Auth::user()->points }}">
                 <button type="submit">ポイントを使用</button>
             </form>
 

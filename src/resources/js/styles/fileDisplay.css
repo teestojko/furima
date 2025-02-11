@@ -74,9 +74,9 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     .file-upload-container{
         width: 125%;
         align-items: end;
     }
-}
+} */

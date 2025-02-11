@@ -47,7 +47,7 @@
             @enderror
         </div>
         <div class="login_buttons">
-            <a href="{{ route('admin-login') }}" class="login_button admin_button">
+            <a href="{{ route('admin.login') }}" class="login_button admin_button">
                 管理者ログイン
             </a>
         </div>

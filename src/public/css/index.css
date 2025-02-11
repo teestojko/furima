@@ -4,7 +4,6 @@
 }
 
 .index_inner{
-    display: flex;
     min-width: 100%;
     min-height: 100%;
 }
@@ -273,6 +272,14 @@
     100% {
         transform: translate(0, 0) scale(1.5);
     }
+}
+
+.coupon_list_title{
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+
 }
 
 
