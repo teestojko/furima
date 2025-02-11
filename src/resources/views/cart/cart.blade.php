@@ -42,7 +42,7 @@
                             @endforeach
                         </div>
                     <div class="btn_content">
-                        <button id="select_all_btn" class="btn">全選択</button>
+                        <button id="select_all_btn" type="button" class="btn">全選択</button>
                         <button type="submit" class="btn purchase_btn">選択した商品を購入</button>
                     </div>
                 </form>
@@ -75,12 +75,6 @@
             const checkboxes = document.querySelectorAll('.cart-checkbox');
             checkboxes.forEach(checkbox => checkbox.checked = true);
         });
-
-        // 複数選択ボタンのイベント
-        // document.getElementById('multiple_select_btn').addEventListener('click', function() {
-        //     const checkboxes = document.querySelectorAll('.cart-checkbox');
-        //     checkboxes.forEach(checkbox => checkbox.checked = false);
-        // });
     </script>
 
 @endsection
