@@ -22,6 +22,7 @@ class CreateCouponsTable extends Migration
             $table->date('valid_from')->nullable(); // 有効開始日
             $table->date('valid_until')->nullable(); // 有効期限
             $table->boolean('is_active')->default(true); // クーポンの有効/無効
+            $table->boolean('is_used')->default(false); // 使用済みかどうかを判定
             $table->timestamps();
         });
     }
