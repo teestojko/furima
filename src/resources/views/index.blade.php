@@ -84,7 +84,7 @@
             <div class="coupon_list_container">
                 <h1 class="coupon_list_title">クーポン一覧</h1>
                 @if($coupons->isEmpty())
-                    <p>現在、利用可能なクーポンはありません。</p>
+                    <p class="coupon_list_none">現在、利用可能なクーポンはありません。</p>
                 @else
                     <div class="coupon-list">
                         @foreach ($coupons as $coupon)

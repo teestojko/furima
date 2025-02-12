@@ -15,12 +15,6 @@
             <div class="title">
                 決済ページ
             </div>
-            {{-- <form action="{{ route('coupon-apply') }}" method="POST">
-                @csrf
-                <label for="coupon_code">クーポンコード:</label>
-                <input type="text" name="coupon_code" id="coupon_code" required>
-                <button type="submit">クーポンを適用</button>
-            </form> --}}
 
             <form action="{{ route('coupon-apply') }}" method="POST">
                 @csrf
@@ -28,15 +22,17 @@
                 <select name="coupon_id" id="coupon_id" required>
                     <option value="">-- クーポンを選択 --</option>
                     @foreach (Auth::user()->coupons as $coupon)
-                        <option value="{{ $coupon->id }}">
-                            {{ $coupon->code }}（
-                            @if ($coupon->discount_type === 'percentage')
-                                -{{ intval($coupon->discount) }}%
-                            @else
-                                -¥{{ number_format($coupon->discount) }}
-                            @endif
-                            ）
-                        </option>
+                        @if (!$coupon->is_used) {{-- 使用済みは表示しない --}}
+                            <option value="{{ $coupon->id }}">
+                                {{ $coupon->code }}（
+                                @if ($coupon->discount_type === 'percentage')
+                                    -{{ intval($coupon->discount) }}%
+                                @else
+                                    -¥{{ number_format($coupon->discount) }}
+                                @endif
+                                ）
+                            </option>
+                        @endif
                     @endforeach
                 </select>
                 <button type="submit">クーポンを適用</button>

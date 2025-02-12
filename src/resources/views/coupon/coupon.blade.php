@@ -27,14 +27,16 @@
             </thead>
             <tbody>
                 @foreach($coupons as $coupon)
-                    <tr>
-                        <td>{{ $coupon->code }}</td>
-                        <td>
-                            {{ $coupon->discount_type === 'percentage' ? $coupon->discount . '%' : '¥' . number_format($coupon->discount, 2) }}
-                        </td>
-                        <td>{{ $coupon->valid_from }} 〜 {{ $coupon->valid_until }}</td>
-                        <td>{{ $coupon->is_active ? '有効' : '無効' }}</td>
-                    </tr>
+                    @if (!$coupon->is_used) {{-- 使用済みは表示しない --}}
+                        <tr>
+                            <td>{{ $coupon->code }}</td>
+                            <td>
+                                {{ $coupon->discount_type === 'percentage' ? $coupon->discount . '%' : '¥' . number_format($coupon->discount, 2) }}
+                            </td>
+                            <td>{{ $coupon->valid_from }} 〜 {{ $coupon->valid_until }}</td>
+                            <td>{{ $coupon->is_active ? '有効' : '無効' }}</td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
