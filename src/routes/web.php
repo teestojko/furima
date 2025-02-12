@@ -52,6 +52,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/coupons/create', [CouponCreateController::class, 'create'])->name('coupons-create');
         Route::post('/coupons/store', [CouponCreateController::class, 'store'])->name('coupons-store');
 
+        
         Route::resource('/categories', CategoryEditController::class);
     });
 });

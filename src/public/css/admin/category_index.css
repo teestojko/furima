@@ -14,25 +14,28 @@
     gap: 20px;
 }
 
-.dashboard_back_button {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.dashboard_back_button{
-    text-align: center;
-    margin-bottom: 3%;
-}
-
 .dashboard_back_button_link{
     position: absolute;
     right: 10%;
     top: 3%;
+    color: white;
     text-decoration: none;
-    padding: 1% 3%;
+    padding: 10px 20px;
     border-radius: 10px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-    color: rgb(74, 120, 255);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+}
+
+.dashboard_back_button_link:hover {
+    background: linear-gradient(135deg, #ffa9b7, #ff7eb3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard_back_button_link:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .category_index_title {
