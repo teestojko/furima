@@ -34,9 +34,9 @@
                 </button>
             </div>
             @if (session('success'))
-            <div class="alert-success">
-                {{ session('success') }}
-            </div>
+                <div class="alert-success">
+                    {{ session('success') }}
+                </div>
             @endif
             @if (session('ellor'))
                 <div class="alert-success">

@@ -81,6 +81,12 @@
                 </div>
             </div>
 
+            @if (session('success'))
+                <div class="alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="coupon_list_container">
                 <h1 class="coupon_list_title">クーポン一覧</h1>
                 @if($coupons->isEmpty())
