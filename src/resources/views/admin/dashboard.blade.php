@@ -21,6 +21,12 @@
                 </a>
             </nav>
         </div>
+        <div class="dashboard_link">
+            <a href="{{ route('admin.reports.index') }}" class="btn btn_primary">
+                通報一覧を確認する
+            </a>
+        </div>
+
     </div>
 </div>
 @endsection

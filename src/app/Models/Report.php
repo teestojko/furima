@@ -14,11 +14,12 @@ class Report extends Model
         'reported_user_id',
         'reporter_user_id',
         'reason',
+        'comment',
     ];
 
     public function reportedProduct()
     {
-        return $this->belongsTo(Product::class, 'reported_product_id'); // 'reported_product_id'を使用
+        return $this->belongsTo(Product::class, 'reported_product_id');
     }
 
     public function reportedUser()
