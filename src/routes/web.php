@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryEditController;
+use App\Http\Controllers\Admin\AdminReportController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\SearchController;
 use App\Http\Controllers\Product\ShowController;
@@ -52,8 +53,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/coupons/create', [CouponCreateController::class, 'create'])->name('coupons-create');
         Route::post('/coupons/store', [CouponCreateController::class, 'store'])->name('coupons-store');
 
-        
         Route::resource('/categories', CategoryEditController::class);
+
+        Route::get('/admin/reports', [AdminReportController::class, 'index'])->name('reports.index');
     });
 });
 
@@ -110,7 +112,6 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
 
-
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
         Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
         Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
@@ -122,6 +123,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/notification/show', [NotificationController::class, 'showNotification'])->name('notifications-show');
         Route::get('/notifications/mark-read/{notificationId}', [NotificationController::class, 'markAsReadAndMessageDetail'])->name('notifications-mark-read-and-message-detail');
         Route::get('/notifications/message/{notificationId}', [NotificationController::class, 'messageDetail'])->name('notifications-message-detail');
+
+        Route::get('/report/create', [ReportController::class, 'create'])->name('report-create');
+        Route::post('/report', [ReportController::class, 'store'])->name('report-store');
     });
 });
 
