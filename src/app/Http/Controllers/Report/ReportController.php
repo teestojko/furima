@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReportNotification;
 use App\Models\Report;
 use App\Models\Product;
 use App\Models\User;
@@ -31,7 +33,7 @@ class ReportController extends Controller
             'comment' => 'nullable|string',
         ]);
 
-        Report::create([
+        $report = Report::create([
             'reported_product_id' => $request->reported_product_id,
             'reported_user_id' => $request->reported_user_id,
             'reporter_user_id' => Auth::id(),

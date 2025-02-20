@@ -45,12 +45,6 @@ select, textarea, input {
     background-color: #f9f9f9;
 }
 
-select {
-    appearance: none;
-    background: url('/images/down-arrow.svg') no-repeat right 10px center;
-    background-size: 12px;
-}
-
 textarea {
     min-height: 100px;
     resize: vertical;
