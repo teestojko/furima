@@ -12,7 +12,7 @@
     <p><strong>詳細コメント：</strong> {{ $report->comment ?? 'なし' }}</p>
 
     @if($report->reportedProduct)
-        <p><strong>対象商品：</strong> <a href="{{ url('/products/' . $report->reportedProduct->id) }}">{{ $report->reportedProduct->name }}</a></p>
+        <p><strong>対象商品：</strong>{{ $report->reportedProduct->name }}</p>
     @endif
 
     <p><strong>通報者：</strong> {{ $report->reporter->name ?? '不明' }}</p>
