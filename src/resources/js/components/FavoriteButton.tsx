@@ -8,6 +8,8 @@ type FavoriteButtonProps = {
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }) => {
     const [favorite, setFavorite] = useState<boolean>(isFavorite);
 
+    console.log("FavoriteButton - productId:", productId, "isFavorite:", isFavorite);
+
     const toggleFavorite = async () => {
         try {
             const response = await fetch(`/favorites/${productId}/toggle`, {
@@ -24,7 +26,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }
             }
 
             const data = await response.json();
-            setFavorite(data.status === "added"); // Laravel からのレスポンスで状態を更新
+            setFavorite(data.status === "added");
         } catch (error) {
             console.error("通信エラー:", error);
             alert("通信エラーが発生しました");
@@ -32,7 +34,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }
     };
 
     return (
-        <button onClick={toggleFavorite} className="favorite-btn">
+        <button onClick={toggleFavorite} className="favorite-btn" style={{ fontSize: "24px", padding: "10px" }}>
             {favorite ? "💖 お気に入り解除" : "❤️ お気に入り"}
         </button>
     );
