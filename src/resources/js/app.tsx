@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'; // React 18 では `react-dom/client` �
 import SearchForm from './components/searchForm';
 import Sidebar from './components/sidebar';
 import { randomizeLights } from './components/lightEffect';
-import FileDisplay from './components/fileDisplay';
+import FileDisplay from './components/FileDisplay';
 
 const App: React.FC = () => {
     useEffect(() => {
