@@ -113,6 +113,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
+
+        
+        Route::post('/favorites/{product}/toggle', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle');
+
+
         Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
         Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
 

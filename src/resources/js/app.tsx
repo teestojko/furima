@@ -4,6 +4,7 @@ import SearchForm from './components/SearchForm';
 import Sidebar from './components/Sidebar';
 import { randomizeLights } from './components/LightEffect';
 import FileDisplay from './components/FileDisplay';
+import FavoriteButton from "./components/FavoriteButton";
 
 const App: React.FC = () => {
     useEffect(() => {
@@ -26,6 +27,18 @@ const App: React.FC = () => {
         if (searchFormElement) {
             const root = ReactDOM.createRoot(searchFormElement);
             root.render(<SearchForm />);
+        }
+    }, []);
+
+    useEffect(() => {
+        // id="favorite-button" がある場合のみ FavoriteButton をレンダリング
+        const favoriteButtonElement = document.getElementById('favorite-button');
+        if (favoriteButtonElement) {
+            const productId = Number(favoriteButtonElement.getAttribute("data-product-id"));
+            const isFavorite = favoriteButtonElement.getAttribute("data-is-favorite") === "true";
+
+            const root = ReactDOM.createRoot(favoriteButtonElement);
+            root.render(<FavoriteButton productId={productId} isFavorite={isFavorite} />);
         }
     }, []);
 
