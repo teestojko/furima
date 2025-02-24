@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client'; // React 18 では `react-dom/client` を使う
-import SearchForm from './components/searchForm';
-import Sidebar from './components/sidebar';
+import SearchForm from './components/SearchForm';
+import Sidebar from './components/Sidebar';
 import { randomizeLights } from './components/LightEffect';
 import FileDisplay from './components/FileDisplay';
 
