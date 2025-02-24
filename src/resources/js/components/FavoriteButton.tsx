@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-interface FavoriteButtonProps {
+type FavoriteButtonProps = {
     productId: number;
     isFavorite: boolean;
-}
+};
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }) => {
     const [favorite, setFavorite] = useState<boolean>(isFavorite);
@@ -14,18 +14,20 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content ?? "",
+                    "X-CSRF-TOKEN": (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content || ""
                 },
+                body: JSON.stringify({})
             });
 
             if (!response.ok) {
                 throw new Error("サーバーエラー");
             }
 
-            const result = await response.json();
-            setFavorite(result.status === "added");
+            const data = await response.json();
+            setFavorite(data.status === "added"); // Laravel からのレスポンスで状態を更新
         } catch (error) {
-            console.error("通信エラーが発生しました", error);
+            console.error("通信エラー:", error);
+            alert("通信エラーが発生しました");
         }
     };
 
