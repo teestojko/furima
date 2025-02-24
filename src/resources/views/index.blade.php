@@ -68,8 +68,9 @@
 
                                 <div class="favorite-button"
                                     data-product-id="{{ $product->id }}"
-                                    data-is-favorite="{{ Auth::user()->favoriteProducts->contains($product) ? 'true' : 'false' }}">
+                                    data-is-favorite="{{ $product->isFavorited() ? 'true' : 'false' }}">
                                 </div>
+
 
                             </div>
                             <div class="product_cart_link">
