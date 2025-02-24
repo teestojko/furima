@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/sidebar.css";
+import "../styles/Sidebar.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 const Sidebar: React.FC = () => {

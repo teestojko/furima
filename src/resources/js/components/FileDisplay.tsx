@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
-import "../styles/fileDisplay.css";
+import "../styles/FileDisplay.css";
 
 // プレビュー用のファイル情報の型定義
 interface FilePreview {

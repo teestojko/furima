@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import '../styles/searchForm.css';
+import '../styles/SearchForm.css';
 
 // カテゴリの型定義
 interface Category {
