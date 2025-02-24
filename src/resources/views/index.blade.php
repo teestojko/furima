@@ -66,7 +66,7 @@
                                     @endif
                                 </form> --}}
 
-                                <div id="favorite-button"
+                                <div class="favorite-button"
                                     data-product-id="{{ $product->id }}"
                                     data-is-favorite="{{ Auth::user()->favoriteProducts->contains($product) ? 'true' : 'false' }}">
                                 </div>
