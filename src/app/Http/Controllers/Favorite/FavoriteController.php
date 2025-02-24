@@ -18,16 +18,30 @@ class FavoriteController extends Controller
         return view('my_page', compact('favoriteProducts'));
     }
 
+    // public function toggleFavorite(Product $product)
+    // {
+    //     $user = Auth::user();
+    //         if ($user->favoriteProducts->contains($product)) {
+    //             // contains($product)で選択したショップがお気に入りリストに含まれているかを確認
+    //             $user->favoriteProducts()->detach($product);
+    //             return redirect()->back();
+    //         } else {
+    //             $user->favoriteProducts()->attach($product);
+    //             return redirect()->back();
+    //         }
+    // }
+
     public function toggleFavorite(Product $product)
     {
         $user = Auth::user();
-            if ($user->favoriteProducts->contains($product)) {
-                // contains($product)で選択したショップがお気に入りリストに含まれているかを確認
-                $user->favoriteProducts()->detach($product);
-                return redirect()->back();
-            } else {
-                $user->favoriteProducts()->attach($product);
-                return redirect()->back();
-            }
+
+        if ($user->favoriteProducts->contains($product)) {
+            $user->favoriteProducts()->detach($product);
+            return response()->json(['status' => 'removed']);
+        } else {
+            $user->favoriteProducts()->attach($product);
+            return response()->json(['status' => 'added']);
+        }
     }
+
 }
