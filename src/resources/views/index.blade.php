@@ -52,7 +52,7 @@
                                         詳細を表示
                                     </a>
                                 </div>
-                                <form class="product_favorite_button" action="{{ $product->isFavorited() ? route('favorites-toggle-remove', ['product' => $product->id]) : route('favorites-toggle-add', ['product' => $product->id]) }}" method="POST">
+                                {{-- <form class="product_favorite_button" action="{{ $product->isFavorited() ? route('favorites-toggle-remove', ['product' => $product->id]) : route('favorites-toggle-add', ['product' => $product->id]) }}" method="POST">
                                 @csrf
                                     @if ($product->isFavorited())
                                     @method('DELETE')
@@ -64,7 +64,13 @@
                                             <i class="far fa-heart"></i>
                                         </button>
                                     @endif
-                                </form>
+                                </form> --}}
+
+                                <div id="favorite-button"
+                                    data-product-id="{{ $product->id }}"
+                                    data-is-favorite="{{ Auth::user()->favoriteProducts->contains($product) ? 'true' : 'false' }}">
+                                </div>
+
                             </div>
                             <div class="product_cart_link">
                                 <form action="{{ route('cart-add') }}" method="POST">
