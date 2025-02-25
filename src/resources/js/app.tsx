@@ -31,39 +31,20 @@ const App: React.FC = () => {
     }, []);
 
 
-    // useEffect(() => {
-    //     const favoriteButtons = document.querySelectorAll(".favorite-button");
-
-    //     console.log("お気に入りボタン要素:", document.querySelectorAll(".favorite-button"));
-
-
-    //     favoriteButtons.forEach((button) => {
-    //         const productId = Number(button.getAttribute("data-product-id"));
-    //         const isFavorite = button.getAttribute("data-is-favorite") === "true";
-
-    //         // console.log("Rendering FavoriteButton for productId:", productId, "isFavorite:", isFavorite);
-
-    //         const root = ReactDOM.createRoot(button);
-    //         root.render(<FavoriteButton productId={productId} isFavorite={isFavorite} />);
-    //     });
-    // }, []);
-
     useEffect(() => {
-        setTimeout(() => {
-            const favoriteButtons = document.querySelectorAll(".favorite-button");
+        const favoriteButtons = document.querySelectorAll(".favorite-button");
 
-            favoriteButtons.forEach((button) => {
-                const productId = Number(button.getAttribute("data-product-id"));
-                const isFavorite = button.getAttribute("data-is-favorite") === "true";
+        favoriteButtons.forEach((button) => {
+            const productId = Number(button.getAttribute("data-product-id"));
+            const isFavorite = button.getAttribute("data-is-favorite") === "true";
 
-                console.log("Rendering FavoriteButton for productId:", productId, "isFavorite:", isFavorite);
+            // console.log("Rendering FavoriteButton for productId:", productId, "isFavorite:", isFavorite);
 
-                const root = ReactDOM.createRoot(button);
-                root.render(<FavoriteButton productId={productId} isFavorite={isFavorite} />);
-            });
-        }, 500); // 0.5秒遅延
+            const root = ReactDOM.createRoot(button);
+            root.render(<FavoriteButton productId={productId} isFavorite={isFavorite} />);
+        });
+
     }, []);
-
 
 
     return (
