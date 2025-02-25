@@ -114,12 +114,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
 
-        
+
         Route::post('/favorites/{product}/toggle', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle');
 
 
-        Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
-        Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
+        // Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
+        // Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
 
         Route::get('/order-history', [OrderController::class, 'orderIndex'])->name('order-history');
 
