@@ -33,7 +33,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }
 
     return (
         <button onClick={toggleFavorite} className="favorite-btn">
-            {favorite ? "💖 お気に入り解除" : "❤️ お気に入り"}
+            {favorite ? "💖 " : "🤍"}
         </button>
     );
 };

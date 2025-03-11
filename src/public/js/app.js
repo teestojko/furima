@@ -49,7 +49,6 @@ var App = function App() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var favoriteButtons = document.querySelectorAll(".favorite-button");
-    console.log("Found favorite buttons:", favoriteButtons.length);
     favoriteButtons.forEach(function (button) {
       var productId = Number(button.getAttribute("data-product-id"));
       var isFavorite = button.getAttribute("data-is-favorite") === "true";
@@ -158,7 +157,7 @@ var FavoriteButton = function FavoriteButton(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
     onClick: toggleFavorite,
     className: "favorite-btn",
-    children: favorite ? "💖 お気に入り解除" : "❤️ お気に入り"
+    children: favorite ? "💖 " : "🤍"
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FavoriteButton);
