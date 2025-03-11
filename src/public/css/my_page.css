@@ -1,20 +1,41 @@
+.mypage{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.mypage_inner{
+    width: 100%;
+    height: 100%;
+}
+
+.mypage_title{
+    text-align: center;
+}
+
+.favorite_title{
+    text-align: center;
+}
+
 .favorite_list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     justify-content: center;
-    margin: 20px;
+    margin:3% 5%;
 }
 
 .favorite_item {
-    background: linear-gradient(135deg, #ffe5e5, #ffffff);
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 350px;
     height: 440px;
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 5% 8%;
 }
 
 
@@ -48,52 +69,32 @@
 }
 
 .favorite_price{
-    font-size: 0.9em;
-    color: #666;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d9534f;
     padding: 8px 15px;
     border-top: 1px solid #f0f0f0;
     margin: 0;
 }
 
-.favorite_price {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #d9534f;
+.detail_and_favorite{
+    display: flex;
+    justify-content: space-around;
 }
 
 .favorite_detail{
     height: 13%;
 }
 
+.favorite-btn{
+    border: none;
+    background-color: white;
+    font-size: x-large;
+}
+
 .favorite_cart_link {
     display: flex;
     justify-content: space-around;
-}
-
-.detail_and_favorite{
-    display: flex;
-    justify-content: space-around;
-    height: 12%;
-    align-items: baseline;
-}
-
-.search_button_link,
-.btn-primary {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #4e1010;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-}
-
-.search_button_link:hover,
-.btn-primary:hover {
-    background-color: #ffebfc; /* 少し濃いラベンダー */
 }
 
 .favorite_cart_link form {
@@ -112,7 +113,7 @@
 }
 
 .favorite_cart_link button {
-    background-color: #ff99cc; /* ピンク色 */
+    background-color: #ff99cc;
     color: white;
     border: none;
     border-radius: 15px;
@@ -123,68 +124,12 @@
 }
 
 .favorite_cart_link button:hover {
-    background-color: #ff66a3; /* 濃いピンク */
-}
-
-.index_back_button{
-    display: flex;
-    justify-content: end;
-}
-
-.btn {
-    display: block;
-    width: 110px;
-    background-color: #ffe3e3;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    color: #7c0000;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #e08181;
+    background-color: #ff66a3;
 }
 
 @media (max-width: 768px) {
-    .favorite_list {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .favorite_item {
-        width: 90%;
-    }
 }
 
-.favorite_favorite_button{
-    display: flex;
-}
 
-.fas.fa-heart{
-    color: red;
-    background: none;
-    border: none;
-    font-size: 24px;
-}
-
-.far.fa-heart{
-    color: #c7c7c7;
-    background: none;
-    border: none;
-    font-size: 24px;
-}
-
-.submit_favorite{
-    color: red;
-    background: none;
-    border: none;
-}
-
-.submit_not_favorite{
-    background: none;
-    border: none;
-}
 

@@ -3,7 +3,6 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
@@ -12,7 +11,6 @@
     <div id="categories" data-categories='@json($categories)'></div>
     <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
 
-    <div id="sidebar"></div>
 
     <div class="index">
         <div class="index_inner">
@@ -52,19 +50,6 @@
                                         詳細を表示
                                     </a>
                                 </div>
-                                {{-- <form class="product_favorite_button" action="{{ $product->isFavorited() ? route('favorites-toggle-remove', ['product' => $product->id]) : route('favorites-toggle-add', ['product' => $product->id]) }}" method="POST">
-                                @csrf
-                                    @if ($product->isFavorited())
-                                    @method('DELETE')
-                                        <button type="submit" class="submit_favorite">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                    @else
-                                        <button type="submit" class="submit_not_favorite">
-                                            <i class="far fa-heart"></i>
-                                        </button>
-                                    @endif
-                                </form> --}}
 
                                 <div class="favorite-button"
                                     data-product-id="{{ $product->id }}"
@@ -121,10 +106,6 @@
 
         </div>
     </div>
-    <!-- React のエントリポイント -->
-    <div id="app"></div>
-
-    <script src="{{ mix('js/app.js') }}"></script>
 
 @endsection
 

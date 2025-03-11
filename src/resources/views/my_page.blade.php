@@ -3,28 +3,19 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/my_page.css') }}">
-<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="mypage">
-
-    <div id="sidebar"></div>
-
-
-    <h1>マイページ</h1>
-    <h2>お気に入り商品一覧</h2>
-    <div class="index_back_button">
-        <a href="{{ route('user-index') }}" class="btn back_button">
-            一覧に戻る
-        </a>
-    </div>
-    @if ($favoriteProducts->isEmpty())
-        <p>お気に入り商品はありません。</p>
-    @else
-        <div class="favorite_list">
-            @foreach ($favoriteProducts as $product)
-                <div class="favorite_item">
+    <div class="mypage_inner">
+        <h1 class="mypage_title">マイページ</h1>
+        <h2 class="favorite_title">お気に入り商品一覧</h2>
+        @if ($favoriteProducts->isEmpty())
+            <p>お気に入り商品はありません。</p>
+        @else
+            <div class="favorite_list">
+                @foreach ($favoriteProducts as $product)
+                    <div class="favorite_item">
                         <h2>{{ $product->name }}</h2>
                         <div class="favorite_images">
                             @foreach ($product->images as $image)
@@ -40,19 +31,10 @@
                                     詳細を表示
                                 </a>
                             </div>
-                            <form class="favorite_favorite_button" action="{{ $product->isFavorited() ? route('favorites-toggle-remove', ['product' => $product->id]) : route('favorites-toggle-add', ['product' => $product->id]) }}" method="POST">
-                            @csrf
-                                @if ($product->isFavorited())
-                                @method('DELETE')
-                                    <button type="submit" class="submit_favorite">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                @else
-                                    <button type="submit" class="submit_not_favorite">
-                                        <i class="far fa-heart"></i>
-                                    </button>
-                                @endif
-                            </form>
+                            <div class="favorite-button"
+                                data-product-id="{{ $product->id }}"
+                                data-is-favorite="{{ $product->isFavorited() ? 'true' : 'false' }}">
+                            </div>
                         </div>
                         <div class="favorite_cart_link">
                             <form action="{{ route('cart-add') }}" method="POST">
@@ -65,12 +47,10 @@
                             </form>
                         </div>
                     </div>
-            @endforeach
-        </div>
-    @endif
+                @endforeach
+            </div>
+        @endif
+    </div>
 </div>
-
-<script src="{{ mix('js/app.js') }}"></script>
-
 
 @endsection
