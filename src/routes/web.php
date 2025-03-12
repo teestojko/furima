@@ -38,8 +38,6 @@ use App\Http\Controllers\Report\ReportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/home', [AuthController::class, 'index'])->name('home');
 Route::get('/filter', [SearchController::class, 'filter'])->name('products-filter');
 
