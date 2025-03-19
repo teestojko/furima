@@ -3,14 +3,10 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/cart/cart.css') }}">
-<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
     <div class="cart">
-
-        <div id="sidebar"></div>
-
         <div class="cart_inner">
             <h2 class="cart_title">カート</h2>
             <div class="cart_buttons">
@@ -66,9 +62,6 @@
         </div>
     </div>
 
-    <div id="app"></div>
-
-    <script src="{{ mix('js/app.js') }}"></script>
     <script>
         // 全選択ボタンのイベント
         document.getElementById('select_all_btn').addEventListener('click', function() {
