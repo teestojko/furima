@@ -61,7 +61,7 @@
                                 <h5 class="sale_title">
                                     {{ $product->name }}
                                 </h5>
-                                <p class="sale_plice">
+                                <p class="sale_price">
                                     {{ $product->price }}円
                                 </p>
                                 <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
