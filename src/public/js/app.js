@@ -748,29 +748,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".search_container {\n    display: flex
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/js/styles/Sidebar.css":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/js/styles/Sidebar.css ***!
-  \***************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* 全体のスタイルを設定 */\nbody {\n    margin: 0;\n    font-family: 'Arial', sans-serif;\n    background-color: #f4f4f9;\n}\n\n/* サイドバー全体のコンテナ */\n.sidebar-container {\n    position: fixed;\n    top: 0;\n    left: 0;\n    height: 100vh;\n    width: 20px; /* 初期は狭い */\n    background-color: #cfcfff;\n    overflow: hidden;\n    transition: width 0.6s ease;\n    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);\n}\n\n.sidebar-container:hover {\n    width: 250px; /* ホバー時に展開 */\n}\n\n/* サイドバーの中身 */\n.sidebar {\n    color: white;\n    display: flex;\n    flex-direction: column;\n    align-items: start;\n    padding: 20px 10px;\n    height: 100%;\n    gap: 20px;\n    opacity: 0.9;\n}\n\n/* 各リンクのスタイル */\n.sidebar a {\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n    color: white;\n    font-size: 18px;\n    padding: 10px 15px;\n    width: 100%;\n    border-radius: 5px;\n    transition: background-color 0.3s ease, transform 0.2s ease;\n    white-space: nowrap; /* テキストの折り返しを防ぐ */\n    overflow: hidden;    /* コンテナ幅を超える部分を非表示にする */\n    text-overflow: ellipsis; /* 長いテキストに省略記号を付ける */\n}\n\n.sidebar a:hover {\n    background-color: #c4c4ff;\n}\n\n/* アイコンのスタイル */\n.sidebar a i {\n    font-size: 24px;\n    margin-right: 15px;\n}\n\n/* 矢印ボタン */\n.arrow {\n    position: absolute;\n    top: 50%;\n    right: -25px;\n    transform: translateY(-50%);\n    font-size: 24px;\n    color: white;\n    background-color: #afafff;\n    border-radius: 50%;\n    padding: 10px;\n    cursor: pointer;\n    transition: transform 0.3s ease;\n}\n\n.arrow:hover {\n    transform: translateY(-50%) rotate(180deg);\n    background-color: #bbbbff;\n}\n\n.index_nav {\n    display: flex;\n    justify-content: space-around;\n    height: 100%;\n    width: 100%;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.index_link,\n.products_create_link,\n.profile_link,\n.cart_link,\n.coupon_link,\n.my_page_link {\n    text-align: center;\n    margin: 10px 0;\n    background-color: #ffe3e3;\n    padding: 8px;\n    border-radius: 10px;\n    text-decoration: none;\n    font-family: 'Comic Sans MS', cursive, sans-serif;\n    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n    transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n\n.index_link:hover,\n.products_create_link:hover,\n.user_edit_link:hover,\n.profile_link:hover,\n.cart_link:hover,\n.coupon_link:hover,\n.my_page_link:hover {\n    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -1013,9 +990,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/styles/sidebar.css":
+/***/ "./resources/js/styles/Sidebar.css":
 /*!*****************************************!*\
-  !*** ./resources/js/styles/sidebar.css ***!
+  !*** ./resources/js/styles/Sidebar.css ***!
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -35898,35 +35875,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/js/styles/Sidebar.css":
-/*!*****************************************!*\
-  !*** ./resources/js/styles/Sidebar.css ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_Sidebar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./Sidebar.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/js/styles/Sidebar.css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_Sidebar_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_Sidebar_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -36329,7 +36277,7 @@ module.exports = function (list, options) {
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/sidebar": 0
+/******/ 			"css/Sidebar": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -36384,9 +36332,9 @@ module.exports = function (list, options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar"], () => (__webpack_require__("./resources/js/app.tsx")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/sidebar"], () => (__webpack_require__("./resources/js/styles/sidebar.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/Sidebar"], () => (__webpack_require__("./resources/js/app.tsx")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/Sidebar"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/Sidebar"], () => (__webpack_require__("./resources/js/styles/Sidebar.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
         <link rel="stylesheet" href="{{ asset('css/layout/common.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-        <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/Sidebar.css') }}">
 
         @yield('css')
     </head>

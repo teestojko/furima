@@ -3,13 +3,9 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/notification/show.css') }}">
-<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
-
-    <div id="sidebar"></div>
-
     <div class="sale_profile">
         <a class="profile_link" href="{{ route('profile-show', Auth::user()->id) }}">
             プロフィールへ戻る
@@ -55,8 +51,5 @@
             </ul>
         @endif
     </div>
-
-    <div id="app"></div>
-    <script src="{{ mix('js/app.js') }}"></script>
 
 @endsection
