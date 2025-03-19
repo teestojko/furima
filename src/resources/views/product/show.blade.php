@@ -3,15 +3,11 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/product/show.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="product_show">
     <div class="product_show_inner">
-
-        <div id="sidebar"></div>
-
         <div class="product_show_name">
             {{ $product->name }}
         </div>
@@ -64,52 +60,4 @@
     <script src="{{ mix('js/app.js') }}"></script>
 
 @endsection
-
-
-
-
-        <!-- 通報フォームのモーダル -->
-        {{-- <div id="reportModal" class="modal" style="display: none;">
-            <div class="modal-content">
-                <span class="close-button" id="closeModal">&times;</span>
-                <h2>通報フォーム</h2>
-                <form action="{{ route('reports.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="reported_product_id" value="{{ $product->id }}">
-                    <div class="mb-3">
-                        <label for="reason" class="form-label">通報理由</label>
-                        <textarea name="reason" id="reason" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">送信</button>
-                </form>
-            </div>
-        </div> --}}
-
-
-    {{-- @section('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            const reportButton = document.getElementById('reportButton');
-            const reportModal = document.getElementById('reportModal');
-            const closeModal = document.getElementById('closeModal');
-
-            // 通報ボタンをクリックしたらモーダルを表示
-            reportButton.addEventListener('click', () => {
-                reportModal.style.display = 'flex';
-            });
-
-            // 閉じるボタンをクリックしたらモーダルを非表示
-            closeModal.addEventListener('click', () => {
-                reportModal.style.display = 'none';
-            });
-
-            // モーダル外をクリックした場合も閉じる
-            window.addEventListener('click', (event) => {
-                if (event.target === reportModal) {
-                    reportModal.style.display = 'none';
-                }
-            });
-        });
-        </script>
-    @endsection --}}
 

@@ -3,14 +3,10 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/coupon/coupon.css') }}">
-<link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
 <div class="coupon_list_container">
-
-    <div id="sidebar"></div>
-
     <h1>取得済みクーポン一覧</h1>
 
     @if($coupons->isEmpty())
@@ -42,7 +38,4 @@
         </table>
     @endif
 </div>
-
-<script src="{{ mix('js/app.js') }}"></script>
-
 @endsection

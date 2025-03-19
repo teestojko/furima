@@ -3,13 +3,10 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile/profile.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
-
-        <div id="sidebar"></div>
 
         <div class="profile-header">
             <div class="profile_back_button">
@@ -77,9 +74,5 @@
             </div>
         </div>
     </div>
-
-    <div id="app"></div>
-
-    <script src="{{ mix('js/app.js') }}"></script>
 
 @endsection
