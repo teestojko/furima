@@ -32,7 +32,7 @@ jobs:
     # .envファイルのセットアップ
     - name: Set up .env
       run: |
-        cp src/.env.example .env
+        cp src/.env.example src/.env
         cd src
         php artisan key:generate
 
