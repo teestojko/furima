@@ -39,6 +39,7 @@ jobs:
     # PHPUnitでテストの実行（任意）
     - name: Run tests
       run: |
+        cd src
         vendor/bin/phpunit
 
   deploy:
