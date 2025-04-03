@@ -32,7 +32,7 @@ jobs:
     # .envファイルのセットアップ
     - name: Set up .env
       run: |
-        cp .env.example .env
+        cp src/.env.example .env
         php artisan key:generate
 
     # PHPUnitでテストの実行（任意）
