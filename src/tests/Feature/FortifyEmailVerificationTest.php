@@ -98,3 +98,4 @@ class FortifyEmailVerificationTest extends TestCase
         $this->assertNull($user->email_verified_at);
     }
 }
+
