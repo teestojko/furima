@@ -61,14 +61,7 @@ jobs:
         echo "$PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
         ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
-          cd /var/www  # EC2のデプロイ先ディレクトリ
           git pull origin main  # リモートリポジトリから最新のコードをプル
 
-          cd src  # Laravelのプロジェクトディレクトリに移動
-
-          composer install  # Composerで依存関係をインストール
-          php artisan migrate --force  # マイグレーション実行
-          php artisan config:cache  # 設定キャッシュ
-          php artisan route:cache  # ルートキャッシュ
-          php artisan view:cache  # ビューキャッシュ
+          docker-compose exec -T php bash -c 'composer install && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache'
         EOF
