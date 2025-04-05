@@ -63,6 +63,9 @@ jobs:
         ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
           cd /var/www  # EC2のデプロイ先ディレクトリ
           git pull origin main  # リモートリポジトリから最新のコードをプル
+
+          cd src  # Laravelのプロジェクトディレクトリに移動
+
           composer install  # Composerで依存関係をインストール
           php artisan migrate --force  # マイグレーション実行
           php artisan config:cache  # 設定キャッシュ
