@@ -63,8 +63,8 @@ jobs:
         ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
 
           cd furima
-          
-          git pull origin main  # リモートリポジトリから最新のコードをプル
+
+          git pull origin main
 
           docker-compose exec -T php bash -c 'composer install && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache'
         EOF
