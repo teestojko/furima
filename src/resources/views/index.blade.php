@@ -28,7 +28,7 @@
                 <div class="index_points">
                     <div class="user-points">
                         <span class="points-label">保有ポイント:</span>
-                        <span class="points-value">{{ number_format($points) }} pt</span>
+                        <span class="points-value">{{ number_format($points) }} p</span>
                     </div>
                 </div>
 
