@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use App\Models\OrderItem;
 
-class AdminUserTableSeeder extends Seeder
+class OrderItemsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class AdminUserTableSeeder extends Seeder
      */
     public function run()
     {
-        Admin::factory()->count(2)->create();
+        OrderItem::factory()->count(5)->create();
     }
 }
