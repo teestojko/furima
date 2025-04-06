@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Notification;
 
-class AdminUserTableSeeder extends Seeder
+class NotificationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class AdminUserTableSeeder extends Seeder
      */
     public function run()
     {
-        Admin::factory()->count(2)->create();
+        Notification::factory()->count(5)->create();
     }
 }
