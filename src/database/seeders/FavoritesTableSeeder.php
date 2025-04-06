@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Favorite;
 
-class AdminUserTableSeeder extends Seeder
+class FavoritesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class AdminUserTableSeeder extends Seeder
      */
     public function run()
     {
-        Admin::factory()->count(2)->create();
+        Favorite::factory()->count(3)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        Category::query()->delete();
+
         DB::table('categories')->insert([
             ['name' => '財布'],
             ['name' => 'バッグ'],
@@ -21,5 +24,7 @@ class CategoriesTableSeeder extends Seeder
             ['name' => 'ネイルチップ'],
             ['name' => 'キーケース']
         ]);
+
+        Category::factory()->count(1)->create();
     }
 }
