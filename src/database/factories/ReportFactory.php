@@ -18,11 +18,11 @@ class ReportFactory extends Factory
     public function definition()
     {
         return [
-            'reported_product_id' => Product::inRandomOrder()->first()->id, // ランダムに商品を選択
-            'reported_user_id' => User::inRandomOrder()->first()->id, // ランダムにユーザーを選択
-            'reporter_user_id' => User::inRandomOrder()->first()->id, // 通報者もランダムにユーザーを選択
-            'reason' => $this->faker->sentence, // 通報理由（ランダムな文）
-            'comment' => $this->faker->paragraph, // 詳細コメント（ランダムな段落）
+            'reported_product_id' => Product::factory()->create(),
+            'reported_user_id' => User::factory()->create(),
+            'reporter_user_id' => User::factory()->create(),
+            'reason' => $this->faker->sentence,
+            'comment' => $this->faker->paragraph,
         ];
     }
 }
