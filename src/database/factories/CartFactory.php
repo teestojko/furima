@@ -18,8 +18,8 @@ class CartFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'product_id' => Product::factory(),
+            'user_id' => User::factory()->create(),
+            'product_id' => Product::factory()->create(),
             'quantity' => $this->faker->numberBetween(1, 5),
         ];
     }
