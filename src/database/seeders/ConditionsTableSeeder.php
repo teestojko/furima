@@ -22,6 +22,6 @@ class ConditionsTableSeeder extends Seeder
             ['name' => '中古']
         ]);
 
-        Condition::factory()->count(1)->create();
+        // Condition::factory()->count(1)->create();
     }
 }

@@ -17,8 +17,8 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
-        $order = Order::inRandomOrder()->first();
-        $cart = Cart::inRandomOrder()->with('product')->first(); // カート1つランダムに選ぶ
+        $order = Order::factory()->create();
+        $cart = Cart::factory()->create();
 
         if (!$cart || !$order || !$cart->product) {
             // データが不足していたら fallback（ファクトリーが壊れないように）
