@@ -20,10 +20,10 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::inRandomOrder()->value('id'),
-            'category_id' => Category::inRandomOrder()->value('id'),
-            'condition_id' => Condition::inRandomOrder()->value('id'),
-            'delivery_method_id' => DeliveryMethod::inRandomOrder()->value('id'),
+            'user_id' => User::factory()->create(),
+            'category_id' => Category::factory()->create(),
+            'condition_id' => Condition::factory()->create(),
+            'delivery_method_id' => DeliveryMethod::factory()->create(),
             'name' => $this->faker->word(),
             'detail' => $this->faker->paragraph(),
             'price' => $this->faker->numberBetween(1000, 10000),

@@ -18,8 +18,8 @@ class FavoriteFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->id, // ランダムなユーザー
-            'product_id' => Product::inRandomOrder()->first()->id, // ランダムな商品
+            'user_id' => User::factory()->create(),
+            'product_id' => Product::factory()->create(),
         ];
     }
 }
