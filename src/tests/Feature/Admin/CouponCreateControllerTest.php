@@ -19,7 +19,7 @@ class CouponCreateControllerTest extends TestCase
         $admin = Admin::factory()->create();
         $this->actingAs($admin, 'admin');
 
-        $response = $this->get(route('admin.coupons.create'));
+        $response = $this->get(route('admin.coupons-create'));
         $response->assertStatus(200);
         $response->assertViewIs('admin.coupon_create');
     }
@@ -30,7 +30,7 @@ class CouponCreateControllerTest extends TestCase
         $admin = Admin::factory()->create();
         $this->actingAs($admin, 'admin');
 
-        $response = $this->post(route('admin.coupons.store'), [
+        $response = $this->post(route('admin.coupons-store'), [
             'code' => '',
             'discount' => '',
             'discount_type' => '',
@@ -47,7 +47,7 @@ class CouponCreateControllerTest extends TestCase
         $admin = Admin::factory()->create();
         $this->actingAs($admin, 'admin');
 
-        $response = $this->post(route('admin.coupons.store'), [
+        $response = $this->post(route('admin.coupons-store'), [
             'code' => 'DISCOUNT20',
             'discount' => 20,
             'discount_type' => 'percentage',
