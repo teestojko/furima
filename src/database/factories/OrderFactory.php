@@ -30,12 +30,12 @@ class OrderFactory extends Factory
         $sellerRevenue = $totalPrice - $commissionFee;
 
         return [
-            'user_id' => User::inRandomOrder()->first()->id, // ランダムなユーザー
-            'status_id' => OrderStatus::inRandomOrder()->first()->id, // ランダムな注文ステータス
-            'total_price' => $totalPrice, // ランダムな金額
-            'commission_fee' => $commissionFee, // 計算された手数料
-            'seller_revenue' => $sellerRevenue, // 計算された出品者の収益
-            'order_date' => $this->faker->dateTimeThisYear(), // ランダムな注文日
+            'user_id' => User::factory()->create(),
+            'status_id' => OrderStatus::factory()->create(),
+            'total_price' => $totalPrice,
+            'commission_fee' => $commissionFee,
+            'seller_revenue' => $sellerRevenue,
+            'order_date' => $this->faker->dateTimeThisYear(),
         ];
     }
 }
