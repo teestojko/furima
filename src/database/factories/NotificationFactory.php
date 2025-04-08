@@ -17,7 +17,7 @@ class NotificationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->id, // ランダムなユーザー
+            'user_id' => User::factory()->create(), // ランダムなユーザー
             'type' => $this->faker->randomElement(['message', 'transaction', 'alert']), // ランダムな通知タイプ
             'data' => json_encode([
                 'title' => $this->faker->word, // ランダムなタイトル

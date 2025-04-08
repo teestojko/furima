@@ -15,7 +15,10 @@ class MessagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::all();
+        $userCount = rand(2, 5);
+
+        // ユーザーをランダムに選ぶ
+        $users = User::inRandomOrder()->take($userCount)->get();
 
         if ($users->count() < 2) {
             $this->command->info('メッセージを作成するにはユーザーが2人以上必要です。');

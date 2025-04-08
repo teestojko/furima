@@ -25,6 +25,6 @@ class CategoriesTableSeeder extends Seeder
             ['name' => 'キーケース']
         ]);
 
-        Category::factory()->count(1)->create();
+        // Category::factory()->count(1)->create();
     }
 }
