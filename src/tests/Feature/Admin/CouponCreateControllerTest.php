@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace tests\Feature\Admin;
 
 use App\Models\Admin;
 use App\Models\Coupon;
