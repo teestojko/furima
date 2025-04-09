@@ -48,6 +48,7 @@ class CartController extends Controller
         // カートから選択された商品を取得
         $selectedItems = Cart::whereIn('id', $request->selected_items)
             ->where('user_id', Auth::id())
+            ->with('product')
             ->get();
 
         // 合計金額を計算
