@@ -51,5 +51,10 @@
                 管理者ログイン
             </a>
         </div>
+        <div class="login_buttons">
+            <a class="login_button register_button" href="/register">
+                会員登録
+            </a>
+        </div>
     </div>
 @endsection

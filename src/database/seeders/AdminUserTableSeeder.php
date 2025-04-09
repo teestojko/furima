@@ -16,5 +16,11 @@ class AdminUserTableSeeder extends Seeder
     public function run()
     {
         Admin::factory()->count(2)->create();
+
+        Admin::create([
+            'name' => 'Admin Name',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('teestojkovic7195'),
+        ]);
     }
 }

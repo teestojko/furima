@@ -44,7 +44,7 @@ class CouponControllerTest extends TestCase
         // 5. クーポン適用リクエストを送信（セッション付き）
         $response = $this
             ->withSession(['selected_items' => [$cart->id]])
-            ->post('/coupons/apply', [
+            ->post('/apply_coupon', [
                 'coupon_code' => 'TEST1234',
                 '_token' => csrf_token(),
             ]);

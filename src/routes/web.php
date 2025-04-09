@@ -109,7 +109,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
-        Route::post('/coupons/apply', [CouponController::class, 'apply'])->name('coupon-apply');
+        Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
         Route::post('/coupons/{id}/claim', [CouponController::class, 'claim'])->name('coupon-claim');
 
         Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');

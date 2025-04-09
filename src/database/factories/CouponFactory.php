@@ -31,7 +31,7 @@ class CouponFactory extends Factory
             'is_used' => $this->faker->boolean(30),   // 30% の確率で使用済み
         ];
     }
-    
+
     public function valid(): static
     {
         return $this->state(function (array $attributes) {
