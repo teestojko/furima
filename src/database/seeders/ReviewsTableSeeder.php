@@ -16,8 +16,8 @@ class ReviewsTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::inRandomOrder()->first();
-        $product = Product::inRandomOrder()->first();
+        $user = User::factory()->create();
+        $product = Product::factory()->create();
 
         Review::factory()->create([
             'user_id' => $user->id,
