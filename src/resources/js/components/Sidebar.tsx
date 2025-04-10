@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Sidebar.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+import axios from "axios";
 
 const Sidebar: React.FC = () => {
     // 状態管理の型を指定
@@ -8,6 +9,20 @@ const Sidebar: React.FC = () => {
 
     // userId の型を number に指定
     const userId: number = 1;
+
+    const handleLogout = async () => {
+        try {
+            await axios.post("/logout", {}, {
+                headers: {
+                    "X-CSRF-TOKEN": (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content || ""
+                },
+                withCredentials: true // Fortify を使用する場合、これを true にする必要がある！
+            });
+            window.location.href = "/login"; // ログアウト後のリダイレクト先
+        } catch (error) {
+            console.error("ログアウトに失敗しました。", error);
+        }
+    };
 
     return (
         <div
@@ -31,7 +46,7 @@ const Sidebar: React.FC = () => {
                     </a>
                     <a
                         className={`profile_link ${isHovered ? "hovered" : ""}`}
-                        href={`/profile/${userId}`}
+                        href={`/profile`}
                     >
                         <i className="fas fa-user"></i> プロフィール
                     </a>
@@ -53,6 +68,9 @@ const Sidebar: React.FC = () => {
                     >
                         <i className="fas fa-user"></i> マイページ
                     </a>
+                    <button className="nav_button" onClick={handleLogout}>
+                        Logout
+                    </button>
                 </div>
             </div>
             <div className="arrow">&larr;</div>

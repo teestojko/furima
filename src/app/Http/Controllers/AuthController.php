@@ -36,7 +36,9 @@ class AuthController extends Controller
         $reviews = Review::all();
         $tags = Tag::all();
         $points = $user ? $user->points : 0;
-        $coupons = Coupon::where('is_active', true)->get();
+        $coupons = Coupon::where('is_active', true)
+            ->where('is_used', false) // 未使用のクーポン
+            ->get();
 
         return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points','coupons'));
     }

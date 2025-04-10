@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/edit', [UserEditController::class, 'edit'])->name('user-edit');
         Route::post('/user/update', [UserEditController::class, 'update'])->name('user-update');
 
-        Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile-show');
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile-show');
 
         Route::get('/cart', [CartController::class, 'view'])->name('cart-view');
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart-add');
@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
         Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
-        Route::post('/coupons/{id}/claim', [CouponController::class, 'claim'])->name('coupons.claim');
+        Route::post('/coupons/{id}/claim', [CouponController::class, 'claim'])->name('coupon-claim');
 
         Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
 

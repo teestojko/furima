@@ -18,4 +18,7 @@ class Coupon extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $casts = [
+        'is_used' => 'boolean',
+    ];
 }

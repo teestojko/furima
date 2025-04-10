@@ -91,7 +91,7 @@
                                 <p>割引: {{ $coupon->discount }} @if($coupon->discount_type == 'percentage') % @else 円 @endif</p>
 
                                 @if(is_null($coupon->user_id))
-                                    <form action="{{ route('coupons.claim', $coupon->id) }}" method="POST">
+                                    <form action="{{ route('coupon-claim', $coupon->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="coupon-button">クーポンを取得</button>
                                     </form>
