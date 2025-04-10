@@ -94,7 +94,8 @@ body {
 .profile_link,
 .cart_link,
 .coupon_link,
-.my_page_link {
+.my_page_link,
+.nav_button {
     text-align: center;
     margin: 10px 0;
     background-color: #ffe3e3;
@@ -112,6 +113,7 @@ body {
 .profile_link:hover,
 .cart_link:hover,
 .coupon_link:hover,
-.my_page_link:hover {
+.my_page_link:hover,
+.nav_button:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

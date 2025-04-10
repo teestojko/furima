@@ -14,6 +14,6 @@ class CouponsTableSeeder extends Seeder
      */
     public function run()
     {
-        Coupon::factory()->count(3)->create();
+        // Coupon::factory()->count(3)->create();
     }
 }

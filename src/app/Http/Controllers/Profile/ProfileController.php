@@ -10,23 +10,19 @@ use App\Models\Product;
 
 class ProfileController extends Controller
 {
-    public function show(User $user)
+    public function show()
     {
+        $user = auth()->user();
+
         $products = $user->products()->with('images')->get();
 
-        // 平均評価を計算（出品商品のレビューの平均）
-    $averageStars = $user->products()
-        ->with('reviews')
-        ->get()
-        ->pluck('reviews')
-        ->flatten()
-        ->avg('stars'); // 'stars' はレビューの評価を保持するカラムの名前
+        $averageStars = $user->products()
+            ->with('reviews')
+            ->get()
+            ->pluck('reviews')
+            ->flatten()
+            ->avg('stars');
 
-        return view('profile.profile', [
-            'user' => $user,
-            'products' => $products,
-            'averageStars' => $averageStars,
-        ]);
+        return view('profile.profile', compact('user', 'products', 'averageStars'));
     }
-
 }
