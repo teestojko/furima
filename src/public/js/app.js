@@ -2715,7 +2715,7 @@ var Sidebar = function Sidebar() {
           }), " \u51FA\u54C1"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "profile_link ".concat(isHovered ? "hovered" : ""),
-          href: "/profile/".concat(userId),
+          href: "/profile",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-user"
           }), " \u30D7\u30ED\u30D5\u30A3\u30FC\u30EB"]
