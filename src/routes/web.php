@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/edit', [UserEditController::class, 'edit'])->name('user-edit');
         Route::post('/user/update', [UserEditController::class, 'update'])->name('user-update');
 
-        Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile-show');
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile-show');
 
         Route::get('/cart', [CartController::class, 'view'])->name('cart-view');
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart-add');

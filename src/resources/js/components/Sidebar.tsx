@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
                     </a>
                     <a
                         className={`profile_link ${isHovered ? "hovered" : ""}`}
-                        href={`/profile/${userId}`}
+                        href={`/profile`}
                     >
                         <i className="fas fa-user"></i> プロフィール
                     </a>
