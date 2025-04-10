@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Feature\Coupon;
+namespace Tests\Feature\Coupon;
 
 use Tests\TestCase;
 use App\Models\User;
