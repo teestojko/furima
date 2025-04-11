@@ -45,4 +45,3 @@ class MessageReceivedController extends Controller
         return redirect()->back()->with('success', 'メッセージが送信されました。');
     }
 }
-
