@@ -13,6 +13,17 @@ use App\Jobs\SaveNotification;
 
 class MessageReceivedController extends Controller
 {
+    // メッセージ送信フォームの表示
+    public function create($receiverId)
+    {
+        $receiverUser = User::findOrFail($receiverId);
+
+        return view('message.message', [
+            'receiverId' => $receiverId,
+            'receiverUser' => $receiverUser,
+        ]);
+    }
+
     public function store(Request $request, $receiverId)
     {
         // 入力バリデーション
