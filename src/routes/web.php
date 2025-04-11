@@ -105,7 +105,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
         Route::post('/payment/success', [PaymentController::class, 'payment'])->name('payment-process');
 
-        Route::get('/messages/{receiver}', [MessageController::class, 'index'])->name('messages-index');
+        Route::get('/messages/{receiver}', [MessageReceivedController::class, 'create'])->name('messages-create');
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
