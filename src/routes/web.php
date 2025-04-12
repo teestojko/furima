@@ -130,4 +130,3 @@ Route::middleware('auth')->group(function () {
         Route::post('/report', [ReportController::class, 'store'])->name('report-store');
     });
 });
-
