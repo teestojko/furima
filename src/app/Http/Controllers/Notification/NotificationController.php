@@ -54,7 +54,11 @@ class NotificationController extends Controller
             abort(403, '不正なアクセスです');
         }
         $notification->update(['is_read' => true]);
-        $messageId = $notification->data['message_id'];
+        $notificationData = json_decode($notification->data, true); // ← 追加
+        if (!isset($notificationData['message_id'])) {
+            abort(404, 'メッセージIDが見つかりません');
+        }
+        $messageId = $notificationData['message_id'];
         $message = Message::findOrFail($messageId);
 
         return view('notification.message_detail', [

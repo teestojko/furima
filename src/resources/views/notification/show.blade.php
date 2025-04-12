@@ -26,7 +26,7 @@
                     @endphp
                     <li>
                         <a href="{{ route('notifications-mark-read-and-message-detail', ['notificationId' => $notification->id]) }}">
-                            {{ $notificationData['message'] }}
+                            {{ $notificationData['message'] ?? 'メッセージなし' }}
                         </a>
                     </li>
                 @endforeach
@@ -44,7 +44,7 @@
                     @endphp
                     <li>
                         <a href="{{ route('notifications-mark-read-and-message-detail', ['notificationId' => $notification->id]) }}">
-                            {{ $notificationData['message'] }}
+                            {{ $notificationData['message'] ?? 'メッセージなし' }}
                         </a>
                     </li>
                 @endforeach
