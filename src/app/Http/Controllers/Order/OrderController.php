@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function orderIndex()
     {
         $orders = Order::where('user_id', Auth::id())
-            ->with('items.product', 'status')  // OrderItemと関連するProduct、およびOrderのstatusを取得
+            ->with('items.product', 'status')
             ->get();
         return view('order.history', compact('orders'));
     }
