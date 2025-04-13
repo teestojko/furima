@@ -18,11 +18,12 @@
                 ホームへ
             </a>
         </div>
-        @if(isset($message))
+        @if(session('success'))
             <div class="alert alert_success">
-                <p class="success_message">{{ $message }}</p>
+                <p class="success_message">{{ session('success') }}</p>
             </div>
         @endif
+
     </div>
 @endsection
 

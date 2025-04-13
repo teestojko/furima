@@ -103,9 +103,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/cart/purchase', [CartController::class, 'preparePayment'])->name('cart-purchase');
 
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
-        Route::post('/payment/success', [PaymentController::class, 'payment'])->name('payment-process');
+        Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment-process');
+        Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment-success');
 
-        Route::get('/messages/{receiver}', [MessageController::class, 'index'])->name('messages-index');
+        Route::get('/messages/{receiver}', [MessageReceivedController::class, 'create'])->name('messages-create');
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
@@ -116,12 +117,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
 
-
         Route::post('/favorites/{product}/toggle', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle');
-
-
-        // Route::post('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-add');
-        // Route::delete('/favorites/{product}', [FavoriteController::class, 'toggleFavorite'])->name('favorites-toggle-remove');
 
         Route::get('/order-history', [OrderController::class, 'orderIndex'])->name('order-history');
 
@@ -135,4 +131,3 @@ Route::middleware('auth')->group(function () {
         Route::post('/report', [ReportController::class, 'store'])->name('report-store');
     });
 });
-
