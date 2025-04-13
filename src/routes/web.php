@@ -103,7 +103,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/cart/purchase', [CartController::class, 'preparePayment'])->name('cart-purchase');
 
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
-        Route::post('/payment/success', [PaymentController::class, 'payment'])->name('payment-process');
+        Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment-process');
+        Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment-success');
 
         Route::get('/messages/{receiver}', [MessageReceivedController::class, 'create'])->name('messages-create');
         Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');

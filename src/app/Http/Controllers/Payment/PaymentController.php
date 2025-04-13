@@ -26,7 +26,7 @@ class PaymentController extends Controller
         return view('payment.payment');
     }
 
-    public function payment(Request $request)
+    public function process(Request $request)
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -67,7 +67,7 @@ class PaymentController extends Controller
             // **注文を作成**
             $order = new Order([
                 'user_id' => $user->id,
-                'status_id' => 2, // 保留中
+                'status_id' => 2,
                 'total_price' => $finalAmount,
                 'commission_fee' => $commissionFee,
                 'seller_revenue' => $totalSellerRevenue,
@@ -104,11 +104,17 @@ class PaymentController extends Controller
             // セッションをクリア
             session()->forget(['used_points', 'selected_items', 'total_amount', 'discounted_amount' , 'final_amount']);
 
-            return view('payment.success')->with('message', "$earnedPoints ポイントを獲得しました！");
+            return redirect()->route('payment-success')->with('success', "$earnedPoints ポイントを獲得しました！");
+
 
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function success()
+    {
+        return view('payment.success')->with('success', session('success'));
     }
 
     public function applyPoints(Request $request)
