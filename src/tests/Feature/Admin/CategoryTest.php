@@ -7,7 +7,7 @@ use Tests\TestCase;
 use App\Models\Admin;
 use App\Models\Category;
 
-class CategoryControllerTest extends TestCase
+class CategoryTest extends TestCase
 {
     use RefreshDatabase;
 
