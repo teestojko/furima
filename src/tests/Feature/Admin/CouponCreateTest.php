@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class CouponCreateControllerTest extends TestCase
+class CouponCreateTest extends TestCase
 {
     use RefreshDatabase;
 
