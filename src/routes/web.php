@@ -19,6 +19,7 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Payment\CouponController;
 use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\Payment\PointController;
 use App\Http\Controllers\Message\MessageController;
 use App\Http\Controllers\Mail\MessageReceivedController;
 use App\Http\Controllers\Admin\CouponCreateController;
@@ -105,15 +106,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->name('payment-show');
         Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment-process');
         Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment-success');
-
-        Route::get('/messages/{receiver}', [MessageReceivedController::class, 'create'])->name('messages-create');
-        Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
-
+        Route::post('/points/apply', [PointController::class, 'apply'])->name('point-apply');
         Route::get('/coupons', [CouponController::class, 'index'])->name('coupons-index');
         Route::post('/apply_coupon', [CouponController::class, 'apply'])->name('coupon-apply');
         Route::post('/coupons/{id}/claim', [CouponController::class, 'claim'])->name('coupon-claim');
 
-        Route::post('/point-apply', [PaymentController::class, 'applyPoints'])->name('point-apply');
+        Route::get('/messages/{receiver}', [MessageReceivedController::class, 'create'])->name('messages-create');
+        Route::post('/messages/{receiver}/send-email', [MessageReceivedController::class, 'store'])->name('messages-send-email');
 
         Route::get('/my_page', [FavoriteController::class, 'showFavorites'])->name('user-my-page');
 
