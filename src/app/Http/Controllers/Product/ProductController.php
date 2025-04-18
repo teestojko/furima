@@ -51,7 +51,6 @@ class ProductController extends Controller
                 }
             }
             return back()->with('success', $imagesUploaded ? '商品が出品されました' : '画像が選択されていません');
-
     }
 }
 
