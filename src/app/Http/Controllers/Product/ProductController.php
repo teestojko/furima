@@ -40,7 +40,7 @@ class ProductController extends Controller
         $imagesUploaded = $request->hasFile('images');
             if ($imagesUploaded) {
                 foreach ($request->file('images') as $imageFile) {
-                    $path = $imageFile->store('public/images');
+                    $path = $imageFile->store('images', 'public');
                     $publicPath = str_replace('public/', 'storage/', $path);
                                 //str_replace(検索する文字列, 置換後の文字列, 対象の文字列)
 

@@ -51,7 +51,7 @@ class UpdateController extends Controller
 
             // 新しい画像を保存
             foreach ($request->file('images') as $imageFile) {
-                $path = $imageFile->store('public/images');
+                $path = $imageFile->store('images', 'public');
                 $publicPath = str_replace('public/', 'storage/', $path);
                 Image::create([
                     'product_id' => $product->id,
