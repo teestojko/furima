@@ -46,7 +46,6 @@ class ProductStoreTest extends TestCase
 
         $this->assertDatabaseCount('images', 2);
 
-        // ✅ ここを修正：事前に作った画像のハッシュ名を使う
         Storage::disk('public')->assertExists('images/' . $image1->hashName());
         Storage::disk('public')->assertExists('images/' . $image2->hashName());
     }
@@ -74,10 +73,10 @@ class ProductStoreTest extends TestCase
             'name' => '商品名',
             'user_id' => $user->id,
         ]);
-        $this->assertDatabaseCount('images', 0);
+        $this->assertDatabaseCount('images', 0); //images テーブルにレコードが 0 件であることを確認
     }
 
-    
+
     public function test_guest_cannot_store_product()
     {
         $response = $this->post(route('products-store'), []);
