@@ -43,4 +43,3 @@ class AuthController extends Controller
         return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points','coupons'));
     }
 }
-
