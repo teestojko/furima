@@ -47,3 +47,4 @@ class SearchController extends Controller
         return view('index', compact('user_name', 'user', 'products', 'categories'));
     }
 }
+
