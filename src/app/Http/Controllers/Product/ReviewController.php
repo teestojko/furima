@@ -55,3 +55,4 @@ class ReviewController extends Controller
         return back()->with('success', 'レビューを削除しました');
     }
 }
+
