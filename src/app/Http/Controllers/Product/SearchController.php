@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\OrderStatus;
 use App\Models\Review;
 use App\Models\Tag;
@@ -55,10 +56,10 @@ class SearchController extends Controller
             $query->orderBy('price', $request->price_order);
         }
 
-        // 人気順での並び替え (仮に「注文回数が多い順」で人気を定義する場合)
         if ($request->filled('popularity') && $request->popularity == 'desc') {
-            $query->withCount('orders')->orderBy('orders_count', 'desc');
+            $query->withCount('orderItems')->orderBy('order_items_count', 'desc');
         }
+
 
         $products = $query->get();
 

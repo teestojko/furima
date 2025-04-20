@@ -58,6 +58,11 @@ class Product extends Model
         return $this->favoritedByUsers()->where('user_id', auth()->id())->exists();
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     public function items()
     {
         return $this->hasMany(OrderItem::class);
