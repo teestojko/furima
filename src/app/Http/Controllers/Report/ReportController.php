@@ -48,3 +48,4 @@ class ReportController extends Controller
         return back()->with('success', '通報が送信されました。');
     }
 }
+
