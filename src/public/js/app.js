@@ -2080,6 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
+  var _Laravel;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // 光のエフェクトを初期化
     (0,_components_LightEffect__WEBPACK_IMPORTED_MODULE_4__.randomizeLights)();
@@ -2115,8 +2116,11 @@ var App = function App() {
       }));
     });
   }, []);
+
+  //ログイン済ユーザーのみ表示
+  var isLoggedIn = (_Laravel = window.Laravel) === null || _Laravel === void 0 ? void 0 : _Laravel.isLoggedIn;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+    children: isLoggedIn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {})
   });
 };
 
@@ -2706,41 +2710,47 @@ var Sidebar = function Sidebar() {
           href: "/",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-home"
-          }), " \u30DB\u30FC\u30E0"]
+          }), "\u30DB\u30FC\u30E0"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "products_create_link ".concat(isHovered ? "hovered" : ""),
           href: "/products/create",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-plus"
-          }), " \u51FA\u54C1"]
+          }), "\u51FA\u54C1"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "profile_link ".concat(isHovered ? "hovered" : ""),
           href: "/profile",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-user"
-          }), " \u30D7\u30ED\u30D5\u30A3\u30FC\u30EB"]
+          }), "\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "cart_link ".concat(isHovered ? "hovered" : ""),
           href: "/cart",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-shopping-cart"
-          }), " \u30AB\u30FC\u30C8"]
+          }), "\u30AB\u30FC\u30C8"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "coupon_link ".concat(isHovered ? "hovered" : ""),
           href: "/coupons",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-tags"
-          }), " \u30AF\u30FC\u30DD\u30F3\u4E00\u89A7"]
+          }), "\u30AF\u30FC\u30DD\u30F3\u4E00\u89A7"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           className: "my_page_link ".concat(isHovered ? "hovered" : ""),
           href: "/my_page",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-user"
-          }), " \u30DE\u30A4\u30DA\u30FC\u30B8"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          }), "\u30DE\u30A4\u30DA\u30FC\u30B8"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+          href: "#",
           className: "nav_button",
-          onClick: handleLogout,
-          children: "Logout"
+          onClick: function onClick(e) {
+            e.preventDefault(); // ページ遷移を防ぐ
+            handleLogout(); // ログアウト関数を呼ぶ
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+            className: "fas fa-right-from-bracket"
+          }), "Logout"]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
