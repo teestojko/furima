@@ -3,19 +3,38 @@
 namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\OrderStatus;
+use App\Models\Review;
+use App\Models\Tag;
+use App\Models\Coupon;
 
 class SearchController extends Controller
 {
     public function filter(Request $request)
     {
-            $user_name = auth()->check() ? auth()->user()->name : null;
+        $user_name = auth()->check() ? auth()->user()->name : null;
         $user = Auth::user();
         $categories = Category::all();
+        $carts = Cart::all();
+        $orders = Order::all();
+        $order_status = OrderStatus::all();
+        $reviews = Review::all();
+        $tags = Tag::all();
+        $points = $user ? $user->points : 0;
+        $coupons = Coupon::where('is_active', true)
+            ->where('is_used', false)
+            ->get();
+
         $query = Product::query();
+
 
         // カテゴリでの絞り込み
         if ($request->filled('category_id')) {
@@ -37,13 +56,26 @@ class SearchController extends Controller
             $query->orderBy('price', $request->price_order);
         }
 
-        // 人気順での並び替え (仮に「注文回数が多い順」で人気を定義する場合)
         if ($request->filled('popularity') && $request->popularity == 'desc') {
-            $query->withCount('orders')->orderBy('orders_count', 'desc');
+            $query->withCount('orderItems')->orderBy('order_items_count', 'desc');
         }
+
 
         $products = $query->get();
 
-        return view('index', compact('user_name', 'user', 'products', 'categories'));
+        return view('index', compact(
+        'user_name',
+        'user',
+        'carts',
+        'categories',
+        'orders',
+        'order_status',
+        'products',
+        'reviews',
+        'tags',
+        'points',
+        'coupons'
+    ));
     }
 }
+

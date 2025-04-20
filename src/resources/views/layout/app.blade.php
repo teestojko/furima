@@ -24,7 +24,7 @@
             </div>
         </header>
 
-    <div id="sidebar"></div>
+        <div id="sidebar"></div>
 
         <main>
             @yield('content')

@@ -25,12 +25,16 @@
                 <div class="product_title">
                     商品一覧
                 </div>
-                <div class="index_points">
-                    <div class="user-points">
-                        <span class="points-label">保有ポイント:</span>
-                        <span class="points-value">{{ number_format($points) }} pt</span>
+                @if(Auth::check())
+                    <div class="index_points">
+                        <div class="user-points">
+                            <span class="points-label">保有ポイント:</span>
+                            <span class="points-value">{{ number_format($points) }} pt</span>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class=""></div>
+                @endif
 
                 <div class="product_list">
                     @foreach ($products as $product)
@@ -44,20 +48,21 @@
                             <div class="product_price">
                                 ¥{{ number_format($product->price, 0) }}
                             </div>
-                            <div class="detail_and_favorite">
-                                <div class="product_detail">
-                                    <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
-                                        詳細を表示
-                                    </a>
+
+                            @if(Auth::check())
+                                <div class="detail_and_favorite">
+                                    <div class="product_detail">
+                                        <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
+                                            詳細を表示
+                                        </a>
+                                    </div>
+
+                                    <div class="favorite-button"
+                                        data-product-id="{{ $product->id }}"
+                                        data-is-favorite="{{ $product->isFavorited() ? 'true' : 'false' }}">
+                                    </div>
                                 </div>
 
-                                <div class="favorite-button"
-                                    data-product-id="{{ $product->id }}"
-                                    data-is-favorite="{{ $product->isFavorited() ? 'true' : 'false' }}">
-                                </div>
-
-
-                            </div>
                             <div class="product_cart_link">
                                 <form action="{{ route('cart-add') }}" method="POST">
                                     @csrf
@@ -68,6 +73,10 @@
                                     </button>
                                 </form>
                             </div>
+                            @else
+                                <div class=""></div>
+                            @endif
+
                         </div>
                     @endforeach
                 </div>
@@ -106,6 +115,14 @@
 
         </div>
     </div>
+
+    {{-- ログイン済ユーザーのみ表示 --}}
+    <script>
+        window.Laravel = {
+            isLoggedIn: @json(Auth::check())
+        };
+    </script>
+
 
 @endsection
 

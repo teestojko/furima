@@ -46,10 +46,11 @@ const App: React.FC = () => {
 
     }, []);
 
-
+    //ログイン済ユーザーのみ表示
+    const isLoggedIn = (window as any).Laravel?.isLoggedIn;
     return (
         <div>
-            <Sidebar />
+            {isLoggedIn && <Sidebar />}
         </div>
     );
 };
