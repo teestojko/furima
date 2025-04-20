@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserEditRequest extends FormRequest
 {
@@ -24,9 +25,10 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'current_password' => 'required_with:new_password',
             'new_password' => 'nullable|min:8|confirmed',
         ];
     }
@@ -39,7 +41,6 @@ class UserEditRequest extends FormRequest
     public function messages()
     {
         return [
-            'profile_image.required' => 'プロフィール画像を選択してください。',
             'profile_image.image' => 'プロフィール画像は画像ファイルである必要があります。',
             'profile_image.mimes' => 'プロフィール画像の形式はjpeg、png、jpg、gifのいずれかである必要があります。',
             'profile_image.max' => 'プロフィール画像のサイズは2MB以内である必要があります。',
@@ -54,5 +55,16 @@ class UserEditRequest extends FormRequest
             'new_password.min' => '新しいパスワードは8文字以上である必要があります。',
             'new_password.confirmed' => '新しいパスワードが確認用と一致しません。',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->filled('new_password')) {
+                if (! Hash::check($this->input('current_password'), $this->user()->password)) {
+                    $validator->errors()->add('current_password', '現在のパスワードが正しくありません。');
+                }
+            }
+        });
     }
 }
