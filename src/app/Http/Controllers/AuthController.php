@@ -18,7 +18,33 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $user_name = null;
+        $user = null;
+        $carts = Cart::all();
+        $categories = Category::all();
+        $orders = Order::all();
+        $order_status = OrderStatus::all();
+        $products = Product::with('user', 'images')->get();
+        $reviews = Review::all();
+        $tags = Tag::all();
+        $points = null;
+        $coupons = Coupon::where('is_active', true)
+            ->where('is_used', false) // 未使用のクーポン
+            ->get();
+
+        return view('index', compact(
+            'user_name',
+            'user',
+            'carts',
+            'categories',
+            'orders',
+            'order_status',
+            'products',
+            'reviews',
+            'tags',
+            'points',
+            'coupons'
+        ));
     }
 
     public function userIndex()
@@ -40,6 +66,17 @@ class AuthController extends Controller
             ->where('is_used', false) // 未使用のクーポン
             ->get();
 
-        return view('index', compact('user_name','user','carts','categories','orders','order_status','products','reviews','tags','points','coupons'));
+        return view('index', compact(
+            'user_name',
+            'user',
+            'carts',
+            'categories',
+            'orders',
+            'order_status',
+            'products',
+            'reviews',
+            'tags',
+            'points',
+            'coupons'));
     }
 }

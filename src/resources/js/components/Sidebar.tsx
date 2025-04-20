@@ -36,41 +36,56 @@ const Sidebar: React.FC = () => {
                         className={`index_link ${isHovered ? "hovered" : ""}`}
                         href="/"
                     >
-                        <i className="fas fa-home"></i> ホーム
+                        <i className="fas fa-home"></i>
+                            ホーム
                     </a>
                     <a
                         className={`products_create_link ${isHovered ? "hovered" : ""}`}
                         href="/products/create"
                     >
-                        <i className="fas fa-plus"></i> 出品
+                        <i className="fas fa-plus"></i>
+                            出品
                     </a>
                     <a
                         className={`profile_link ${isHovered ? "hovered" : ""}`}
                         href={`/profile`}
                     >
-                        <i className="fas fa-user"></i> プロフィール
+                        <i className="fas fa-user"></i>
+                            プロフィール
                     </a>
                     <a
                         className={`cart_link ${isHovered ? "hovered" : ""}`}
                         href="/cart"
                     >
-                        <i className="fas fa-shopping-cart"></i> カート
+                        <i className="fas fa-shopping-cart"></i>
+                            カート
                     </a>
                     <a
                         className={`coupon_link ${isHovered ? "hovered" : ""}`}
                         href="/coupons"
                     >
-                        <i className="fas fa-tags"></i> クーポン一覧
+                        <i className="fas fa-tags"></i>
+                            クーポン一覧
                     </a>
                     <a
                         className={`my_page_link ${isHovered ? "hovered" : ""}`}
                         href="/my_page"
                     >
-                        <i className="fas fa-user"></i> マイページ
+                        <i className="fas fa-user"></i>
+                            マイページ
                     </a>
-                    <button className="nav_button" onClick={handleLogout}>
+                    <a
+                        href="#"
+                        className="nav_button"
+                        onClick={(e) => {
+                            e.preventDefault(); // ページ遷移を防ぐ
+                            handleLogout();     // ログアウト関数を呼ぶ
+                        }}
+                    >
+                    <i className="fas fa-right-from-bracket"></i>
                         Logout
-                    </button>
+                    </a>
+
                 </div>
             </div>
             <div className="arrow">&larr;</div>
