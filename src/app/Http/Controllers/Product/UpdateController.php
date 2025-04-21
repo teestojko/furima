@@ -63,3 +63,4 @@ class UpdateController extends Controller
     return redirect()->route('products-show', $product)->with('success', '商品情報が更新されました');
     }
 }
+
