@@ -73,7 +73,7 @@ class CouponController extends Controller
     public function claim($id)
     {
         $coupon = Coupon::where('id', $id)
-                        ->whereNull('user_id') // まだ誰も取得していないクーポン
+                        ->whereNull('user_id', Auth::id())
                         ->where('is_active', true)
                         ->where('is_used', false)
                         ->first();
