@@ -80,3 +80,4 @@ class AuthController extends Controller
             'coupons'));
     }
 }
+
