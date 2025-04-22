@@ -29,10 +29,15 @@
         <main>
             @yield('content')
         </main>
-</body>
 
-    <div id="app"></div>
+        <div id="app"></div>
 
-    <script src="{{ mix('js/app.js') }}"></script>
+        <script>
+            window.Laravel = {
+                isLoggedIn: {{ Auth::check() ? 'true' : 'false' }}
+            };
+        </script>
 
+        <script src="{{ mix('js/app.js') }}"></script>
+    </body>
 </html>
