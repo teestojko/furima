@@ -26,7 +26,10 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
-          ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
+          ssh -i private_key.pem \
+            -o StrictHostKeyChecking=no \
+            -o ServerAliveInterval=60 \
+            $USERNAME@$SERVER_IP << 'EOF'
             cd furima/src
             git pull origin main
             sudo docker-compose up -d --build
