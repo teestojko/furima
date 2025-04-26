@@ -3,10 +3,10 @@ name:  Deploy Pipeline
 on:
   push:
     branches:
-      - main  # mainブランチへのpushでトリガーされる
+      - main
   pull_request:
     branches:
-      - main  # pull requestがmainブランチに対して行われた時
+      - main
   workflow_dispatch:
 
 
