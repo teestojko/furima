@@ -30,7 +30,7 @@ jobs:
             cd furima/src
             git pull origin main
             sudo docker-compose up -d --build
-            sudo docker-compose exec -T php bash -c '
+            sudo docker-compose exec php bash '
             composer install &&
             npm install &&
             npm run production &&
