@@ -33,13 +33,15 @@ jobs:
             cd furima/src
             git pull origin main
             sudo docker-compose up -d --build
-            sudo docker-compose exec php bash '
-            composer install &&
-            npm install &&
-            npm run production &&
-            php artisan migrate --force &&
-            php artisan config:cache &&
-            php artisan route:cache &&
-            php artisan view:cache'
+            sleep 10
+            sudo docker-compose exec php bash "
+              composer install &&
+              npm install &&
+              npm run production &&
+              php artisan migrate --force &&
+              php artisan config:cache &&
+              php artisan route:cache &&
+              php artisan view:cache
+            "
           EOF
           
