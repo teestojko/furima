@@ -32,11 +32,12 @@ jobs:
             sudo docker-compose down
             sudo docker-compose up -d --build
             docker-compose exec -T php bash -c '
-            docker-compose exec -T php composer install
-            docker-compose exec -T php npm install
-            docker-compose exec -T php npm run production
-            docker-compose exec -T php php artisan migrate --force
-            docker-compose exec -T php php artisan config:cache
-            docker-compose exec -T php php artisan route:cache
-            docker-compose exec -T php php artisan view:cache
+            composer install &&
+            npm install &&
+            npm run dev &&
+            php artisan migrate --force &&
+            php artisan config:cache &&
+            php artisan route:cache &&
+            php artisan view:cache'
           EOF
+          
