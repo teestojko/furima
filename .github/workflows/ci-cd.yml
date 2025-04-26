@@ -56,7 +56,7 @@ jobs:
       - name: Build frontend assets
         run: |
           cd src
-          npm run build
+          npm run production
 
       - name: Set up .env.testing
         run: |
