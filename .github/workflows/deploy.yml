@@ -27,14 +27,13 @@ jobs:
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
-            cd furima
+            cd furima/src
             git pull origin main
-            sudo docker-compose down
-            sudo docker-compose up -d --build
-            docker-compose exec -T php bash -c '
+            sudo docker-compose up -d
+            sudo docker-compose exec -T php bash -c '
             composer install &&
             npm install &&
-            npm run dev &&
+            npm run production &&
             php artisan migrate --force &&
             php artisan config:cache &&
             php artisan route:cache &&
