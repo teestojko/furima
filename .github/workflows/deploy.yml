@@ -30,7 +30,7 @@ jobs:
             -o StrictHostKeyChecking=no \
             -o ServerAliveInterval=60 \
             $USERNAME@$SERVER_IP << 'EOF'
-            cd furima
+            cd furima/src
             git pull origin main
             sudo docker-compose up -d --build
             sleep 10
