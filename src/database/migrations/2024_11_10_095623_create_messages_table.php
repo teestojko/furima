@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->foreignId('sender_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('receiver_id')->constrained('users')->cascadeOnDelete();
             $table->text('message');
-            $table->timestamp('read_at')->nullable(); // 読み込み日時
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

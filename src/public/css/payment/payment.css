@@ -103,9 +103,9 @@ button:hover {
 
 .success_message, .error_message {
     opacity: 0;
-    transform: translateY(20px); /* メッセージを下に少し移動させる */
-    animation: float 0.5s forwards; /* アニメーションを適用 */
-    transition: opacity 0.5s ease; /* フェードインの効果 */
+    transform: translateY(20px);
+    animation: float 0.5s forwards;
+    transition: opacity 0.5s ease;
     color: #937b5e;
 }
 
@@ -116,7 +116,7 @@ button:hover {
 @keyframes float {
     to {
         opacity: 1;
-        transform: translateY(0); /* 元の位置に戻す */
+        transform: translateY(0);
     }
 }
 

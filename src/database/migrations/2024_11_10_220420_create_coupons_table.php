@@ -16,13 +16,13 @@ class CreateCouponsTable extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->string('code')->unique(); // クーポンコード
-            $table->decimal('discount', 8, 2); // 割引額またはパーセンテージ
-            $table->enum('discount_type', ['fixed', 'percentage']); // 割引のタイプ
-            $table->date('valid_from')->nullable(); // 有効開始日
-            $table->date('valid_until')->nullable(); // 有効期限
-            $table->boolean('is_active')->default(true); // クーポンの有効/無効
-            $table->boolean('is_used')->default(false); // 使用済みかどうかを判定
+            $table->string('code')->unique();
+            $table->decimal('discount', 8, 2);
+            $table->enum('discount_type', ['fixed', 'percentage']);
+            $table->date('valid_from')->nullable();
+            $table->date('valid_until')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_used')->default(false);
             $table->timestamps();
         });
     }

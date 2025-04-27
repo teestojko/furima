@@ -25,13 +25,10 @@ class UpdateController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-    // 認証済みユーザーが出品者かどうかをチェック
         $this->authorize('update', $product);
 
-        // バリデーション
         $validatedData = $request->validated();
 
-        // 商品情報の更新
         $product->update([
             'name' => $validatedData['name'],
             'detail' => $validatedData['detail'],
@@ -41,15 +38,12 @@ class UpdateController extends Controller
             'condition_id' => $validatedData['condition_id'],
         ]);
 
-        // 画像の更新処理
         if ($request->hasFile('images')) {
-            // 既存の画像を削除
             foreach ($product->images as $image) {
                 Storage::delete('public/images/' . basename($image->path));
                 $image->delete();
             }
 
-            // 新しい画像を保存
             foreach ($request->file('images') as $imageFile) {
                 $path = $imageFile->store('images', 'public');
                 $publicPath = str_replace('public/', 'storage/', $path);

@@ -1,5 +1,5 @@
 .send_email_section {
-    background-color: #fce4ec; /* 柔らかいピンク色 */
+    background-color: #fce4ec;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -10,7 +10,7 @@
 .section_title {
     font-size: 24px;
     font-weight: bold;
-    color: #d81b60; /* ビビッドなピンク */
+    color: #d81b60;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -18,28 +18,28 @@
 .send_email_message2 label {
     display: block;
     font-size: 18px;
-    color: #880e4f; /* 濃いピンク */
+    color: #880e4f;
     margin-bottom: 5px;
 }
 
 textarea {
     width: 100%;
-    border: 2px solid #f8bbd0; /* 薄いピンク */
+    border: 2px solid #f8bbd0;
     border-radius: 10px;
     padding: 10px;
     font-size: 16px;
     resize: vertical;
-    background-color: #fff0f6; /* 薄い背景色 */
+    background-color: #fff0f6;
 }
 
 textarea:focus {
     outline: none;
-    border-color: #ec407a; /* ピンクのフォーカス色 */
+    border-color: #ec407a;
     box-shadow: 0 0 5px rgba(236, 64, 122, 0.5);
 }
 
 .alert_danger_comment {
-    color: #c62828; /* 赤色 */
+    color: #c62828;
     font-size: 14px;
     margin-top: 5px;
 }
@@ -50,7 +50,7 @@ textarea:focus {
 }
 
 .send_email_button_button {
-    background-color: #d81b60; /* ビビッドなピンク */
+    background-color: #d81b60;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -61,11 +61,11 @@ textarea:focus {
 }
 
 .send_email_button_button:hover {
-    background-color: #ad1457; /* 濃いピンク */
+    background-color: #ad1457;
     transform: scale(1.05);
 }
 
 .send_email_button_button:active {
-    background-color: #880e4f; /* 濃いピンク */
+    background-color: #880e4f;
     transform: scale(1);
 }

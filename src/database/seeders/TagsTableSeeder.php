@@ -20,9 +20,7 @@ class TagsTableSeeder extends Seeder
 
         $products = Product::all();
 
-        // 各プロダクトにタグをランダムに紐づけ
         foreach ($products as $product) {
-            // ランダムにタグを1～3個選び、紐づける
             $product->tags()->attach(
                 $tags->random(rand(1, 3))->pluck('id')->toArray()
             );

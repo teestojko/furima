@@ -25,7 +25,6 @@ class CartsTableSeeder extends Seeder
             $user = $users->random();
             $product = $products->random();
 
-            // 重複チェック（user_id × product_id の組み合わせ）
             $key = $user->id . '-' . $product->id;
             if ($combinations->contains($key)) {
                 continue;

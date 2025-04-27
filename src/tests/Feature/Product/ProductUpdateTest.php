@@ -52,7 +52,6 @@ class ProductUpdateTest extends TestCase
             'name' => '旧商品名',
         ]);
 
-        // 既存画像も追加
         $existingImage = Image::factory()->create([
             'product_id' => $product->id,
             'path' => 'storage/images/old_image.jpg',
@@ -107,6 +106,6 @@ class ProductUpdateTest extends TestCase
             'condition_id' => $condition->id,
         ]);
 
-        $response->assertForbidden(); // ポリシーが効いてるかチェック
+        $response->assertForbidden();
     }
 }

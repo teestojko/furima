@@ -88,7 +88,6 @@ class SearchTest extends TestCase
         $product1 = Product::factory()->create();
         $product2 = Product::factory()->create();
 
-        // product1 の注文を3件作成
         for ($i = 0; $i < 3; $i++) {
             $order = Order::factory()->create();
             OrderItem::factory()->create([
@@ -97,7 +96,6 @@ class SearchTest extends TestCase
             ]);
         }
 
-        // product2 の注文を1件作成
         $order = Order::factory()->create();
         OrderItem::factory()->create([
             'order_id' => $order->id,

@@ -18,10 +18,8 @@ class PointController extends Controller
             return back()->withErrors(['use_points' => '使用できるポイントを超えています。']);
         }
 
-        // 使ったポイントをセッションに保存
         session(['used_points' => $usePoints]);
 
-        // `final_amount` を更新
         $discountedAmount = session('discounted_amount', session('total_amount'));
         $finalAmount = max(0, $discountedAmount - $usePoints);
         session(['final_amount' => $finalAmount]);

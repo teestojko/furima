@@ -22,7 +22,7 @@
                 <select name="coupon_id" id="coupon_id" required>
                     <option value="">-- クーポンを選択 --</option>
                     @foreach (Auth::user()->coupons as $coupon)
-                        @if (!$coupon->is_used) {{-- 使用済みは表示しない --}}
+                        @if (!$coupon->is_used)
                             <option value="{{ $coupon->id }}">
                                 {{ $coupon->code }}（
                                 @if ($coupon->discount_type === 'percentage')
@@ -45,7 +45,6 @@
                 <button type="submit">ポイントを使用</button>
             </form>
 
-            <!-- 合計金額を表示 -->
             <div class="total_amount">
                 <p class="amount_title">
                     合計金額: ¥{{ number_format(session('discounted_amount', session('total_amount')) - session('used_points', 0)) }}

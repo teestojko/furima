@@ -36,22 +36,18 @@ class SearchController extends Controller
         $query = Product::query();
 
 
-        // カテゴリでの絞り込み
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
 
-        // 商品名での部分一致検索
         if ($request->filled('product_name')) {
             $query->where('name', 'like', '%' . $request->product_name . '%');
         }
 
-        // 価格帯での検索
         if ($request->filled('min_price') && $request->filled('max_price')) {
             $query->whereBetween('price', [$request->min_price, $request->max_price]);
         }
 
-        // 価格順での並び替え
         if ($request->filled('price_order') && in_array($request->price_order, ['asc', 'desc'])) {
             $query->orderBy('price', $request->price_order);
         }

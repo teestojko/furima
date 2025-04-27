@@ -12,7 +12,7 @@ class SaleController extends Controller
     public function showSalesHistory()
     {
         $sales = Order::whereHas('items.product', function ($query) {
-            $query->where('user_id', Auth::id()); // 出品者のIDでフィルタリング
+            $query->where('user_id', Auth::id());
         })->with(['items.product'])->get();
         return view('sale.history', compact('sales'));
     }

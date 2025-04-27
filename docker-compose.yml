@@ -16,11 +16,11 @@ services:
     build: ./docker/php
     volumes:
       - ./src:/var/www/
-      - ./src/node_modules:/var/www/node_modules # node_modulesをホスト側と共有
+      - ./src/node_modules:/var/www/node_modules
     environment:
       - COMPOSER_ALLOW_SUPERUSER=1
     platform: linux/amd64
-    command: /bin/bash -c "npm install && npm run dev && php-fpm"  # ビルドと開発環境起動
+    command: /bin/bash -c "npm install && npm run dev && php-fpm"
 
   mysql:
     image: mysql:8.0.41

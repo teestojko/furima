@@ -18,7 +18,7 @@ class ReportController extends Controller
     public function create(Request $request)
     {
         $reportedProduct = Product::findOrFail($request->reported_product_id);
-        $reportedUser = $reportedProduct->user; // 商品の出品者を取得
+        $reportedUser = $reportedProduct->user;
 
         return view('report.create', compact('reportedProduct', 'reportedUser'));
     }

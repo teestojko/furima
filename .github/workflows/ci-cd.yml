@@ -41,7 +41,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22' # Node.jsのバージョンは必要に応じて変えてね
+          node-version: '22'
 
       - name: Install Composer dependencies
         run: |

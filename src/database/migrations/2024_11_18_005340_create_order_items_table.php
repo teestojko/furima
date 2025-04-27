@@ -17,10 +17,10 @@ class CreateOrderItemsTable extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-            $table->integer('quantity'); // 購入数量
-            $table->decimal('price', 10, 2); // 単価
-            $table->decimal('commission_fee', 10, 2); // 手数料
-            $table->decimal('seller_revenue', 10, 2); // 出品者の収益
+            $table->integer('quantity');
+            $table->decimal('price', 10, 2);
+            $table->decimal('commission_fee', 10, 2);
+            $table->decimal('seller_revenue', 10, 2);
             $table->timestamps();
         });
     }

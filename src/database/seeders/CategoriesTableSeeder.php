@@ -24,7 +24,5 @@ class CategoriesTableSeeder extends Seeder
             ['name' => 'ネイルチップ'],
             ['name' => 'キーケース']
         ]);
-
-        // Category::factory()->count(1)->create();
     }
 }

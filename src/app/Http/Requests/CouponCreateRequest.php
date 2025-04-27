@@ -26,9 +26,9 @@ class CouponCreateRequest extends FormRequest
         return [
             'code' => 'required|unique:coupons,code|max:255',
             'discount' => 'required|numeric|min:1',
-            'discount_type' => 'required|in:fixed,percentage', // 新しいバリデーション
+            'discount_type' => 'required|in:fixed,percentage',
             'valid_from' => 'required|date|before:valid_until',
-            'valid_until' => 'required|date|after:today', // フィールド名を一致させる
+            'valid_until' => 'required|date|after:today',
         ];
     }
 

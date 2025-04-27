@@ -29,7 +29,7 @@ class AuthController extends Controller
         $tags = Tag::all();
         $points = null;
         $coupons = Coupon::where('is_active', true)
-            ->where('is_used', false) // 未使用のクーポン
+            ->where('is_used', false)
             ->get();
 
         return view('index', compact(
@@ -63,7 +63,7 @@ class AuthController extends Controller
         $tags = Tag::all();
         $points = $user ? $user->points : 0;
         $coupons = Coupon::where('is_active', true)
-            ->where('is_used', false) // 未使用のクーポン
+            ->where('is_used', false)
             ->get();
 
         return view('index', compact(

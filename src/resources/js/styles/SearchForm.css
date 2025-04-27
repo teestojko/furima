@@ -2,10 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    background-color: #f9f9ff; /* 背景色を柔らかく */
-    border-radius: 10px; /* 角丸 */
+    background-color: #f9f9ff;
+    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .index_search{
@@ -32,7 +32,7 @@
 .index_search_label {
     font-size: 14px;
     font-weight: bold;
-    color: #333; /* ダークなグレー */
+    color: #333;
     margin-bottom: 5px;
 }
 
@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 250px; /* それぞれの要素の最大幅 */
+    max-width: 250px;
 }
 
 .index_search_select_category,
@@ -54,15 +54,15 @@
 #price_order,
 #popularity {
     padding: 10px;
-    border: 1px solid #ddd; /* 軽い境界線 */
-    border-radius: 5px; /* 角丸 */
-    background-color: #ffffff; /* 背景色 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
     font-size: 14px;
-    transition: border-color 0.3s; /* ホバー時のスムーズな変化 */
+    transition: border-color 0.3s;
 }
 
 .index_search_select_category.active {
-    border-color: #007bff; /* 選択時の枠線色 */
+    border-color: #007bff;
     color: #007bff;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
@@ -73,7 +73,7 @@
 #max_price:hover,
 #price_order:hover,
 #popularity:hover {
-    border-color: #a2a2ff; /* ホバー時に色を変更 */
+    border-color: #a2a2ff;
 }
 
 .search_button{
@@ -98,7 +98,7 @@
 
 .search_button_link:hover,
 .btn-primary:hover {
-    background-color: #ffebfc; /* 少し濃いラベンダー */
+    background-color: #ffebfc;
 }
 
 .search_form {
@@ -113,13 +113,13 @@
     padding: 10px 15px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションの滑らかさを指定 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 10;
 }
 
 #search_form:hover {
-    transform: translateY(-5px); /* 上に少し移動 */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を追加して浮き上がる効果 */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 #overlay {
@@ -128,9 +128,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* 半透明の黒色 */
-    backdrop-filter: blur(5px); /* ぼかし効果 */
-    z-index: 1; /* モーダルの後ろになるように設定 */
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
 }
 
 #category_id{
@@ -139,8 +139,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* プレースホルダーのスタイル */
 .placeholder {
     color: #6c757d;
 }
-
