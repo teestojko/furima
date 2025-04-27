@@ -4,6 +4,9 @@ mix.js('resources/js/app.tsx', 'public/js')
     .react()
     .sass('resources/sass/app.scss', 'public/css')
     .postCss('resources/js/styles/Sidebar.css', 'public/css')
+    .options({
+        processCssUrls: false,
+    })
     .version();
 
 mix.webpackConfig({
