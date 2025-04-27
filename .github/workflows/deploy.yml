@@ -3,10 +3,10 @@ name:  Deploy Pipeline
 on:
   push:
     branches:
-      - main  # mainブランチへのpushでトリガーされる
+      - main
   pull_request:
     branches:
-      - main  # pull requestがmainブランチに対して行われた時
+      - main
   workflow_dispatch:
 
 
@@ -26,9 +26,22 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
-          ssh -i private_key.pem -o StrictHostKeyChecking=no $USERNAME@$SERVER_IP << 'EOF'
+          ssh -i private_key.pem \
+            -o StrictHostKeyChecking=no \
+            -o ServerAliveInterval=60 \
+            $USERNAME@$SERVER_IP << 'EOF'
             cd furima
             git pull origin main
-            docker-compose exec -T php bash -c 'composer install && php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache'
+            sudo docker-compose up -d --build
+            sleep 10
+            docker-compose exec -T php bash -c "
+              composer install &&
+              npm install &&
+              npm run production &&
+              php artisan migrate --force &&
+              php artisan config:cache &&
+              php artisan route:cache &&
+              php artisan view:cache
+            "
           EOF
           
