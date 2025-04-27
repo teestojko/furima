@@ -25,7 +25,7 @@
 }
 
 .reserve_main::before {
-    content: "\f058"; /* Font Awesome チェックマーク */
+    content: "\f058";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     font-size: 50px;

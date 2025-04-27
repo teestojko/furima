@@ -4,10 +4,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import axios from "axios";
 
 const Sidebar: React.FC = () => {
-    // 状態管理の型を指定
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
-    // userId の型を number に指定
     const userId: number = 1;
 
     const handleLogout = async () => {
@@ -16,9 +14,9 @@ const Sidebar: React.FC = () => {
                 headers: {
                     "X-CSRF-TOKEN": (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content || ""
                 },
-                withCredentials: true // Fortify を使用する場合、これを true にする必要がある！
+                withCredentials: true
             });
-            window.location.href = "/login"; // ログアウト後のリダイレクト先
+            window.location.href = "/login";
         } catch (error) {
             console.error("ログアウトに失敗しました。", error);
         }
@@ -78,8 +76,8 @@ const Sidebar: React.FC = () => {
                         href="#"
                         className="nav_button"
                         onClick={(e) => {
-                            e.preventDefault(); // ページ遷移を防ぐ
-                            handleLogout();     // ログアウト関数を呼ぶ
+                            e.preventDefault();
+                            handleLogout();
                         }}
                     >
                     <i className="fas fa-right-from-bracket"></i>

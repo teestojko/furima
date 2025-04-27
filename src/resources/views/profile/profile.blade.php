@@ -30,7 +30,6 @@
             <div class="star-rating">
                 @for ($i = 1; $i <= 5; $i++)
                     @php
-                        // 各星の塗りつぶし割合を計算
                         $fillPercentage = max(0, min(100, ($averageStars - ($i - 1)) * 100));
                     @endphp
                     <span class="star" style="background: linear-gradient(90deg, gold {{ $fillPercentage }}%, lightgray {{ $fillPercentage }}%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">&#9733;</span>

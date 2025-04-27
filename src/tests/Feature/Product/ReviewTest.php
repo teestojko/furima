@@ -54,7 +54,6 @@ class ReviewTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        // すでにレビュー投稿済み
         Review::factory()->create([
             'user_id' => $user->id,
             'product_id' => $product->id

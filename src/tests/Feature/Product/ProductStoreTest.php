@@ -73,7 +73,7 @@ class ProductStoreTest extends TestCase
             'name' => '商品名',
             'user_id' => $user->id,
         ]);
-        $this->assertDatabaseCount('images', 0); //images テーブルにレコードが 0 件であることを確認
+        $this->assertDatabaseCount('images', 0);
     }
 
 

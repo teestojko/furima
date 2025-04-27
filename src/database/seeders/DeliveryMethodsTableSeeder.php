@@ -21,7 +21,5 @@ class DeliveryMethodsTableSeeder extends Seeder
             ['name' => '通常配送'],
             ['name' => '速達配送']
         ]);
-
-        // DeliveryMethod::factory()->count(1)->create();
     }
 }

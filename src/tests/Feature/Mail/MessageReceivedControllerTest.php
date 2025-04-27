@@ -28,7 +28,7 @@ class MessageReceivedControllerTest extends TestCase
             'message' => 'こんにちは！',
         ]);
 
-        $response->assertRedirect(); // バックリダイレクトを確認
+        $response->assertRedirect();
         $response->assertSessionHas('success', 'メッセージが送信されました。');
 
         $this->assertDatabaseHas('messages', [
@@ -47,7 +47,7 @@ class MessageReceivedControllerTest extends TestCase
         $receiver = User::factory()->create();
 
         $response = $this->actingAs($sender)->post("/messages/{$receiver->id}/send-email", [
-            'message' => '', // 空のメッセージ
+            'message' => '',
         ]);
 
         $response->assertSessionHasErrors('message');

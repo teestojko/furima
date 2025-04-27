@@ -23,16 +23,13 @@ class CartControllerTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        // ログイン
         $this->actingAs($user);
 
-        // 商品をカートに追加
         $response = $this->post(route('cart-add'), [
             'product_id' => $product->id,
             'quantity' => 1,
         ]);
 
-        // カートに商品が追加されたことを確認
         $response->assertRedirect();
         $this->assertDatabaseHas('carts', [
             'user_id' => $user->id,
@@ -51,20 +48,16 @@ class CartControllerTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        // ログイン
         $this->actingAs($user);
 
-        // 商品をカートに追加
         $cart = Cart::create([
             'user_id' => $user->id,
             'product_id' => $product->id,
             'quantity' => 1,
         ]);
 
-        // 商品をカートから削除
         $response = $this->delete(route('cart-remove', ['id' => $cart->id]));
 
-        // 商品がカートから削除されたことを確認
         $response->assertRedirect();
         $this->assertDatabaseMissing('carts', [
             'id' => $cart->id,
@@ -81,20 +74,16 @@ class CartControllerTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        // ログイン
         $this->actingAs($user);
 
-        // 商品をカートに追加
         Cart::create([
             'user_id' => $user->id,
             'product_id' => $product->id,
             'quantity' => 1,
         ]);
 
-        // カートページにアクセス
         $response = $this->get(route('cart-view'));
 
-        // カートの内容が表示されていることを確認
         $response->assertStatus(200);
         $response->assertSee($product->name);
     }
@@ -109,22 +98,18 @@ class CartControllerTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        // ログイン
         $this->actingAs($user);
 
-        // 商品をカートに追加
         $cart = Cart::create([
             'user_id' => $user->id,
             'product_id' => $product->id,
             'quantity' => 1,
         ]);
 
-        // 支払い準備ページにリクエスト
         $response = $this->post(route('cart-purchase'), [
             'selected_items' => [$cart->id],
         ]);
 
-        // リダイレクトされることを確認
         $response->assertRedirect(route('payment-show'));
         $response->assertSessionHas('selected_items');
         $response->assertSessionHas('total_amount');
@@ -139,15 +124,12 @@ class CartControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        // ログイン
         $this->actingAs($user);
 
-        // 支払い準備ページにリクエスト（商品を選択しない）
         $response = $this->post(route('cart-purchase'), [
             'selected_items' => [],
         ]);
 
-        // エラーメッセージが表示されることを確認
         $response->assertRedirect();
         $response->assertSessionHas('error', '商品が選択されていません');
     }

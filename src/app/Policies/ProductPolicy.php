@@ -19,7 +19,6 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        // 認証済みユーザーが商品の出品者であるかを確認
         return $user->id === $product->user_id;
     }
 

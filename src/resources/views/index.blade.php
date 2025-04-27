@@ -7,10 +7,8 @@
 
 @section('content')
 
-    {{-- Vue.js/React用のデータを渡す --}}
     <div id="categories" data-categories='@json($categories)'></div>
     <div id="filter-url" data-url="{{ route('products-filter') }}"></div>
-
 
     <div class="index">
         <div class="index_inner">
@@ -116,7 +114,6 @@
         </div>
     </div>
 
-    {{-- ログイン済ユーザーのみ表示 --}}
     <script>
         window.Laravel = {
             isLoggedIn: @json(Auth::check())

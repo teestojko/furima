@@ -1,14 +1,12 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import '../styles/SearchForm.css';
 
-// カテゴリの型定義
 interface Category {
     id: number;
     name: string;
 }
 
 const SearchForm: React.FC = () => {
-    // Stateの型指定
     const [categories, setCategories] = useState<Category[]>([]);
     const [filterUrl, setFilterUrl] = useState<string>('');
     const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
@@ -20,12 +18,9 @@ const SearchForm: React.FC = () => {
     const [popularity, setPopularity] = useState<string>('');
 
     useEffect(() => {
-        // DOM内のカテゴリ情報が埋め込まれた要素を取得
         const categoriesElement = document.getElementById('categories');
-        // フィルターURLが埋め込まれた要素を取得
         const filterUrlElement = document.getElementById('filter-url');
 
-        // 要素が存在する場合、それぞれのデータ属性を取得し、stateを更新
         if (categoriesElement && filterUrlElement) {
             setCategories(JSON.parse(categoriesElement.dataset.categories || '[]'));
             setFilterUrl(filterUrlElement.dataset.url || '');
@@ -74,12 +69,10 @@ const SearchForm: React.FC = () => {
                 </nav>
             </div>
 
-            {/* 検索フォーム */}
             {isFormVisible && (
                 <>
                     <form action={filterUrl} method="GET" className="search_form">
                         <div className="search_container">
-                            {/* カテゴリ選択 */}
                             <div className="index_search_category">
                                 <label className="index_search_label" htmlFor="category_id">
                                     カテゴリ
@@ -100,7 +93,6 @@ const SearchForm: React.FC = () => {
                                 </select>
                             </div>
 
-                            {/* 商品名検索 */}
                             <div className="index_search_product_name">
                                 <label className="index_search_label" htmlFor="product_name">
                                     商品名
@@ -116,7 +108,6 @@ const SearchForm: React.FC = () => {
                                 />
                             </div>
 
-                            {/* 価格帯の絞り込み */}
                             <div className="index_search_price_range">
                                 <label className="index_search_label" htmlFor="min_price">
                                     価格帯
@@ -139,7 +130,6 @@ const SearchForm: React.FC = () => {
                                 />
                             </div>
 
-                            {/* 価格順の並び替え */}
                             <div className="index_search_price_order">
                                 <label className="index_search_label" htmlFor="price_order">
                                     価格順
@@ -156,7 +146,6 @@ const SearchForm: React.FC = () => {
                                 </select>
                             </div>
 
-                            {/* 人気順の並び替え */}
                             <div className="index_search_popularity">
                                 <label className="index_search_label" htmlFor="popularity">
                                     人気順
@@ -173,7 +162,6 @@ const SearchForm: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* 検索ボタン */}
                         <div className="search_button">
                             <button className="search_button_link" type="submit">
                                 検索
@@ -181,7 +169,6 @@ const SearchForm: React.FC = () => {
                         </div>
                     </form>
 
-                    {/* オーバーレイ */}
                     <div
                         id="overlay"
                         className="overlay"

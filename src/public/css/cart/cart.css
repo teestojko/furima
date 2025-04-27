@@ -42,11 +42,11 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 文字に影をつけて目立たせる */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 10px;
     border: 2px solid #f8ffac;
     border-radius: 8px;
-    background: linear-gradient(135deg, #fff0f0, #ffe6e6); /* 赤系のグラデーション背景 */
+    background: linear-gradient(135deg, #fff0f0, #ffe6e6);
 }
 
 
@@ -161,16 +161,16 @@ form button[type="submit"]:hover {
 
 .success_message, .error_message {
     opacity: 0;
-    transform: translateY(20px); /* メッセージを下に少し移動させる */
-    animation: float 0.5s forwards; /* アニメーションを適用 */
-    transition: opacity 0.5s ease; /* フェードインの効果 */
+    transform: translateY(20px);
+    animation: float 0.5s forwards;
+    transition: opacity 0.5s ease;
     color: #937b5e;
 }
 
 @keyframes float {
     to {
         opacity: 1;
-        transform: translateY(0); /* 元の位置に戻す */
+        transform: translateY(0);
     }
 }
 

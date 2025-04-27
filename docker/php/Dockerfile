@@ -1,25 +1,23 @@
 FROM php:8.3.8-fpm
 
-# PHPの設定をコピー
 COPY php.ini /usr/local/etc/php/
 
-# 必要なパッケージとPHP拡張のインストール
 RUN apt update \
   && apt install -y \
-     curl \
-     git \
-     unzip \
-     zip \
-     default-mysql-client \
-     zlib1g-dev \
-     libzip-dev \
-     libpng-dev \
-     libjpeg-dev \
-     libfreetype6-dev \
-     gnupg \
-     ca-certificates \
-     lsb-release \
-     software-properties-common \
+      curl \
+      git \
+      unzip \
+      zip \
+      default-mysql-client \
+      zlib1g-dev \
+      libzip-dev \
+      libpng-dev \
+      libjpeg-dev \
+      libfreetype6-dev \
+      gnupg \
+      ca-certificates \
+      lsb-release \
+      software-properties-common \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install pdo_mysql zip gd \
   && apt-get clean \
@@ -30,16 +28,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
   && npm install -g npm@latest  # 最新のnpmをインストール
 
 
-# Composerのインストールとキャッシュ削除
 RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer \
   && composer self-update \
   && composer clear-cache
 
-# 作業ディレクトリの設定
 WORKDIR /var/www
 
-# Entrypoint スクリプトをコピーして実行権限を付与
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 

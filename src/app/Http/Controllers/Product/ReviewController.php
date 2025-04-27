@@ -29,7 +29,6 @@ class ReviewController extends Controller
         $review->product_id = $product->id;
         $review->comment = $request->comment;
         $review->stars = $request->stars;
-        // レビューの平均を更新
         $averageStars = $product->reviews()->avg('stars');
         $product->average_stars = $averageStars;
 

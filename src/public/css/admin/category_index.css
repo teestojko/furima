@@ -1,4 +1,3 @@
-/* sanitize.css の上に適用 */
 .category_index {
     max-width: 800px;
     margin: 40px auto;
@@ -131,32 +130,28 @@
     background: #b02a37;
 }
 
-/* ページネーション全体の中央配置 */
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-/* ページネーションのリンクを調整 */
 .pagination .page-item {
-    margin: 0 5px; /* 余白を適用 */
+    margin: 0 5px;
 }
 
 .pagination .page-link {
     padding: 8px 12px;
     border-radius: 5px;
-    color: #333; /* 文字色 */
-    background-color: #fff; /* 背景色 */
-    border: 1px solid #ddd; /* 枠線 */
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
-/* ホバー時 */
 .pagination .page-link:hover {
     background-color: #f8f9fa;
 }
 
-/* アクティブなページ */
 .pagination .active .page-link {
     background-color: #007bff;
     color: #fff;

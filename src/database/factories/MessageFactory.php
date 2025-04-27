@@ -17,7 +17,6 @@ class MessageFactory extends Factory
     {
 
         return [
-            // sender_id, receiver_id は Seeder 側で指定する為、ここでは作成しない
             'message' => $this->faker->sentence(),
             'read_at' => $this->faker->optional()->dateTime(),
         ];

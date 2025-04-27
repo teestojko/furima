@@ -71,7 +71,6 @@
                     <textarea name="detail" id="detail">{{ old('detail') }}</textarea>
                 </div>
 
-                <!-- React FileDisplay のマウントポイント -->
                 <div id="file-display"></div>
 
                 <div class="product_create_button">
@@ -102,7 +101,6 @@
 
     </div>
 
-    <!-- React のエントリポイント -->
     <div id="app"></div>
 
 @section('scripts')

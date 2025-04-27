@@ -13,7 +13,6 @@ use App\Jobs\SaveNotification;
 
 class MessageReceivedController extends Controller
 {
-    // メッセージ送信フォームの表示
     public function create($receiverId)
     {
         $receiverUser = User::findOrFail($receiverId);
@@ -26,16 +25,13 @@ class MessageReceivedController extends Controller
 
     public function store(Request $request, $receiverId)
     {
-        // 入力バリデーション
         $request->validate(['message' => 'required|string']);
-        // メッセージ作成
         $message = Message::create([
             'sender_id' => Auth::id(),
             'receiver_id' => $receiverId,
             'message' => $request->message,
         ]);
         $messageId = $message->id;
-        // 通知データを非同期で保存
         $notificationData = [
             'message' => $message->message,
             'sender_id' => Auth::id(),
@@ -43,13 +39,12 @@ class MessageReceivedController extends Controller
             'message_id' => $messageId,
         ];
         SaveNotification::dispatch(
-            $receiverId,         // 通知を受け取るユーザーID
-            'message',           // 通知の種類
+            $receiverId,
+            'message',
             $notificationData,
-            Auth::user()   // 通知の内容
+            Auth::user()
         );
 
-        // メール送信: 受信者にメッセージを通知するためのメールを送信
         $receiver = User::find($receiverId);
         Mail::to($receiver->email)->send(new MessageReceived($message));
 
