@@ -20,7 +20,6 @@ class FortifyEmailVerificationTest extends TestCase
     {
         parent::setUp();
 
-        // テスト用にメール送信を無効化
         Notification::fake();
     }
 
@@ -35,7 +34,6 @@ class FortifyEmailVerificationTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        // メール認証通知が送信されることを確認
         $user->sendEmailVerificationNotification();
 
         Notification::assertSentTo($user, \Illuminate\Auth\Notifications\VerifyEmail::class);
@@ -80,20 +78,16 @@ class FortifyEmailVerificationTest extends TestCase
 
         $validHash = sha1($user->getEmailForVerification());
 
-        // 無効なリンクを作成 (期限切れ)
         $invalidVerificationUrl = URL::temporarySignedRoute(
             'verification.verify',
-            now()->subMinutes(60), // 過去の時間を指定
-            ['id' => $user->id, 'hash' => $validHash] // 正しい hash を使用
+            now()->subMinutes(60),
+            ['id' => $user->id, 'hash' => $validHash]
         );
 
-        // 認証状態でアクセスを試みる
         $response = $this->actingAs($user)->get($invalidVerificationUrl);
 
-        // 期待する結果：403 エラー
         $response->assertStatus(403);
 
-        // email_verified_at が更新されていないことを確認
         $user->refresh();
         $this->assertNull($user->email_verified_at);
     }

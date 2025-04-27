@@ -15,7 +15,6 @@ class CategoryTest extends TestCase
     {
         parent::setUp();
 
-        // 管理者でログイン（admin guard 指定）
         $this->admin = Admin::factory()->create();
         $this->actingAs($this->admin, 'admin');
     }

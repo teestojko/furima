@@ -21,7 +21,6 @@ class OrderItemFactory extends Factory
         $cart = Cart::factory()->create();
 
         if (!$cart || !$order || !$cart->product) {
-            // データが不足していたら fallback（ファクトリーが壊れないように）
             return [
                 'order_id' => $order?->id ?? 1,
                 'product_id' => 1,
@@ -36,7 +35,7 @@ class OrderItemFactory extends Factory
         $quantity = $cart->quantity;
         $total = $productPrice * $quantity;
 
-        $commissionRate = config('fees.commission_rate', 0.05); // configから手数料取得（なければ0.05）
+        $commissionRate = config('fees.commission_rate', 0.05);
         $fee = $total * $commissionRate;
         $revenue = $total - $fee;
 

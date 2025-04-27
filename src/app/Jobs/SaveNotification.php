@@ -47,7 +47,6 @@ class SaveNotification implements ShouldQueue
      */
     public function handle()
     {
-        // 通知データを保存
         Notification::create([
             'user_id' => $this->userId,
             'type' => $this->type,
@@ -55,10 +54,8 @@ class SaveNotification implements ShouldQueue
             'is_read' => false,
         ]);
 
-        // mailtrap送信処理
-        $user = User::find($this->userId); // 通知の受信者情報を取得
+        $user = User::find($this->userId);
         if ($user && isset($this->data['message'])) {
-            // Mailableクラスを使ってメール送信
             $messageData = (object) [
                 'message' => $this->data['message'],
                 'sender' => $this->sender,

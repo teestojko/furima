@@ -23,7 +23,5 @@ class OrderStatusesTableSeeder extends Seeder
             ['name' => '発送済'],
             ['name' => 'キャンセル済'],
         ]);
-
-        // OrderStatus::factory()->count(1)->create();
     }
 }

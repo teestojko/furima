@@ -1,17 +1,14 @@
 import React, { useState, ChangeEvent } from 'react';
 import "../styles/FileDisplay.css";
 
-// プレビュー用のファイル情報の型定義
 interface FilePreview {
     src: string | ArrayBuffer | null;
     name: string;
 }
 
 const FileDisplay: React.FC = () => {
-    // previewsの型をFilePreviewの配列に指定
     const [previews, setPreviews] = useState<FilePreview[]>([]);
 
-    // handleFileChangeのイベント引数に型を指定
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(event.target.files || []);
 
@@ -24,7 +21,6 @@ const FileDisplay: React.FC = () => {
             });
         });
 
-        // Promise.allの結果がFilePreview型であることを指定
     Promise.all(filePreviews)
         .then((results) => setPreviews(results))
         .catch((error) => console.error('Error reading files:', error));

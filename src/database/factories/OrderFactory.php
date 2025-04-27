@@ -17,16 +17,9 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
-        // ランダムに生成する総額
         $totalPrice = $this->faker->randomFloat(2, 1000, 10000);
-
-        // config/fees.php から手数料率を取得
         $commissionRate = config('fees.commission_rate');
-
-        // 手数料を計算
         $commissionFee = $totalPrice * $commissionRate;
-
-        // 出品者の収益は、総額から手数料を引いた金額
         $sellerRevenue = $totalPrice - $commissionFee;
 
         return [

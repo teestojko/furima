@@ -62,7 +62,6 @@ class CouponController extends Controller
 
         session(['discounted_amount' => $discountedAmount]);
 
-        // **クーポンを使用済みにする**
         $coupon->update(['is_used' => true]);
 
         return back()->with('success', 'クーポンが適用されました！');
@@ -82,7 +81,6 @@ class CouponController extends Controller
             return back()->with('error', 'このクーポンは取得できません');
         }
 
-        // ログインユーザーを紐づける
         $coupon->update(['user_id' => Auth::id()]);
 
         return back()->with('success', 'クーポンを獲得しました！');

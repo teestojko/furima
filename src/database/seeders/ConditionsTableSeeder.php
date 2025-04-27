@@ -21,7 +21,5 @@ class ConditionsTableSeeder extends Seeder
             ['name' => '新品'],
             ['name' => '中古']
         ]);
-
-        // Condition::factory()->count(1)->create();
     }
 }

@@ -45,13 +45,11 @@ class CartController extends Controller
             return back()->with('error', '商品が選択されていません');
         }
 
-        // カートから選択された商品を取得
         $selectedItems = Cart::whereIn('id', $request->selected_items)
             ->where('user_id', Auth::id())
             ->with('product')
             ->get();
 
-        // 合計金額を計算
         $totalAmount = $selectedItems->sum(function ($cart) {
             return $cart->product->price * $cart->quantity;
         });
@@ -67,7 +65,6 @@ class CartController extends Controller
             session(['discounted_amount' => $totalAmount]);
         }
 
-        // 配列形式で保存
         session(['selected_items' => $selectedItems->pluck('id')->toArray(), 'total_amount' => $totalAmount]);
 
         return redirect()->route('payment-show');

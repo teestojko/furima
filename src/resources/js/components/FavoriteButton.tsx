@@ -24,7 +24,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, isFavorite }
             }
 
             const data = await response.json();
-            setFavorite(data.status === "added"); // Laravel からのレスポンスで状態を更新
+            setFavorite(data.status === "added");
         } catch (error) {
             console.error("通信エラー:", error);
             alert("通信エラーが発生しました");

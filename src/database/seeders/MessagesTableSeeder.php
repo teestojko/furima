@@ -17,7 +17,6 @@ class MessagesTableSeeder extends Seeder
     {
         $userCount = rand(2, 5);
 
-        // ユーザーをランダムに選ぶ
         $users = User::inRandomOrder()->take($userCount)->get();
 
         if ($users->count() < 2) {
@@ -31,11 +30,9 @@ class MessagesTableSeeder extends Seeder
                     continue;
                 }
 
-                // やり取りの回数（1〜3通をランダムで）
                 $messageCount = rand(1, 3);
 
                 for ($i = 0; $i < $messageCount; $i++) {
-                    // 交互にやり取り（偶数: sender→receiver、奇数: receiver→sender）
                     if ($i % 2 === 0) {
                         Message::factory()->create([
                             'sender_id' => $sender->id,

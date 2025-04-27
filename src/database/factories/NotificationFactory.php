@@ -17,14 +17,14 @@ class NotificationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create(), // ランダムなユーザー
-            'type' => $this->faker->randomElement(['message', 'transaction', 'alert']), // ランダムな通知タイプ
+            'user_id' => User::factory()->create(),
+            'type' => $this->faker->randomElement(['message', 'transaction', 'alert']),
             'data' => json_encode([
-                'title' => $this->faker->word, // ランダムなタイトル
-                'body' => $this->faker->sentence, // ランダムな本文
+                'title' => $this->faker->word,
+                'body' => $this->faker->sentence,
             ]),
-            'read_at' => $this->faker->optional()->dateTimeThisYear(), // ランダムな読んだ日時
-            'is_read' => $this->faker->boolean(50), // 50%の確率で既読
+            'read_at' => $this->faker->optional()->dateTimeThisYear(),
+            'is_read' => $this->faker->boolean(50),
         ];
     }
 }

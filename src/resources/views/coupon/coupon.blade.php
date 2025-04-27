@@ -23,7 +23,7 @@
             </thead>
             <tbody>
                 @foreach($coupons as $coupon)
-                    @if (!$coupon->is_used) {{-- 使用済みは表示しない --}}
+                    @if (!$coupon->is_used)
                         <tr>
                             <td>{{ $coupon->code }}</td>
                             <td>

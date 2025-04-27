@@ -63,7 +63,6 @@
     </div>
 
     <script>
-        // 全選択ボタンのイベント
         document.getElementById('select_all_btn').addEventListener('click', function() {
             const checkboxes = document.querySelectorAll('.cart-checkbox');
             checkboxes.forEach(checkbox => checkbox.checked = true);

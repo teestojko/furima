@@ -27,7 +27,6 @@ class PaymentControllerTest extends TestCase
     /** @test */
     public function payment_successfully_creates_order_and_reduces_points()
     {
-        // Stripe関連クラスのメソッドをモックする
         $customerMock = Mockery::mock('overload:Stripe\Customer');
         $customerMock->shouldReceive('create')->andReturn((object)['id' => 'cus_test']);
 

@@ -21,8 +21,8 @@ class UserEditTest extends TestCase
         $response = $this->actingAs($user)->get(route('user-edit'));
 
         $response->assertStatus(200)
-                 ->assertViewIs('profile.user_edit')
-                 ->assertSee($user->name);
+                ->assertViewIs('profile.user_edit')
+                ->assertSee($user->name);
     }
 
     /** @test */
@@ -98,10 +98,8 @@ class UserEditTest extends TestCase
             'profile_image' => $file,
         ]);
 
-        // ここで保存されたファイル名を取得
         $expectedPath = 'profile_images/' . $file->hashName();
 
-        // このパスでファイルが存在するか確認
         Storage::disk('public')->assertExists($expectedPath);
 
         $this->assertDatabaseHas('users', [

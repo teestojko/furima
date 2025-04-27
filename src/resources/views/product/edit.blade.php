@@ -63,7 +63,6 @@
     @endif
 </form>
 
-<!-- React のエントリポイント -->
     <div id="app"></div>
 
 @section('scripts')
