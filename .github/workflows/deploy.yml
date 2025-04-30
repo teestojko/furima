@@ -12,37 +12,37 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # GitHub Actions の最新の Ubuntu ランナーを使用
 
     steps:
-      - name: Checkout code
+      - name: Checkout code  # リポジトリのコードをチェックアウト
         uses: actions/checkout@v2
 
       - name: Deploy to EC2
         env:
-          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
-          SERVER_IP: ${{ secrets.EC2_SERVER_IP }}
-          USERNAME: ${{ secrets.EC2_USERNAME }}
+          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}  # SSH 接続用の秘密鍵（GitHub Secrets から取得）
+          SERVER_IP: ${{ secrets.EC2_SERVER_IP }}      # EC2 インスタンスの IP アドレス（Secrets から取得）
+          USERNAME: ${{ secrets.EC2_USERNAME }}        # EC2 に接続するユーザー名（Secrets から取得）
         run: |
-          echo "$PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
+          echo "$PRIVATE_KEY" > private_key.pem  # 秘密鍵をファイルに保存
+          chmod 600 private_key.pem              # 秘密鍵ファイルのパーミッションを設定（読み取り専用）
+
+          # EC2 インスタンスへ SSH 接続し、以下のコマンドを実行
           ssh -i private_key.pem \
-            -o StrictHostKeyChecking=no \
-            -o ServerAliveInterval=60 \
+            -o StrictHostKeyChecking=no \        # 初回接続時のホスト確認をスキップ
+            -o ServerAliveInterval=60 \          # 接続のタイムアウト対策で定期的にシグナル送信
             $USERNAME@$SERVER_IP << 'EOF'
             cd furima/src
             git pull origin main
-            sudo docker-compose up -d --build
-            sleep 10
+            sudo docker-compose up -d --build    # コンテナをビルド・起動（バックグラウンドで実行）
+            sleep 10                             # コンテナ起動待ちのため少し待機
             docker-compose exec -T php bash -c "
-              composer install &&
-              npm install &&
-              npm run production &&
-              php artisan migrate --force &&
+              composer install &&                # PHP 依存パッケージをインストール
+              npm install &&                     # Node.js パッケージをインストール
+              npm run production &&              # アセットを本番用にビルド
+              php artisan migrate --force &&     # マイグレーションを強制実行
               php artisan config:cache &&
               php artisan route:cache &&
               php artisan view:cache
             "
           EOF
-          
-          
