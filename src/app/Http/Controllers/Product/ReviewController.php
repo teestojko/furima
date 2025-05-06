@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class ReviewController extends Controller
 {
-        public function review(Product $product)
+    public function review(Product $product)
     {
         return view('review.review', compact('product'));
     }
