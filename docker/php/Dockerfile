@@ -1,4 +1,4 @@
-FROM php:8.3.8-fpm
+FROM php:8.3-fpm
 
 # カスタムphp.iniファイルをPHPの設定ディレクトリにコピー
 COPY php.ini /usr/local/etc/php/
