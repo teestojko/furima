@@ -73,6 +73,14 @@ jobs:
           cd src
           php artisan key:generate --env=testing
 
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            nc -z mysql 3306 && echo "MySQL is up!" && break
+            echo "Waiting for MySQL... ($i)"
+            sleep 2
+          done
+
       - name: Run migrations
         run: |
           cd src
