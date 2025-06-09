@@ -21,7 +21,6 @@ jobs:
           MYSQL_DATABASE: laravel_test
           MYSQL_USER: laravel_user
           MYSQL_PASSWORD: laravel_pass
-          MYSQL_ALLOW_EMPTY_PASSWORD: no
         options: >-
           --health-cmd="mysqladmin ping"
           
@@ -30,6 +29,8 @@ jobs:
           --health-timeout=5s
           
           --health-retries=5
+
+          --publish 3306:3306
 
     steps:
       - name: Checkout code
