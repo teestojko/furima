@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ghcr.io/railwayapp/nixpacks:php-8.3-node-20
+      image: laravelsail/php83-composer:latest
+
 
     services:
       mysql:
