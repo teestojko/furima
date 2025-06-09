@@ -24,9 +24,16 @@ jobs:
         ports:
           - 3306:3306
         options: >-
+          # コンテナのヘルスチェックとして実行されるコマンド。MySQLが起動して応答可能かを確認する。
           --health-cmd="mysqladmin ping"
+          
+          # ヘルスチェックを10秒ごとに実行する。
           --health-interval=10s
+          
+          # ヘルスチェックコマンドが完了するまでの最大待機時間。5秒以内に応答がないと失敗とみなす。
           --health-timeout=5s
+          
+          # ヘルスチェックの失敗を何回連続で許容するか。5回失敗するとコンテナはunhealthyと判断される。
           --health-retries=5
 
     steps:
