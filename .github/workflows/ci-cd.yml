@@ -13,10 +13,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
 
-    container:
-      image: laravelsail/php83-composer:latest
-
-
     services:
       mysql:
         image: mysql:8.0
@@ -27,7 +23,6 @@ jobs:
           MYSQL_PASSWORD: laravel_pass
         options: >-
           --tmpfs /var/lib/mysql
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -psecret"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
