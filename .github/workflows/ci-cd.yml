@@ -21,8 +21,10 @@ jobs:
           MYSQL_DATABASE: laravel_test
           MYSQL_USER: laravel_user
           MYSQL_PASSWORD: laravel_pass
+        ports:
+          - 3306:3306
         options: >-
-          --tmpfs /var/lib/mysql
+          --health-cmd="mysqladmin ping"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -36,32 +38,17 @@ jobs:
         with:
           php-version: '8.3'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-
       - name: Install Composer dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php
           php composer.phar install --working-dir=src
-
-      - name: Install npm dependencies
-        run: |
-          cd src
-          npm install
-
-      - name: Build frontend assets
-        run: |
-          cd src
-          npm run production
 
       - name: Set up .env.testing
         run: |
           cp src/.env.example src/.env.testing
           echo "APP_ENV=testing" >> src/.env.testing
           echo "DB_CONNECTION=mysql" >> src/.env.testing
-          echo "DB_HOST=mysql" >> src/.env.testing
+          echo "DB_HOST=127.0.0.1" >> src/.env.testing
           echo "DB_PORT=3306" >> src/.env.testing
           echo "DB_DATABASE=laravel_test" >> src/.env.testing
           echo "DB_USERNAME=laravel_user" >> src/.env.testing
@@ -71,14 +58,6 @@ jobs:
         run: |
           cd src
           php artisan key:generate --env=testing
-
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            nc -z mysql 3306 && echo "MySQL is up!" && break
-            echo "Waiting for MySQL... ($i)"
-            sleep 2
-          done
 
       - name: Run migrations
         run: |
