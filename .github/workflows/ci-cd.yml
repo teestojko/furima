@@ -43,6 +43,21 @@ jobs:
           curl -sS https://getcomposer.org/installer | php
           php composer.phar install --working-dir=src
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+  
+      - name: Install Node dependencies
+        run: |
+          cd src
+          npm ci
+
+      - name: Build frontend assets
+        run: |
+          cd src
+          npm run prod
+
       - name: Set up .env.testing
         run: |
           cp src/.env.example src/.env.testing
