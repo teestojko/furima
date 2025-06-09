@@ -59,6 +59,17 @@ jobs:
           cd src
           php artisan key:generate --env=testing
 
+          - name: Wait for MySQL to be ready
+          run: |
+            for i in {1..30}; do
+              if mysqladmin ping -h 127.0.0.1 -u laravel_user -plaravel_pass --silent; then
+                echo "MySQL is ready!"
+                break
+              fi
+              echo "Waiting for MySQL..."
+              sleep 2
+            done
+
       - name: Run migrations
         run: |
           cd src
