@@ -23,7 +23,7 @@ jobs:
           MYSQL_PASSWORD: laravel_pass
         options: >-
           --tmpfs /var/lib/mysql
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -psecret"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -p secret"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
