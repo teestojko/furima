@@ -12,6 +12,9 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
 
     services:
       mysql:
@@ -45,40 +48,31 @@ jobs:
       - name: Install Composer dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php
-          php composer.phar install --working-dir=src
+          php composer.phar install
 
       - name: Install npm dependencies
-        run: |
-          cd src
-          npm install
+        run: npm install
 
       - name: Build frontend assets
-        run: |
-          cd src
-          npm run production
+        run: npm run production
 
       - name: Set up .env.testing
         run: |
-          cp src/.env.example src/.env.testing
-          echo "APP_ENV=testing" >> src/.env.testing
-          echo "DB_CONNECTION=mysql" >> src/.env.testing
-          echo "DB_HOST=mysql" >> src/.env.testing
-          echo "DB_PORT=3306" >> src/.env.testing
-          echo "DB_DATABASE=laravel_test" >> src/.env.testing
-          echo "DB_USERNAME=laravel_user" >> src/.env.testing
-          echo "DB_PASSWORD=laravel_pass" >> src/.env.testing
+          cp .env.example .env.testing
+          echo "APP_ENV=testing" >> .env.testing
+          echo "DB_CONNECTION=mysql" >> .env.testing
+          echo "DB_HOST=mysql" >> .env.testing
+          echo "DB_PORT=3306" >> .env.testing
+          echo "DB_DATABASE=laravel_test" >> .env.testing
+          echo "DB_USERNAME=laravel_user" >> .env.testing
+          echo "DB_PASSWORD=laravel_pass" >> .env.testing
 
       - name: Generate app key
-        run: |
-          cd src
-          php artisan key:generate --env=testing
+        run: php artisan key:generate --env=testing
 
       - name: Run migrations
-        run: |
-          cd src
-          php artisan migrate --env=testing --force
+        run: php artisan migrate --env=testing --force
 
       - name: Run tests
-        run: |
-          cd src
-          php artisan test
+        run: php artisan test
+
