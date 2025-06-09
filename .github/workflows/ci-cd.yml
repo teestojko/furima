@@ -23,7 +23,7 @@ jobs:
           MYSQL_PASSWORD: laravel_pass
         options: >-
           --tmpfs /var/lib/mysql
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -p secret"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -psecret"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -62,7 +62,7 @@ jobs:
           cp src/.env.example src/.env.testing
           echo "APP_ENV=testing" >> src/.env.testing
           echo "DB_CONNECTION=mysql" >> src/.env.testing
-          echo "DB_HOST=127.0.0.1" >> src/.env.testing
+          echo "DB_HOST=mysql" >> src/.env.testing
           echo "DB_PORT=3306" >> src/.env.testing
           echo "DB_DATABASE=laravel_test" >> src/.env.testing
           echo "DB_USERNAME=laravel_user" >> src/.env.testing
