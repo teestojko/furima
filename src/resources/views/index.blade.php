@@ -1,8 +1,8 @@
 @extends('layout.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                 <div class="product_title">
                     商品一覧
                 </div>
-                @if(Auth::check())
+                @if (Auth::check())
                     <div class="index_points">
                         <div class="user-points">
                             <span class="points-label">保有ポイント:</span>
@@ -47,7 +47,7 @@
                                 ¥{{ number_format($product->price, 0) }}
                             </div>
 
-                            @if(Auth::check())
+                            @if (Auth::check())
                                 <div class="detail_and_favorite">
                                     <div class="product_detail">
                                         <a href="{{ route('products-show', $product->id) }}" class="btn btn-primary">
@@ -55,22 +55,21 @@
                                         </a>
                                     </div>
 
-                                    <div class="favorite-button"
-                                        data-product-id="{{ $product->id }}"
+                                    <div class="favorite-button" data-product-id="{{ $product->id }}"
                                         data-is-favorite="{{ $product->isFavorited() ? 'true' : 'false' }}">
                                     </div>
                                 </div>
 
-                            <div class="product_cart_link">
-                                <form action="{{ route('cart-add') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <input type="number" name="quantity" min="1" value="1" required>
-                                    <button type="submit">
-                                        カートに追加
-                                    </button>
-                                </form>
-                            </div>
+                                <div class="product_cart_link">
+                                    <form action="{{ route('cart-add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="number" name="quantity" min="1" value="1" required>
+                                        <button type="submit">
+                                            カートに追加
+                                        </button>
+                                    </form>
+                                </div>
                             @else
                                 <div class=""></div>
                             @endif
@@ -88,16 +87,21 @@
 
             <div class="coupon_list_container">
                 <h1 class="coupon_list_title">クーポン一覧</h1>
-                @if($coupons->isEmpty())
+                @if ($coupons->isEmpty())
                     <p class="coupon_list_none">現在、利用可能なクーポンはありません。</p>
                 @else
                     <div class="coupon-list">
                         @foreach ($coupons as $coupon)
                             <div class="coupon-card">
                                 <p>クーポンコード: {{ $coupon->code }}</p>
-                                <p>割引: {{ $coupon->discount }} @if($coupon->discount_type == 'percentage') % @else 円 @endif</p>
+                                <p>割引: {{ $coupon->discount }} @if ($coupon->discount_type == 'percentage')
+                                        %
+                                    @else
+                                        円
+                                    @endif
+                                </p>
 
-                                @if(is_null($coupon->user_id))
+                                @if (is_null($coupon->user_id))
                                     <form action="{{ route('coupon-claim', $coupon->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="coupon-button">クーポンを取得</button>
@@ -122,4 +126,3 @@
 
 
 @endsection
-
