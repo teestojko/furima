@@ -138,3 +138,6 @@ make stop
 
 ・通報一覧管理機能
 
+## ER図
+
+![alt text](er.png)
