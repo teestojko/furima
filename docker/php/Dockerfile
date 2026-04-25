@@ -10,7 +10,7 @@ RUN apt update \
       git \
       unzip \
       zip \
-      default-mysql-client \
+  default-mysql-client \
       zlib1g-dev \
       libzip-dev \
       libpng-dev \
@@ -19,7 +19,6 @@ RUN apt update \
       gnupg \
       ca-certificates \
       lsb-release \
-      software-properties-common \
   # GD拡張をJPEGとFreetype対応で構成
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   # 必要なPHP拡張（MySQL、zip、GD）をインストール

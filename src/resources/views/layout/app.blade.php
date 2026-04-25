@@ -20,6 +20,9 @@
                     <div class="header__logo">
                         FURIMA
                     </div>
+                    <title>
+                        @yield('title')
+                    </title>
                 </div>
             </div>
         </header>
